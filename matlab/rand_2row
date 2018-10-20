@@ -1,0 +1,11 @@
+a=unidrnd(4,1,120)
+
+ for r = 1:119
+        while(a(1,r)==a(1,r+1))
+            a(1,r+1)=unidrnd(4);
+        end
+ end
+    
+ b = randperm(120)
+ 
+ c=[a;b]
