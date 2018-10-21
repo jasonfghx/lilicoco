@@ -6,6 +6,11 @@ a=unidrnd(4,1,120)
             a(1,r+1)=unidrnd(4);
         end
 end
+index=randperm(30)
+a4=linspace(1,59,30)
+a3=linspace(2,60,30)
+a2=linspace(61,119,30)
+a1=linspace(62,120,30)
 
  for i=1:30
      a14(i)=a4(index(i));
@@ -19,14 +24,15 @@ end
  for i=1:30
      a11(i)=a1(index(i));
  end
- a14=[a14,a14]
- a13=[a13,a13]
- a12=[a12,a12]
- a11=[a11,a11]
+
  k=1;
  j=1;
  l=1;
  m=1;
+ a14=[a14,a14]
+ a13=[a13,a13]
+ a12=[a12,a12]
+ a11=[a11,a11]
  
  for ii=1:120
      if(a(ii)==1)
