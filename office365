@@ -1,0 +1,12 @@
+Office365(office2016)無法快點兩下excel檔打開之解決
+在win7已裝有Office2007電腦，直接安裝Office365，並不會將Office2007升級移除，事後將Office2007移除，導致快點兩下excel檔，以空白開啟，只能以開啟excel程式後以開啟舊檔來開啟。
+就上述的之方法，根本無法解法，
+網路上雖有更改記錄檔設定：
+ 
+http://jingyan.baidu.com/article/e9fb46e17d5f717521f766ad.html
+結果：並沒有解決
+最後以fice365獲更新Of得解決：
+1. 到 控制台 / 程式和功能
+2. 點 Microsoft Office365   之後  點 變更
+3. 選 線上更新
+更新後，自動重開機，即恢後正常。
