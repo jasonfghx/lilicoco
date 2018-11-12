@@ -1,0 +1,133 @@
+a=randperm(4,4)
+b=a
+for i=1:29
+    a=randperm(4,4)
+    while b(4)==a(1)
+        a=randperm(4,4)
+    end
+    b=[b, a]
+end
+
+c=b
+a=b
+
+index=randperm(30)
+a4=linspace(1,59,30)
+a3=linspace(2,60,30)
+a2=linspace(61,119,30)
+a1=linspace(62,120,30)
+
+ for i=1:30
+     a14(i)=a4(index(i));
+ end
+  for i=1:30
+     a13(i)=a3(index(i));
+  end
+ for i=1:30
+     a12(i)=a2(index(i));
+ end
+ for i=1:30
+     a11(i)=a1(index(i));
+ end
+
+ k=1;
+ j=1;
+ l=1;
+ m=1;
+ 
+for ii=1:120
+     if(a(ii)==1)
+         a(ii)=a11(k);
+         k=k+1;
+     elseif(a(ii)==2)
+             a(ii)=a12(j);
+             j=j+1;
+     elseif(a(ii)==3)
+             a(ii)=a13(l);
+             l=l+1;
+     elseif(a(ii)==4)
+             a(ii)=a14(m);
+             m=m+1;
+     end
+ end
+ 
+ 
+a=[1:12]
+c=a
+
+
+c=randsample(120,120)
+
+
+cc=randsample(a,1)
+
+
+b=[0,0,0,0,0,0,0,0,0,0,0,0]
+
+b(1)=randsample(a,1)
+
+id=find(a==b(1))
+a(id)=[]
+
+b(2)=randsample(a,1)
+id=find(a==b(2))
+a(id)=[]
+
+for ii=1:12
+    
+    b(ii)=randsample(a,1)
+    
+    id=find(a==b(ii))
+    a(id)=[]
+end
+
+
+
+
+
+    for i=1:10
+        if mod(a(1),4)~=mod(c(i+1),4)
+            b(i)=a(1)
+            a(1)=[]
+        elseif mod(a(1),4)==mod(c(i+1),4)
+            j=1
+            while mod(b(i),4)==mod(c(j+1),4)
+                
+                b(i)=c(j+2);
+                j=j+1;
+                
+            end
+            a(j)=[];
+        
+        end
+    end
+        
+ch=mod(b,4)        
+        
+        for j=1:119
+            while mod(b(i),4)==mod(a(j+1),4)
+                b(i)=a(j+1);
+                j=j+1;
+                a(j)=[];
+            end
+        end
+    end
+            
+        
+        
+            
+            
+            
+        end 
+    end
+
+
+ch1=mod(a,4)
+
+i=0
+for j=1:5
+    i=i+j
+end
+
+
+b1 = unique(a)  
