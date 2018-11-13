@@ -1,0 +1,8 @@
+import pandas as pd
+dfs=pd.read_html("https://rate.bot.com.tw/xrt?Lang=zh-TW")
+
+dfs[0]
+
+cur=dfs[0].ix[:,0:5]
+currency=cur["幣別"].iloc[:,0]
+currency.str.extract("\((\w+)\)")#extract English word
