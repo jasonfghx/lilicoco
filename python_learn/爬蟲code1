@@ -6,3 +6,13 @@ dfs[0]
 cur=dfs[0].ix[:,0:5]
 currency=cur["幣別"].iloc[:,0]
 currency.str.extract("\((\w+)\)")#extract English word
+
+#google
+my_params = {'q': '寒流'}
+r = requests.get(google_url, params = my_params)
+if r.status_code == requests.codes.ok:
+    soup = BeautifulSoup(r.text, 'html.parser')
+    items = soup.select('div.g > h3.r > a[href^="/url"]')
+    for i in items:
+        print("標題：" + i.text)
+        print("網址：" + i.get('href'))
