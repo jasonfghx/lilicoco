@@ -33,3 +33,4 @@ j=np.zeros(124)
 j.shape
 aa=pd.DataFrame(j)
 aa.columns=["text"]
+aa[aa=="教育部公告：預告「客語師資培育資格聘任辦法」草案(預告終止日 107-12-13)"].index
