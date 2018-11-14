@@ -16,3 +16,20 @@ if r.status_code == requests.codes.ok:
     for i in items:
         print("標題：" + i.text)
         print("網址：" + i.get('href'))
+
+import requests
+from bs4 import BeautifulSoup
+quote_page = "https://law.moj.gov.tw/#NEWS"
+res=requests.get(quote_page)
+soup=BeautifulSoup(res.text)
+html_data=soup.find_all("td")
+for i in html_data:
+     print(i.text)
+     
+###############創建新dataframe##############
+import numpy as np
+import pandas as pd
+j=np.zeros(124)
+j.shape
+aa=pd.DataFrame(j)
+aa.columns=["text"]
