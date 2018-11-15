@@ -1,1 +1,5 @@
+jj=np.zeros(33)
+j.shape
+temp=pd.DataFrame([jj,jj]).T
 
+temp.columns=(["date","text"])
