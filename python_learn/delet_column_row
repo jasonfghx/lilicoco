@@ -1,0 +1,1 @@
+boat=boat.drop("abc", axis = 1)
