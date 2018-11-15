@@ -3,3 +3,5 @@ j.shape
 temp=pd.DataFrame([jj,jj]).T
 
 temp.columns=(["date","text"])
+
+boat1.rename(columns={0:'A4545'})
