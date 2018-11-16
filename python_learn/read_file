@@ -1,0 +1,1 @@
+temp_file=pd.read_csv("temp_file1.csv",index_col=0)
