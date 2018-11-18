@@ -3,3 +3,4 @@ xampp
 
 
 insert into `web`(`id`,`date`,`text`) VALUES(100,'ddd','wsws')
+SELECT * from `web` where `date`="民國103年06月25日" 
