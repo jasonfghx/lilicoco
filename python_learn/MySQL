@@ -13,3 +13,18 @@ UPDATE `web` SET `text`="dddd" where `id`=4
 
 =====================排序=======================
 select * from `web` where `id`>5 order by `id` asc 
+
+
+import pymysql
+
+li=pymysql.connect(
+        host="localhost",user="root",password="",db="2018-11-18"
+        )
+
+q=li.cursor()
+
+q.execute("SELECT * From `web`")
+for d in q.fetchall():
+    print(d[0],d[1])
+
+li.close()
