@@ -34,3 +34,56 @@ j.shape
 aa=pd.DataFrame(j)
 aa.columns=["text"]
 aa[aa=="教育部公告：預告「客語師資培育資格聘任辦法」草案(預告終止日 107-12-13)"].index
+
+
+import requests
+from bs4 import BeautifulSoup
+url = "https://law.moj.gov.tw/LawClass/LawClassListN.aspx?TY=04010006"
+ur2="http://www.h2o-china.com/price/view?townid=171&ayear=2015"
+
+
+request = requests.get(ur2)
+content = request.text
+soup = BeautifulSoup(content, "html.parser")
+print(soup.prettify())
+html_data=soup.find_all("td",class_="tabbg01")
+
+import numpy as np
+import pandas as pd
+jj=np.zeros(33)
+j.shape
+temp=pd.DataFrame([jj,jj]).T
+
+temp.columns=(["date","text"])
+temp["text"]=temp["text"].astype(str)
+
+temp.iloc[:,0]=100
+
+j=0
+for i in html_data:
+    print(i.text)
+    aa[j]=i.text
+    j=j+1
+
+
+aa[3].count(" ")
+str = "Line1-abcdef \nLine2-abc \nLine4-abcd"
+print (str.split( ))
+print (str.split(' '));
+aa[3].split()
+("民國")+aaa[2]+aaa[3]
+temp=temp["date"]
+k=0
+
+for ind in range(3,132,4):
+    bb[k]=aa[ind]
+    k=k+1
+temp.iloc[1,1]
+len(bb[3].split()    )
+si=bb[3].split()[0]
+for ind in range(0,33):
+    temp.iloc[ind,1]=bb[ind].split()[0]
+    str_temp="民國"+bb[ind].split()[2]+bb[ind].split()[3]+bb[ind].split()[4]+bb[ind].split()[5]+bb[ind].split()[6]+bb[ind].split()[7]
+    temp.iloc[ind,0]=str_temp
+    
+temp.to_csv("123.csv",encoding="utf_8_sig")
