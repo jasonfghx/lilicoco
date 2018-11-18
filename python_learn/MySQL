@@ -28,3 +28,5 @@ for d in q.fetchall():
     print(d[0],d[1])
 
 li.close()
+
+q.execute("insert into `web`(`id`,`title`,`web`,`description`) VALUES(%s,%s,%s,%s)",("50","x","yy","rr"))#add number
