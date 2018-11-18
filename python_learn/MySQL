@@ -10,3 +10,6 @@ UPDATE `web` SET `text`="fuck" where `id`=4
 DELETE FROM `web` where `id`=1;
 
 UPDATE `web` SET `text`="dddd" where `id`=4
+
+=====================排序=======================
+select * from `web` where `id`>5 order by `id` asc 
