@@ -1,2 +1,5 @@
 http://localhost/phpmyadmin/server_databases.php
 xampp
+
+
+insert into `web`(`id`,`date`,`text`) VALUES(100,'ddd','wsws')
