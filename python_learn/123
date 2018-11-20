@@ -119,13 +119,13 @@ for i in range(0,85):
     
 
       
-boat[["20180725","20180726","20180727"]]=boat[["20180725","20180726","20180727"]].astype(object)
+
 k=0
 a=pd.DataFrame(a)
-j1=np.zeros(21)
+j11=np.zeros(21)
 for i in range(0,693):
     if(a.iloc[i,0].find("2018-")==5):
-        j1[k]=int(i)
+        j11[k]=int(i)
         k=k+1
 
 a=os.listdir("Z:\\智慧海運與船舶能源管理之數據分析\\船舶大數據資料\\團明輪\\VDR");
@@ -136,16 +136,10 @@ a4=pd.DataFrame(a)
 
 a5=a4.drop(j1,axis=0)
 a6=a5.reset_index(drop=True)
-for i in range(0,21):
-    a4.remove(a[int(j1[i])])
+
         
 
-j2=j1[0:21]        
-for 
-jj1=list(j1)
-temp=a3.iloc[jj1[0:21],0]
-temp_file.iloc[7,2]=a[606]
-temp_file.to_csv("Z:\\智慧海運與船舶能源管理之數據分析\\船舶大數據資料\\團明輪\\VDR\\temp_file.csv")
+
 
 a3=pd.DataFrame(a)
 k=0
@@ -167,15 +161,13 @@ boat.iloc[1,5]=4
 a3=pd.DataFrame(a)
 a3.where(a3=="SI00-2018-07-25.txt").index
 
-j1=np.zeros(100)
+j1=np.zeros(500000)
 
 j1=pd.DataFrame(j1)
 j1.columns=(["file name"])
 j1["row number of 2"]=None
- te=a2[1].split(".")[0].split("-")[1]
 
-boat.iloc(:,1)=j1
-boat[list(DATE1,DATE2)]  =None
+
 te=a[1].split(".")[0].split("-")[1]
 
 def dateRange(beginDate, endDate):
@@ -196,13 +188,19 @@ def dateRange(beginDate, endDate):
 te=te.split("-")
 type(a[3])
 final=list(a6[0])
-final1=final[0:10]
+final1=final[0:200]
 
-for fi in final:
-    data = pd.read_csv(fi, sep="/n", header = None)
-    k=0
+base_bone_dir = ("Z:\\智慧海運與船舶能源管理之數據分析\\船舶大數據資料\\團明輪\\VDR")
+age_df = pd.read_csv()
+
+for fi in final1:
+    data = pd.read_csv(os.path.join(base_bone_dir, fi), sep="/n", header = None)
+k=0
+for fi in final1:
+    data = pd.read_csv(os.path.join(base_bone_dir, fi), sep="/n", header = None)
+    
     for j in range(0,len(data)):
-        if data.iloc[j,0][len(data.iloc[j,0])-1]==2:
+        if data.iloc[j,0][len(data.iloc[j,0])-1]=="2":
             j1.iloc[k,0]=fi;
             j1.iloc[k,1]=j;
             k=k+1
@@ -213,7 +211,7 @@ for fi in final:
     
         
     
-
+j1=j1.drop(6078,axis=1)
 str1=data.iloc[1,0]
 
 Z:\智慧海運與船舶能源管理之數據分析\船舶大數據資料\團明輪\VDR
