@@ -1,2 +1,11 @@
 https://zhuanlan.zhihu.com/p/35929583
 https://kknews.cc/zh-tw/news/ae3vy5n.html
+
+from datetime import datetime
+from datetime import timedelta
+now=datetime.now()
+print(now)
+for i in range(0,10):
+    start1[i]=str(datetime(2018,7,28,8,49,10)+timedelta(seconds=10*i))
+i=2
+str(datetime(2018,7,28,8,49,10)+timedelta(seconds=10*i))   
