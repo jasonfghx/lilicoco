@@ -1,0 +1,16 @@
+import requests
+import codecs
+import os
+a=requests.get("https://newhouse.591.com.tw/home/housing/search?rid=3&sid=46"
+                ,headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0"},
+                )
+
+import json                
+d=json.loads(a.text)                
+
+for i in d["data"]["items"]:
+    print(i["cover"])
+    r2=requests.get(i["cover"],headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0"})
+    f=codecs.open(os.path.basename(i["cover"]),"wb")
+    f.write(r2.content)
+    f.close()
