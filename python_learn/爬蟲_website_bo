@@ -12,3 +12,12 @@ a.text
 r = requests.get('http://teaching.bo-yuan.net//test//requests')
 r.encoding="UTF-8"
 r.text
+
+
+
+ul="http://opendataap2.hl.gov.tw//.//resource//files//2017-12-19//cab3c25a04cfcccedc7723d8b191e95e.json"
+r=requests.get(ul)
+d=json.loads(r.text)
+for i in d:
+    print(i["年度"])
+
