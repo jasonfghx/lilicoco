@@ -7,3 +7,8 @@ a.cookies
 a.encoding="UTF-8"
 a.content
 a.text
+
+
+r = requests.get('http://teaching.bo-yuan.net//test//requests')
+r.encoding="UTF-8"
+r.text
