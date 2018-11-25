@@ -1,0 +1,4 @@
+import requests
+a=requests.post("http://teaching.bo-yuan.net",headers={"Cookie":"8g55k3fbd3d96qc0eeqdl6gpc5","Referer":"http://teaching.bo-yuan.net","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0"},
+params={"uid":"5bfa119b3d6f1"},
+data={"ex[class]":"5bfa119b3d6f1","ex[username]":"","ex[password]":"test"},
