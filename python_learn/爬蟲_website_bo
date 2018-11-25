@@ -21,3 +21,7 @@ d=json.loads(r.text)
 for i in d:
     print(i["年度"])
 
+d[3]["年度"]
+
+for i in d:
+    print(i["年度"])
