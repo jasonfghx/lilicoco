@@ -14,3 +14,14 @@ for i in d["data"]["items"]:
     f=codecs.open(os.path.basename(i["cover"]),"wb")
     f.write(r2.content)
     f.close()
+
+
+
+ from bs4 import BeautifulSoup   
+ul="https://www.pcnet.idv.tw/html/html.htm"   
+r=requests.get(ul) 
+r.encoding="big5"
+p=BeautifulSoup(r.text,"html.parser")    
+d=p.find_all("a",{"href":"02.htm"})
+print(d[0].text)
+d[0].parent
