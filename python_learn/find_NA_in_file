@@ -1,0 +1,16 @@
+import os
+import pandas as pd
+import numpy  as np
+from datetime import datetime
+from datetime import timedelta
+
+a=os.listdir("Z:\\智慧海運與船舶能源管理之數據分析\\船舶大數據資料\\團明輪\\MFM");
+a=a[4304:]
+
+for i in range(9546,len(a)):#9546可以再改
+    data = pd.read_csv(a[i],sep=',',skiprows=1,header=None,engine="python")
+    data_new=data.drop([0,1,2],axis=0).reset_index(drop=True)
+    temp=data_new[data_new.isnull().values==True]
+    allnew=data_new.append(temp)
+    print(i)
+            
