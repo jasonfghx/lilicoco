@@ -14,3 +14,4 @@ for i in range(9546,len(a)):#9546可以再改
     allnew=data_new.append(temp)
     print(i)
             
+allnew=data_new#只有8
