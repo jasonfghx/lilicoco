@@ -1,0 +1,16 @@
+import codecs
+import os
+ur2 = "https://www3.ihp.sinica.edu.tw/dhrctw/index.php/2014-06-12-08-44-54/gis/48-gis-2014-12-04"
+request = requests.get(ur2)
+content = request.text
+soup = BeautifulSoup(content, "html.parser")
+html_data=soup.find_all("img")
+
+k=0
+for i in range(1,7):
+    ul=html_data[i]["src"]
+    r2=requests.get(ul)
+    f=codecs.open((str(k)+".jpg"),"wb")
+    f.write(r2.content)
+    f.close()
+    k=k+1
