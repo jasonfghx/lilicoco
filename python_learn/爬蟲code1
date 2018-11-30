@@ -87,3 +87,42 @@ for ind in range(0,33):
     temp.iloc[ind,0]=str_temp
     
 temp.to_csv("123.csv",encoding="utf_8_sig")
+
+=================================================================================================================
+import numpy as np
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://law.moj.gov.tw/LawClass/LawClassListN.aspx?TY=04010005"
+
+request = requests.get(url)
+request.encoding = 'big5'
+content = request.content
+soup = BeautifulSoup(content, "html.parser")    
+html_data=soup.find_all("td")
+j=np.zeros(124)
+j.shape
+aa=pd.DataFrame(j)
+aa.columns=["text"]
+k=0
+for i in range(0,len(html_data)):
+    aa.iloc[k,0]=html_data[i].text
+    k=k+1
+index1=list(range(10,75,4))
+aa1=aa.iloc[index1,0].reset_index(drop=True).drop(1,axis=0).reset_index(drop=True)
+jj=np.zeros(33)
+temp=pd.DataFrame([jj,jj]).T
+
+temp.columns=(["date","text"])
+temp["text"]=temp["text"].astype(str)
+bb=aa1
+
+for ind in range(0,len(bb)):
+    temp.iloc[ind,1]=bb[ind].split()[0]
+    str_temp="民國"+bb[ind].split()[2]+bb[ind].split()[3]+bb[ind].split()[4]+bb[ind].split()[5]+bb[ind].split()[6]+bb[ind].split()[7]
+    temp.iloc[ind,0]=str_temp
+
+temp=temp.iloc[0:16,]
+    
+temp.to_csv("勞動條件及就業平等目 .csv",encoding="utf_8_sig")
