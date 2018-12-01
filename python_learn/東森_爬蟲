@@ -17,3 +17,23 @@ while True:
     pa+=1
     if pa==2:
         break
+
+====================================================
+pa=1
+while True:
+    d=requests.get("https://news.ebc.net.tw/Hot?page="+str(pa)).text
+    p=BeautifulSoup(d,"html.parser")
+    q=p.find("div",{"class":"news-list-box"})
+    for q1 in q.find_all("div"):
+        if str(q1["class"]).find("list-ad")==-1:
+            q2=q1.find("a")
+            if q2!=None:
+                p2=BeautifulSoup(requests.get("https://news.ebc.net.tw"+str(q2["href"])).text,"html.parser")
+                r1=p2.find("div",{"class":"fncnews-content"})
+                print(r1.find("h1").text)
+                print(r1.find("div",{"class":"info"}).find("span",{"class":"small-gray-text"}).text)
+                print(r1.find("div",{"class":"raw-style"}).text)
+            
+    pa+=1
+    if pa==2:
+        break
