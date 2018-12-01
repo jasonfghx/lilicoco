@@ -30,3 +30,10 @@ for d in q.fetchall():
 li.close()
 
 q.execute("insert into `web`(`id`,`title`,`web`,`description`) VALUES(%s,%s,%s,%s)",("50","x","yy","rr"))#add number
+
+sql = "select * from `web`  where `title`='女童遭脫褲車震…弟目睹嚇哭！母男友：說出去就勒死'"
+
+sql="select * from `web` where `id`=8 order by `id` asc"
+
+cmd.execute(sql)
+data = cmd.fetchone()
