@@ -1,0 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+
+pa=1
+while True:
+    d=requests.get("https://news.ebc.net.tw/Hot?page="+str(pa)).text
+    p=BeautifulSoup(d,"html.parser")
+    q=p.find("div",{"class":"news-list-box"})
+    for q1 in q.find_all("div"):
+        if str(q1["class"]).find("list-ad")==-1:
+            q2=q1.find("a")
+            if q2!=None:
+                print(q2["href"])
+            
+    pa+=1
+    if pa==2:
+        break
