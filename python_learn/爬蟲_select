@@ -1,0 +1,4 @@
+d=requests.get("http://news.ltn.com.tw/list/breakingnews/all/"+str(pa)).text
+p=BeautifulSoup(d,"html.parser")
+
+q=p.select("a.idle_listpic")
