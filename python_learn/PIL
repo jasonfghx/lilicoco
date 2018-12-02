@@ -1,0 +1,9 @@
+from PIL import ImageFont, ImageDraw, Image
+pm=Image.fromarray(img)
+fn=ImageFont.truetype("arial.ttf",100)
+ImageDraw.Draw(pm).text((100,30),"what",(0,600,255),fn)
+im=np.array(pm)
+
+cv2.imshow("1",im)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
