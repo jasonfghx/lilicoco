@@ -1,3 +1,5 @@
  a=np.full((2,3),50,"i4")           ;a
  陣列變數=np.full((維度一長度, 維度二長度…), 初始值, 資料型態)
  
+for i in np.nditer(a):
+    print(i)
