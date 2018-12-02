@@ -1,0 +1,160 @@
+import requests
+from bs4 import BeautifulSoup
+import pymysql
+
+link=pymysql.connect(
+	host="localhost",
+	user="root",
+	passwd="",
+	db="2018-12-01"
+)
+cmd=link.cursor()
+page=1
+while True:
+	d=requests.get(
+		"https://news.ebc.net.tw/Hot?page="+str(page)
+	).text
+	p=BeautifulSoup(d,"html.parser")
+	q=p.find("div",{"class":"news-list-box"})
+	for q1 in q.find_all("div"):
+		if str(q1["class"]).find("list-ad")==-1:
+			q2=q1.find("a")
+			if q2!=None:
+				p2=BeautifulSoup(requests.get(
+					"https://news.ebc.net.tw"+str(q2["href"])
+				).text,"html.parser")
+				r1=p2.find("div",{"class":"fncnews-content"})
+				info=r1.find("div",{"class":"info"}).find("span",{"class":"small-gray-text"}).text.split(" ")
+				pm={
+					"title":r1.find("h1").text,
+					"create_time":info[0]+" "+info[1],
+					"source":info[2],
+					"contents":r1.find("div",{"class":"raw-style"}).text
+				}
+				cmd.execute(
+					"INSERT INTO `news`(`title`,`create_time`,`source`,`contents`) VALUES(%(title)s,%(create_time)s,%(source)s,%(contents)s)"
+				,pm)
+				link.commit()
+	page+=1
+	if page==4:
+		break
+link.close()
+
+
+=======================================================================================================
+link=pymysql.connect(
+	host="localhost",
+	user="root",
+	passwd="",
+	db="2018-12-01"
+)
+cmd=link.cursor()
+page=1
+while True:
+	d=requests.get(
+		"https://news.ebc.net.tw/Hot?page="+str(page)
+	).text
+	p=BeautifulSoup(d,"html.parser")
+	for q2 in p.select("div.news-list-box div.style1.white-box a[href]"):
+		p2=BeautifulSoup(requests.get(
+			"https://news.ebc.net.tw"+str(q2["href"])
+		).text,"html.parser")
+		dr=p2.select("div.fncnews-content h1 ,div.fncnews-content div.info span.small-gray-text, div.fncnews-content div.raw-style")
+		info=str(dr[1].text).split(" ")
+		pm={
+			"title":dr[0].text,
+			"create_time":info[0]+" "+info[1],
+			"source":info[2],
+			"contents":dr[2].text
+		}
+		cmd.execute(
+			"INSERT INTO `news`(`title`,`create_time`,`source`,`contents`) VALUES(%(title)s,%(create_time)s,%(source)s,%(contents)s)"
+		,pm)
+		link.commit()
+	page+=1
+	if page==4:
+		break
+link.close()
+
+=======================================================================================================
+
+import jieba
+import jieba.analyse
+import requests
+from bs4 import BeautifulSoup
+import pymysql
+
+link=pymysql.connect(
+	host="localhost",
+	user="root",
+	passwd="",
+	db="2018-12-01"
+)
+cmd=link.cursor()
+page=1
+while True:
+	d=requests.get(
+		"https://news.ebc.net.tw/Hot?page="+str(page)
+	).text
+	p=BeautifulSoup(d,"html.parser")
+	for q2 in p.select("div.news-list-box div.style1.white-box a[href]"):
+		p2=BeautifulSoup(requests.get(
+			"https://news.ebc.net.tw"+str(q2["href"])
+		).text,"html.parser")
+		dr=p2.select("div.fncnews-content h1 ,div.fncnews-content div.info span.small-gray-text, div.fncnews-content div.raw-style")
+		info=str(dr[1].text).split(" ")
+		pm={
+			"title":dr[0].text,
+			"create_time":info[0]+" "+info[1],
+			"source":info[2],
+			"contents":dr[2].text,
+			"tags":",".join(jieba.analyse.extract_tags(dr[2].text))
+		}
+		cmd.execute(
+			"INSERT INTO `news`(`title`,`create_time`,`source`,`contents`,`tags`) VALUES(%(title)s,%(create_time)s,%(source)s,%(contents)s,%(tags)s)"
+		,pm)
+		link.commit()
+	page+=1
+	if page==4:
+		break
+link.close()
+
+=======================================================================================================
+# from chatterbot import ChatBot
+# from chatterbot.trainers import ChatterBotCorpusTrainer
+# from chatterbot.trainers import ListTrainer
+
+# bot=ChatBot("test")
+# # bot.set_trainer(ChatterBotCorpusTrainer)
+# # bot.train("chatterbot.corpus.tchinese")
+# bot.set_trainer(ListTrainer)
+# bot.train(["�典末","雓肽��","��穃銁頝煺�䭾�𤘪�𥕦鐤","�糓���"])
+# while True:
+# 	d=bot.get_response(input("閮𦠜�荔��"))
+# 	print(d)
+# import goslate
+# q=goslate.Goslate()
+# print(q.get_languages())
+# print(q.translate("hello","zh-TW"))
+# print(q.detect("hello"))
+
+import pandas as pd
+
+t=pd.DataFrame({
+	"A":[1,2,3,4,5,6,7],
+	"B":[9,8,7,6,5,4,3]
+})
+# t.pop("B")
+# t["C"]=[2,2,4,6,5,4,3]
+# t.drop(5)
+e=pd.DataFrame({
+	"A":[1,2,3,4,5,6,7],
+	"B":[9,8,7,6,5,4,3]
+})
+t=t.append(e,ignore_index=True)
+print(t.shape)
+print(t)
+# t=pd.read_csv("web.csv")
+# print(t)
+# t=t.sort_values(by="A",ascending=False)
+# print(t[3:7]["B"])
