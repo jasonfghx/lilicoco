@@ -3,3 +3,7 @@
  
 for i in np.nditer(a):
     print(i)
+    
+a=np.append([[1,50,6]],[[50,8,9],[7,70,1]],axis=0)
+a[::-1,::-1]    
+np.rot90(a, 3)#旋轉
