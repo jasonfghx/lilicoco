@@ -5,3 +5,8 @@ cv2.imshow('lena',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 cv2.imwrite("C:\\Users\\USER\\Desktop\\14545.jpg",im)   
+
+===============================voice===========================
+from gtts import gTTS
+tts=gTTS(text='生日快樂', lang='zh')
+tts.save("C:\\Users\\USER\\Desktop\\happybirthday.mp3")
