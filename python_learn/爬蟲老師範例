@@ -1,0 +1,126 @@
+# import requests
+
+# r=requests.post(
+# 	"http://teaching.bo-yuan.net/",
+# 	headers={
+# 		"Cookie":"PHPSESSID=cg16u6b0cel8feu5cendq68s66",
+# 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+# 	},
+# 	params={
+# 		"uid":"5bf9f1f930983"
+# 	},
+# 	data={
+# 		"ex[class]":"5be5913f80851",
+# 		"ex[username]":"00蝷箇�",
+# 		"ex[password]":"test"
+# 	}
+# )
+# print(r.status_code)
+# print(r.headers)
+# r.encoding="utf-8"
+# print(r.text)
+
+# r=requests.get(
+# 	"http://teaching.bo-yuan.net/",
+# 	headers={
+# 		"Cookie":"PHPSESSID=cg16u6b0cel8feu5cendq68s66"
+# 	}
+# )
+# print(r.status_code)
+# print(r.headers)
+# r.encoding="utf-8"
+# print(r.text)
+# r=requests.get(
+# 	"https://apiservice.mol.gov.tw/OdService/download/A17000000J-020057-eh6"
+# )
+# d=json.loads(r.text)
+# for i in d:
+# 	print(i["蝮���ê̌"],i["�怎�璈��见�滨迂"])
+
+# print(json.dumps(d))
+# f=codecs.open("1.jpg","wb")
+# f.write(r.content)
+# f.close()
+# print(list(csv.reader(io.StringIO(r.text))))
+
+
+
+# r=requests.get(
+# 	"https://business.591.com.tw/home/search/rsList?is_new_list=1&type=1&kind=6&searchtype=1",
+# 	headers={
+# 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+# 	}
+# )
+# d=json.loads(r.text)
+# for i in d["data"]["data"]:
+# 	print(i["address_img"],i["price"],i["cover"])
+
+# 	r2=requests.get(
+# 		i["cover"],
+# 		headers={
+# 			"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+# 		}
+# 	)
+# 	f=codecs.open("images/"+os.path.basename(i["cover"]),"wb")
+# 	f.write(r2.content)
+# 	f.close()
+
+import requests
+import csv
+import codecs
+import io
+import json
+import os
+from bs4 import BeautifulSoup
+
+# r1=requests.get(
+# 	"http://www.pcnet.idv.tw/pcnet/html/html.htm",
+# 	headers={
+# 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+# 	}
+# )
+# r1.encoding="big5"
+# p=BeautifulSoup(r1.text,"html.parser")
+# d=p.find_all("a",{
+# 	"href":"02.htm"
+# })
+#======================
+# d[0].parent.clear()
+
+# d=p.find("div")
+# d["align"]="left"
+
+# obj=p.new_tag("div")
+# obj["text"]="AAAAAAAAAAAAAAAAA"
+# d.append(obj)
+
+# f=codecs.open("1.html","w","utf-8")
+# f.write(str(p))
+# f.close()
+#======================
+r1=requests.get(
+	"https://www.104.com.tw/area/cj/market/technology",
+	headers={
+		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+	},
+	params={
+		"area":"",
+		"jobcategory":"",
+		"keyword":"",
+		"page":"1",
+		"sortField":"APPEAR_DATE",
+		"sortMode":"DESC",
+		"style":"1"
+	}
+)
+r1.encoding="utf-8"
+p=BeautifulSoup(r1.text,"html.parser")
+d=p.find_all("div",{
+	"class":"joblist_cont"
+})
+for dd in d:
+	if dd.find("div",{"class":"compname"})!=None:
+		print(
+			dd.find("div",{"class":"compname"}).find("a").text.replace("	","").replace("\r\n",""),
+			dd.find("div",{"class":"jobname"}).find("a").text.replace("	","").replace("\r\n",""),
+		)
