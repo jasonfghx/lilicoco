@@ -1,0 +1,32 @@
+import pymysql
+
+def selectDB():
+	global q
+	q.execute("SELECT * FROM `web`")
+	for d in q.fetchall():
+		print(d[0],d[1])
+
+link=pymysql.connect(
+	host="localhost",
+	user="root",
+	password="",
+	db="2018-11-18"
+)
+
+q=link.cursor()
+# q.execute("INSERT INTO `web`(`title`,`url`,`description`,`look`) VALUES(%s,%s,%s,%s)",("xxx","xxx","xxx","55"))
+# link.commit()
+# q.execute("INSERT INTO `web`(`title`,`url`,`description`,`look`) VALUES(%(title)s,%(url)s,%(description)s,%(look)s)",{
+# 	"title":"yyy",
+# 	"url":"yyy",
+# 	"description":"yyy",
+# 	"look":"60"
+# })
+# link.commit()
+# print(q.lastrowid)
+
+selectDB()
+selectDB()
+selectDB()
+
+link.close()
