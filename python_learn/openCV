@@ -6,6 +6,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 cv2.imwrite("C:\\Users\\USER\\Desktop\\14545.jpg",im)   
 
+resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改圖大小
 ===============================voice===========================
 from gtts import gTTS
 tts=gTTS(text='生日快樂', lang='zh')
