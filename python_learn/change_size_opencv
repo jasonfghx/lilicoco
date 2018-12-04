@@ -1,0 +1,13 @@
+import os
+import pandas as pd
+import numpy  as np
+import cv2
+
+a=os.listdir("C:\\Users\\user\\Desktop\\temp");
+base__dir = ("C:\\Users\\user\\Desktop\\temp\\")
+base_new = ("C:\\Users\\user\\Desktop\\new\\")
+
+for fi in a:
+    img=cv2.imread(os.path.join(base__dir, fi))
+    resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改圖大小
+    cv2.imwrite(os.path.join(base_new, fi),resized_image)
