@@ -1,0 +1,40 @@
+import pandas as pd
+from glob import glob
+import os
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+from keras.utils import np_utils
+from keras.preprocessing import image
+from __future__ import print_function
+import keras
+
+from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from itertools import chain
+
+import matplotlib.pyplot as plt # showing and rendering figures
+# io related
+from skimage.io import imread
+import os
+
+a=os.listdir("I:\\小組雲端硬碟\\影像辨識專題\\圖片檔\\確定使用圖片(含LABEL)");
+jtemp1=np.zeros(800000)
+jtemp1=pd.DataFrame(jtemp1)
+jtemp1.columns=(["address"])
+
+for j in range(0,len(a)):
+    jtemp1.iloc[j,0]=os.path.join("I:\\小組雲端硬碟\\影像辨識專題\\圖片檔\\確定使用圖片(含LABEL)\\",a[j])
+data=jtemp1.iloc[0:176,]
+data["type"]=None
+
+for id4 in range(0,len(a)):
+    if a[id4][0:2]=="ch":
+        data["type"][id4]=0
+    elif a[id4][0:2]=="fo":
+        data["type"][id4]=1
+    elif a[id4][0:2]=="fa":
+        data["type"][id4]=2      
