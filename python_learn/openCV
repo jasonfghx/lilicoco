@@ -11,3 +11,6 @@ resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改�
 from gtts import gTTS
 tts=gTTS(text='生日快樂', lang='zh')
 tts.save("C:\\Users\\USER\\Desktop\\happybirthday.mp3")
+
+
+https://stackoverflow.com/questions/47450179/no-module-named-cv2     cv import 問題
