@@ -11,3 +11,10 @@ for fi in a:
     img=cv2.imread(os.path.join(base__dir, fi))
     resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改圖大小
     cv2.imwrite(os.path.join(base_new, fi),resized_image)
+
+
+
+Q:
+1、 换个图片试试 。可能有格式问题。
+2、路径有没有中文名。
+3、查看pip list，发现有没有opencv-python  ， 如果没有  pip install --upgrade opencv-python
