@@ -1,0 +1,108 @@
+from keras.layers import GlobalAveragePooling2D, Dense, Dropout, Flatten, Input, Conv2D, multiply, LocallyConnected2D, Lambda, AvgPool2D
+from keras.models import Model
+pt_features = Input(base_pretrained_model.get_output_shape_at(0)[1:], name = 'feature_input')
+pt_depth = base_pretrained_model.get_output_shape_at(0)[-1]
+from keras.layers import BatchNormalization
+bn_features = BatchNormalization()(pt_features)
+# here we do an attention mechanism to turn pixels in the GAP on an off
+attn_layer = Conv2D(128, kernel_size = (1,1), padding = 'same', activation = 'elu')(bn_features)
+attn_layer = Conv2D(32, kernel_size = (1,1), padding = 'same', activation = 'elu')(attn_layer)
+attn_layer = Conv2D(16, kernel_size = (1,1), padding = 'same', activation = 'elu')(attn_layer)
+attn_layer = AvgPool2D((2,2), strides = (1,1), padding = 'same')(attn_layer) # smooth results
+attn_layer = Conv2D(1, 
+                    kernel_size = (1,1), 
+                    padding = 'valid', 
+                    activation = 'sigmoid')(attn_layer)
+# fan it out to all of the channels
+up_c2_w = np.ones((1, 1, 1, pt_depth))
+up_c2 = Conv2D(pt_depth, kernel_size = (1,1), padding = 'same', 
+               activation = 'linear', use_bias = False, weights = [up_c2_w])
+up_c2.trainable = False
+attn_layer = up_c2(attn_layer)
+
+mask_features = multiply([attn_layer, bn_features])
+gap_features = GlobalAveragePooling2D()(mask_features)
+gap_mask = GlobalAveragePooling2D()(attn_layer)
+# to account for missing values from the attention model
+gap = Lambda(lambda x: x[0]/x[1], name = 'RescaleGAP')([gap_features, gap_mask])
+gap_dr = Dropout(0.5)(gap)
+dr_steps = Dropout(0.5)(Dense(128, activation = 'elu')(gap_dr))
+out_layer = Dense(1, activation = 'sigmoid')(dr_steps)
+
+attn_model = Model(inputs = [pt_features], outputs = [out_layer], name = 'attention_model')
+
+attn_model.compile(optimizer = 'adam', loss = 'binary_crossentropy',
+                           metrics = ['binary_accuracy'])
+
+attn_model.summary()
+train_gen.batch_size = 24
+
+from keras.callbacks import ModelCheckpoint, LearningRateScheduler, EarlyStopping, ReduceLROnPlateau
+weight_path="{}_weights.best.hdf5".format('cardio_attn')
+
+checkpoint = ModelCheckpoint(weight_path, monitor='val_loss', verbose=1, 
+                             save_best_only=True, mode='min', save_weights_only = True)
+
+
+reduceLROnPlat = ReduceLROnPlateau(monitor='val_loss', factor=0.8, patience=10, verbose=1, mode='auto', epsilon=0.0001, cooldown=5, min_lr=0.0001)
+early = EarlyStopping(monitor="val_loss", 
+                      mode="min", 
+                      patience=10) # probably needs to be more patient, but kaggle time is limited
+callbacks_list = [checkpoint, early, reduceLROnPlat]
+
+
+from keras.models import Sequential
+from keras.optimizers import Adam
+tb_model = Sequential(name = 'combined_model')
+base_pretrained_model.trainable = False
+tb_model.add(base_pretrained_model)
+tb_model.add(attn_model)
+tb_model.compile(optimizer = Adam(lr = 1e-3), loss = 'binary_crossentropy',
+                           metrics = ['binary_accuracy'])
+tb_model.summary()
+
+tb_model.fit_generator(train_gen, 
+                      validation_data = (test_X, test_Y), 
+                      epochs = 30,
+                      callbacks = callbacks_list,
+                      steps_per_epoch=10,
+                    )
+
+  ================================================================================
+  from keras.applications.mobilenet import MobileNet
+from keras.layers import GlobalAveragePooling2D, Dense, Dropout, Flatten, BatchNormalization
+from keras.models import Sequential
+base_mobilenet_model = MobileNet(input_shape =  t_x.shape[1:], 
+                                 include_top = False, 
+                                 weights = None)
+bone_age_model = Sequential()
+bone_age_model.add(BatchNormalization(input_shape = t_x.shape[1:]))
+bone_age_model.add(base_mobilenet_model)
+bone_age_model.add(BatchNormalization())
+bone_age_model.add(GlobalAveragePooling2D())
+bone_age_model.add(Dropout(0.5))
+bone_age_model.add(Dense(1, activation = 'sigmoid' )) # linear is what 16bit did
+bone_age_model.compile(optimizer = Adam(lr = 1e-3), loss = 'binary_crossentropy',
+                           metrics = ['binary_accuracy'])
+
+
+from keras.callbacks import ModelCheckpoint, LearningRateScheduler, EarlyStopping, ReduceLROnPlateau
+weight_path="{}_weights.best.hdf5".format('bone_age')
+
+checkpoint = ModelCheckpoint(weight_path, monitor='val_loss', verbose=1, 
+                             save_best_only=True, mode='min', save_weights_only = True)
+
+
+reduceLROnPlat = ReduceLROnPlateau(monitor='val_loss', factor=0.8, patience=10, verbose=1, mode='auto', epsilon=0.0001, cooldown=5, min_lr=0.0001)
+early = EarlyStopping(monitor="val_loss", 
+                      mode="min", 
+                      patience=5) # probably needs to be more patient, but kaggle time is limited
+callbacks_list = [checkpoint, early, reduceLROnPlat]
+
+train_gen.batch_size = 16
+bone_age_model.fit_generator(train_gen, 
+                                  validation_data = (test_X, test_Y), 
+                                  epochs = 30, 
+                                  validation_steps=20,
+                                  steps_per_epoch=10,
+                                  callbacks = callbacks_list)
