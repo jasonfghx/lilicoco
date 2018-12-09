@@ -27,3 +27,4 @@ def post_list(request):
   posts=Post.objects.all()\.order_by("-created_date")
   
 (base) C:\Users\123\myproject\project>python manage.py shell  
+from blog.models import Post
