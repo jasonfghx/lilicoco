@@ -22,3 +22,8 @@ Superuser created successfully.
 (base) C:\Users\123\myproject\project>python manage.py runserver 8000  #enter website
 
 setting.py 可以改時區
+from .models import Post
+def post_list(request):
+  posts=Post.objects.all()\.order_by("-created_date")
+  
+(base) C:\Users\123\myproject\project>python manage.py shell  
