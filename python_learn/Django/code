@@ -1,3 +1,22 @@
 >python manage.py runserver 8000
 
 python manage.py startapp blog
+
+(base) C:\Users\123>cd myproject
+
+(base) C:\Users\123\myproject>cd project
+
+(base) C:\Users\123\myproject\project>python manage.py startapp blog
+
+(base) C:\Users\123\myproject\project>python manage.py createsuperuser
+Username (leave blank to use '123'): 123
+Email address: b97203005@ntu.edu.tw
+Password:
+Password (again):
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+This password is entirely numeric.
+Bypass password validation and create user anyway? [y/N]: Y
+Superuser created successfully.
+
+(base) C:\Users\123\myproject\project>
