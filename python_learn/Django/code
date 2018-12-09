@@ -20,3 +20,5 @@ Bypass password validation and create user anyway? [y/N]: Y
 Superuser created successfully.
 
 (base) C:\Users\123\myproject\project>python manage.py runserver 8000  #enter website
+
+setting.py 可以改時區
