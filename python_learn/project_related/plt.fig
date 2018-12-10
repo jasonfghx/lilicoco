@@ -1,0 +1,6 @@
+for i in range(0,X_test.shape[0]):
+    image = X_test[i,:].reshape((250,250,3))
+    plt.axis('off')
+    plt.title('%d ' % (i))
+    plt.imshow(image)
+    plt.show()#37
