@@ -1,0 +1,10 @@
+import matplotlib.pyplot as plt
+import os
+
+import cv2
+
+import numpy as np
+
+image = X_train[120,:].reshape((250,250,3))
+plt.imshow(image)
+plt.show()
