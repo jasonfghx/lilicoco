@@ -1,0 +1,132 @@
+import pandas as pd
+from glob import glob
+import os
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+from keras.utils import np_utils
+from keras.preprocessing import image
+
+import keras
+
+from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from itertools import chain
+import numpy as np # linear algebra
+from skimage.io import imread
+
+from keras.preprocessing.image import ImageDataGenerator
+from keras.applications.vgg16 import preprocess_input
+
+IMG_SIZE = (250, 250) # slightly smaller than vgg16 normally expects
+core_idg = ImageDataGenerator(samplewise_center=False, 
+                              samplewise_std_normalization=False, 
+                              horizontal_flip = True, 
+                              vertical_flip = False, 
+                              height_shift_range = 0.15, 
+                              width_shift_range = 0.15, 
+                              rotation_range = 5, 
+                              shear_range = 0.01,
+                              fill_mode = 'nearest',
+                              zoom_range=0.25,
+                             preprocessing_function = preprocess_input)
+                             
+def flow_from_dataframe(img_data_gen, in_df, path_col, y_col, **dflow_args):
+    base_dir = os.path.dirname(in_df[path_col].values[0])
+    print('## Ignore next message from keras, values are replaced anyways')
+    df_gen = img_data_gen.flow_from_directory(base_dir, 
+                                     class_mode = 'sparse',
+                                    **dflow_args)
+    df_gen.filenames = in_df[path_col].values
+    df_gen.classes = np.stack(in_df[y_col].values)
+    df_gen.samples = in_df.shape[0]
+    df_gen.n = in_df.shape[0]
+    df_gen._set_index_array()
+    df_gen.directory = '' # since we have the full path
+    print('Reinserting dataframe: {} images'.format(in_df.shape[0]))
+    return df_gen
+    
+a=os.listdir("I:\\小組雲端硬碟\\影像辨識專題\\圖片檔\\確定使用圖片(含LABEL)");
+jtemp1=np.zeros(400)
+jtemp1=pd.DataFrame(jtemp1)
+jtemp1.columns=(["address"])
+
+for j in range(0,len(a)):
+    jtemp1.iloc[j,0]=os.path.join("I:\\小組雲端硬碟\\影像辨識專題\\圖片檔\\確定使用圖片(含LABEL)\\",a[j])
+    
+data=jtemp1.iloc[0:345,]
+data["type"]=None
+
+for id4 in range(0,len(a)):
+    if a[id4][0:2]=="ch":
+        data["type"][id4]=0
+    elif a[id4][0:2]=="fo":
+        data["type"][id4]=0
+    elif a[id4][0:2]=="fa":
+        data["type"][id4]=1     
+        
+train_df, valid_df = train_test_split(data, 
+                                   test_size = 0.25, 
+                                   random_state = 2018,
+                                   stratify = data['type'])
+
+valid_gen = flow_from_dataframe(core_idg, valid_df, 
+                             path_col = 'address',
+                            y_col = 'type', 
+                            target_size = IMG_SIZE,
+                             color_mode = 'rgb',
+                            batch_size = 32)
+train_gen = flow_from_dataframe(core_idg, train_df, 
+                             path_col = 'address',
+                            y_col = 'type', 
+                            target_size = IMG_SIZE,
+                             color_mode = 'rgb',
+                            batch_size = 32)
+train_df.groupby('type').count()
+train_df = train_df.groupby(['type']).apply(lambda x: x.sample(151, replace = True))
+t_x, t_y = next(train_gen)
+from keras.preprocessing.image import ImageDataGenerator
+from keras.applications.vgg16 import VGG16 as PTModel, preprocess_input
+base_pretrained_model = PTModel(input_shape =  t_x.shape[1:],                               include_top = False, weights = 'imagenet')
+base_pretrained_model.trainable = False
+
+from keras.applications.mobilenet import MobileNet
+from keras.layers import GlobalAveragePooling2D, Dense, Dropout, Flatten, BatchNormalization
+from keras.models import Sequential
+base_mobilenet_model = MobileNet(input_shape =  t_x.shape[1:], 
+                                 include_top = False, 
+                                 weights = None)
+bone_age_model = Sequential()
+bone_age_model.add(BatchNormalization(input_shape = t_x.shape[1:]))
+bone_age_model.add(base_mobilenet_model)
+bone_age_model.add(BatchNormalization())
+bone_age_model.add(GlobalAveragePooling2D())
+bone_age_model.add(Dropout(0.5))
+bone_age_model.add(Dense(1, activation = 'sigmoid' )) # linear is what 16bit did
+bone_age_model.compile(optimizer = adam(lr = 1e-3), loss = 'binary_crossentropy',
+                           metrics = ['binary_accuracy'])
+
+
+from keras.callbacks import ModelCheckpoint, LearningRateScheduler, EarlyStopping, ReduceLROnPlateau
+weight_path="{}_weights.best.hdf5".format('bone_age')
+
+checkpoint = ModelCheckpoint(weight_path, monitor='val_loss', verbose=1, 
+                             save_best_only=True, mode='min', save_weights_only = True)
+
+
+reduceLROnPlat = ReduceLROnPlateau(monitor='val_loss', factor=0.8, patience=10, verbose=1, mode='auto', epsilon=0.0001, cooldown=5, min_lr=0.0001)
+early = EarlyStopping(monitor="val_loss", 
+                      mode="min", 
+                      patience=5) # probably needs to be more patient, but kaggle time is limited
+#callbacks_list = [checkpoint, early, reduceLROnPlat]
+
+train_gen.batch_size = 16
+bone_age_model.fit_generator(train_gen, 
+                                  validation_data = (valid_gen), 
+                                  epochs = 30, 
+                                  validation_steps=20,
+                                  steps_per_epoch=10,
+                                  )
