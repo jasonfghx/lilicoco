@@ -14,3 +14,17 @@ tts.save("C:\\Users\\USER\\Desktop\\happybirthday.mp3")
 
 
 https://stackoverflow.com/questions/47450179/no-module-named-cv2     cv import 問題
+
+def cv_imread(file_path ):
+    cv_img=cv2.imdecode(np.fromfile(file_path, dtype=np.uint8),-1)
+    
+    return cv_img
+
+a=os.listdir("D:\\桌面\\新增資料夾 (2)");
+base__dir = ("D:\\桌面\\新增資料夾 (2)\\")
+base_new = ("D:\\A\\")
+
+for fi in a:
+    img=cv_imread(os.path.join(base__dir, fi))
+    resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改圖大小
+    cv2.imwrite(os.path.join(base_new, fi),resized_image)
