@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+url="https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/DoubsSpe.csv"
+url1="https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/DoubsEnv.csv"
+url2="https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/DoubsSpa.csv"
+a=pd.read_csv(url,sep=",") 
+b=pd.read_csv(url1,sep=",") 
+c=pd.read_csv(url2,sep=",") 
+a.groupby(1).sum()
+app=[]
+app=np.zeros(7)
+aapp=pd.DataFrame(app)
+a.value()
+for i in range(0,7):
+    s=a[a==i].count(0).sum()
+    #aapp.iloc[i,0]=s
+    app.append(s)
+    print(s)
+indexs=list(range(0,7))
+plt.bar(indexs,app)
+plt.show()
