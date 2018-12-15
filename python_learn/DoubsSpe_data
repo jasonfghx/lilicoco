@@ -20,3 +20,22 @@ for i in range(0,7):
 indexs=list(range(0,7))
 plt.bar(indexs,app)
 plt.show()
+
+
+============================================draw===========================================
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style = "dark")
+x = c.x
+y=c.y
+z=a.iloc[:,4]
+cm = plt.cm.get_cmap('RdYlBu')
+fig,ax = plt.subplots(figsize = (12,10))
+bubble = ax.scatter(x, y , s = (z - np.min(z) + 0.1) * 1000, c = z, cmap = cm, linewidth = 0.5, alpha = 0.5)
+ax.grid()
+fig.colorbar(bubble)
+plt.plot(c["x"], c["y"], color='r')
+ax.set_xlabel('people of cities', fontsize = 15)#X轴标签
+ax.set_ylabel('price of something', fontsize = 15)#Y轴标签
+plt.show()
