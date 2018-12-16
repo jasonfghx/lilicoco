@@ -1,0 +1,1 @@
+pda=pd.read_json("C:\\Users\\123\\Desktop\\Entity Recognition in Resumes.json",lines=True)
