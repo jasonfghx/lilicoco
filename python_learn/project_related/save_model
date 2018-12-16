@@ -1,1 +1,13 @@
 https://www.jianshu.com/p/113f33ab6f31
+
+
+from sklearn.externals import joblib
+loaded_model = joblib.load("C:\\Users\\USER\\Desktop\\finalized_model.sav")
+
+Y_pred = loaded_model.predict(test_X) 
+
+
+warn:
+ResourceExhaustedError: OOM when allocating tensor with shape[64,64,3,3] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc
+	 [[{{node vgg16/block1_conv2/convolution}} = Conv2D[T=DT_FLOAT, data_format="NCHW", dilations=[1, 1, 1, 1], padding="SAME", strides=[1, 1, 1, 1], use_cudnn_on_gpu=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](vgg16/block1_conv1/Relu, block1_conv2/kernel/read)]]
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions for current allocation info.
