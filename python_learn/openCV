@@ -37,3 +37,11 @@ img_thre = img_gray
 cv2.threshold(img_gray, 100, 255, cv2.THRESH_BINARY_INV, img_thre) 
 cv2.imshow('threshold', img_thre) 
 cv2.waitKey(0) 
+
+
+for fi in a:
+    #img=cv_imread(os.path.join(base__dir, fi))
+    img = cv2.imdecode(np.fromfile(base__dir+fi, dtype=np.uint8),-1)#存成中文檔名
+    resized_image = cv2.resize(img, (250, 250),interpolation=cv2.INTER_CUBIC) #改圖大小
+    cv2.imencode('.jpg', resized_image)[1].tofile(base_new+fi)
+    #cv2.imwrite(os.path.join(base_new, fi),resized_image)
