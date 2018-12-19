@@ -1,0 +1,15 @@
+import tensorflow as tf
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+from IPython.display import display
+import pymysql
+import pandas as pd
+conn = pymysql.connect(host="localhost",user="root",password="",db="vomit")
+ df = pd.read_sql("select * from `vomit`",con=conn)
+df1=df.drop(["a1","a2","a4","a18","a28","a36","a38"], axis = 1)
+df1.columns=["性別","請問您曾經照顧過術後噁心嘔吐患者之經驗嗎?","10分","100分","100分/10","10-100/10","自認嚴重需要處理(10>=100/10)","PONV(0-10)大於目標該用藥值(>3.58)","術後常見併發症-----頭暈(1)","術後常見併發症-----噁心嘔吐(1)","術後常見併發症-----傷口痛(1)","術後常見併發症-----喉嚨痛(1)","術後常見併發症-----發抖1)","術後噁心到影響日常活動，如影響正常走路或吃喝、自由下床或在床上活動，您覺得嚴重的級數為多少?","病人主訴乾嘔跟嘔吐次數"
+    ,"病人主訴噁心","1. 嘔吐多少次以上?","2. 乾嘔多少次以上?","嘔吐或乾嘔","3. 噁心多少次以上?","想用藥有無Nausea(Yor N)","1.總共要多久時間以上?","2.頻率要多少以上?","age","麻醉方式","麻醉方式(全身或局部)","手術部位分類","癌症診斷","術前化療","cancer with chemotherapy","開刀時間min","DM","HTN","Gastrointestinal","Hyperlipidemia","renal_disease","是否使用OPOID類藥物(術中)","術後使用止吐藥","目標Myles_score","術後使用Opioid藥物","Modified_Myles(噁心只算有無)","病人主訴乾嘔跟嘔吐次數加病人主訴噁心(Yor N)"]
+df_ready=df1.iloc[:,[0,1,6,7,8,9,10,11,12,13,20,24,25,26,27,28,29,31,32,33,34,35,36]].astype("category")
+dummydata=pd.get_dummies(df_ready)
+aaaal=list(dummydata.columns)
+df1.to_csv("1258.csv",encoding="big5")
