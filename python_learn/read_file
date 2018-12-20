@@ -1,1 +1,3 @@
 temp_file=pd.read_csv("temp_file1.csv",index_col=0)
+
+tessssssssss=pd.read_csv("D:\\桌面\\2018.12.20med.csv",engine="python",index_col=0)#index用第一欄
