@@ -1,1 +1,18 @@
-
+def mask(left,right,up,down,imggg):
+    imgg=imggg.copy()
+    import matplotlib.pyplot as plt
+    import warnings
+    if left<right and down>up:
+        for jj in range(0,250):
+            imgg[jj,right:250,:]=0
+        for kk in range(0,250):
+            imgg[kk,0:left,:]=0
+        for ll in range(0,250):
+            imgg[0:up,ll,:]=0
+        for mm in range(0,250):
+            imgg[down:250,mm,:]=0
+        plt.imshow(imgg)
+        plt.title("abc")
+        plt.show()#37
+    elif left>right or down<up:
+        warnings.warn('fuck', DeprecationWarning)
