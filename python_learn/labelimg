@@ -1,0 +1,21 @@
+https://blog.csdn.net/HuaCode/article/details/79710748
+
+
+安装Python3.5.0
+
+按照图片中说的先将Add Python 3.5 to PATH勾选上，然后选择Customize installation进行安装，后面按照自己的要求进行安装即可
+pip 安装PyQt5 
+进入cmd（Win键 + R键，输入cmd，enter键入），输入： 
+>>pip install PyQt5 
+如果报错的话，自己按照错误在网上搜索错误进行解决
+安装lxml 
+进入cmd（Win键 + R键，输入cmd，enter键入），输入： 
+>>pip install lxml 
+这一个应该要在管理员下进行命令行安装，所以如果报错误为：没有安装权限的话，就在管理员下进行安装： 
+找到命令行窗口，然后右键，管理员身份运行，进入后按照上面操作即可
+
+安装LabelImg 
+LabelImg下载地址 
+进入LabelImg-master文件夹，（（先按）shift + 右键（后按） ），选择在此处打开powershell窗口，进入shell后，依次输入下列命令： 
+>>pyrcc5 -o resources.py resources.qrc 
+>>python labelImg.py
