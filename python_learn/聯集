@@ -1,0 +1,3 @@
+list_A = ["a", "b", "c","g", "f", "K", "larry", "curly", "moe"]
+list_B = ["a", "b", "c","g", "f", "K"]
+new_list = [_ for _ in list_A if _ in list_B]
