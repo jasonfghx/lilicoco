@@ -1,3 +1,6 @@
+https://www.kaggle.com/willtscott/humpback-whale-identification-with-mobilenet/notebook
+
+============================================================================================
 from keras.applications.mobilenet import MobileNet
 from keras.layers import GlobalAveragePooling2D, Dense, Dropout, Flatten, Input, Conv2D, multiply, LocallyConnected2D, Lambda
 from keras.models import Model
