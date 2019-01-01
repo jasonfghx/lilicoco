@@ -1,1 +1,11 @@
+from PIL import Image
+im = Image.open(f) 
+import os
+aaa=os.listdir("I:\\小組雲端硬碟\\影像辨識專題-自己小組\\圖片檔\\seg_要用的\\其他\\")
+aaaa=aaa[31:]
 
+for im in range(0,len(aaaa)):
+    f='I:\\小組雲端硬碟\\影像辨識專題-自己小組\\圖片檔\\seg_要用的\\其他\\'+aaaa[im]
+    img = Image.open(f)
+    mirror=img.transpose(Image.FLIP_LEFT_RIGHT)
+    mirror.save('I:\\小組雲端硬碟\\影像辨識專題-自己小組\\圖片檔\\seg_要用的\\其他\\fa'+str(260+im)+'.jpg')
