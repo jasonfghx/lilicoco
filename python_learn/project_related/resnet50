@@ -1,0 +1,49 @@
+resnet_weights_path = '/content/gdrive/Team Drives/影像辨識專題-自己小組/model/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5'
+
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import pickle
+import h5py
+import glob
+import time
+from random import shuffle
+from collections import Counter
+
+from sklearn.model_selection import train_test_split
+
+import keras
+from keras.preprocessing.image import ImageDataGenerator
+from keras.callbacks import LearningRateScheduler, ModelCheckpoint
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from keras.optimizers import SGD, Adam
+from tensorflow.python.keras.applications import ResNet50
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+
+model = Sequential()
+model.add(ResNet50(include_top = False, pooling = 'avg', weights = resnet_weights_path))
+model.add(Dense(len(dict)-10, activation = 'softmax'))
+model.layers[0].trainable = False
+
+from tensorflow.python.keras import optimizers
+sgd = optimizers.SGD(lr = 0.01, decay = 1e-6, momentum = 0.9, nesterov = True)
+model.compile(optimizer = sgd, loss = 'categorical_crossentropy', metrics = ['accuracy'])
+
+model.fit_generator(train_gen,   validation_data = (valid_gen),    epochs = 20,  validation_steps=20, steps_per_epoch=10 ,callbacks=[earlystopper, checkpointer])
+
+pre_re=model.predict(test_X)
+y_pred = np.argmax(pre_re,axis=1)
+y_test1 = np.argmax(test_Y,axis=1)
+print(confusion_matrix(y_test1, y_pred))
+
+k=0
+fig, m_axs = plt.subplots(7, 8, figsize = (30, 30))
+for (c_x, c_y, c_ax) in zip(test_X, test_Y, m_axs.flatten()):
+    c_ax.imshow(c_x[:,:,:]/255,  vmin = -120, vmax = 120)
+    
+    c_ax.set_title('real %s : pred %s ' % (dict[y_test1[k]],dict[y_pred[k]]))
+    c_ax.axis('off')
+    k=k+1
