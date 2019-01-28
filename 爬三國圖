@@ -1,0 +1,30 @@
+import requests
+from bs4 import BeautifulSoup
+import json
+import codecs
+import random
+import time    
+
+
+r=requests.get(
+ 'https://www.mightymedia.com.tw/2018chenuenGoods/painting.html?fbclid=IwAR2Vs6YgdBoaNmGj0osvKOcvoOOhJ3YBBBQjXXPBPzzl4202AwB7xeyL008/',
+headers={
+"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0"
+}
+ )
+r.encoding='utf-8'
+soup=BeautifulSoup(r.text,"html.parser")
+html_data1=soup.find_all("img",class_='card-img-top')
+
+
+
+html_data_title=soup.find_all("h5",class_='card-title')
+len(html_data_title)
+
+len(html_data1)
+
+for i in range(0,len(html_data_title)):
+    r2=requests.get('https://www.mightymedia.com.tw/2018chenuenGoods/'+html_data1[i]['src'])
+    f=codecs.open("G:\\小組雲端硬碟\\三人\\鄭問圖\\"+html_data_title[i].text+".jpg","wb")
+    f.write(r2.content)
+    f.close()
