@@ -3,6 +3,10 @@ import pandas as pd
 import numpy  as np
 import cv2
 
+
+#os.chdir("/content/gdrive/My Drive/temp")#可以用來改目錄
+
+
 a=os.listdir("C:\\Users\\user\\Desktop\\temp");
 base__dir = ("C:\\Users\\user\\Desktop\\temp\\")
 base_new = ("C:\\Users\\user\\Desktop\\new\\")
