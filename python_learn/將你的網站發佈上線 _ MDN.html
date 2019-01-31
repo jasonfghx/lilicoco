@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website -->
+<html lang="zh-TW" dir="ltr" class=""><head prefix="og: http://ogp.me/ns#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script async="" src="./將你的網站發佈上線 _ MDN_files/analytics.js.download"></script><script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  <title>將你的網站發佈上線 | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+
+  
+<link rel="preload" href="https://developer.mozilla.org/static/fonts/locales/ZillaSlab-Regular.subset.bbc33fb47cf6.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="home" href="https://developer.mozilla.org/zh-TW/">
+    <link rel="license" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#license">
+  
+
+  
+    
+    
+
+    <link href="./將你的網站發佈上線 _ MDN_files/mdn.c7149b0d0432.css" rel="stylesheet" type="text/css">
+
+    
+  
+
+    <link href="./將你的網站發佈上線 _ MDN_files/wiki.10d2e3d126a9.css" rel="stylesheet" type="text/css">
+    <link href="./將你的網站發佈上線 _ MDN_files/codepen-iex.75686e584169.css" rel="stylesheet" type="text/css">
+
+
+    
+
+  <link href="./將你的網站發佈上線 _ MDN_files/locale-zh-TW.adc1ec005034.css" rel="stylesheet" type="text/css">
+
+  
+    <script>
+    // Mozilla DNT Helper
+    /* This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/. */ if(typeof Mozilla==='undefined'){var Mozilla={}}Mozilla.dntEnabled=function(dnt,ua){'use strict';var dntStatus=dnt||navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;var userAgent=ua||navigator.userAgent;var anomalousWinVersions=['Windows NT 6.1','Windows NT 6.2','Windows NT 6.3'];var fxMatch=userAgent.match(/Firefox\/(\d+)/);var ieRegEx=/MSIE|Trident/i;var isIE=ieRegEx.test(userAgent);var platform=userAgent.match(/Windows.+?(?=;)/g);if(isIE&&typeof Array.prototype.indexOf!=='function'){return false}else if(fxMatch&&parseInt(fxMatch[1],10)<32){dntStatus='Unspecified'}else if(isIE&&platform&&anomalousWinVersions.indexOf(platform.toString())!==-1){dntStatus='Unspecified'}else{dntStatus={'0':'Disabled','1':'Enabled'}[dntStatus]||'Unspecified'}return dntStatus==='Enabled'?true:false};
+    // only load GA if DNT is not enabled
+    if (Mozilla && !Mozilla.dntEnabled()) {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-36116321-5', 'mozilla.org');
+        ga('set', 'anonymizeIp', true);
+
+        
+
+        // dimension9 == "Section editing"
+        
+            // dimension12 == 'Page Revision'
+            ga('set', 'dimension12', '1344290');
+            // dimension17 == 'English Slug'
+            ga('set', 'dimension17', 'Learn/Getting_started_with_the_web/Publishing_your_website');
+
+        (function() {
+            // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+            var win = window;
+            var removeUtms = function(){
+                var location = win.location;
+                if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                    win.history.replaceState({}, '', location.pathname);
+                }
+            };
+
+            ga('send', 'pageview', {'hitCallback': removeUtms});
+        })();
+    }
+</script>
+  
+
+  
+    <script>
+    // util for setting performance marks and mesaures
+    var mdn=window.mdn||{};mdn.perf={getDuration:function(e){"use strict";if(void 0!==performance.getEntriesByName)return performance.getEntriesByName(e)[0].duration;console.error("performance.getEntriesByName is not supported by your user-agent")},setMark:function(e){"use strict";if(void 0!==performance.mark)try{performance.mark(e)}catch(e){console.error("Error while setting performance mark: ",e)}else console.error("performance.mark is not supported by your user-agent")},setMeasure:function(e){"use strict";void 0!==performance.measure?performance.measure(e.measureName,e.startMark,e.endMark):console.error("performance.measure is not supported by your user-agent")}};
+    /* util specifically for postMessages sent from the
+       `head` of the interactive examples iframe */
+    function handlePerfMarks(e){e.measureName?(window.mdn.perf.setMark(e.markName),window.mdn.perf.setMeasure({measureName:e.measureName,startMark:e.startMark,endMark:e.endMark}),ga&&ga.create&&ga("send",{hitType:"timing",timingCategory:"RUM - Interactive Examples",timingVar:e.measureName,timingValue:window.mdn.perf.getDuration(e.measureName)||0})):window.mdn.perf.setMark(e.markName)}function perfMsgHandler(e){"use strict";var a=window.mdn.interactiveEditor.editorUrl||"https://interactive-examples.mdn.mozilla.net",r=e.data;if(e.origin!==a)return!1;r.markName&&-1<r.markName.indexOf("interactive-editor-")&&handlePerfMarks(r)}window.addEventListener("message",perfMsgHandler,!1);
+</script>
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta property="og:site_name" content="MDN Web Docs">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/zh-TW/search/xml" title="MDN Web Docs">
+    
+  
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.mozilla.org/static/img/favicon144.e7e21ca263ca.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.mozilla.org/static/img/favicon114.d526f38b09c5.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.mozilla.org/static/img/favicon72.cc65d1d762a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="https://developer.mozilla.org/static/img/favicon57.de33179910ae.png">
+  <!-- basic favicon -->
+  <link rel="shortcut icon" href="https://developer.mozilla.org/static/img/favicon32.7f3da72dcea1.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.mozilla.org/static/build/js/html5shiv.ae1ac46eaf58.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="dns-prefetch" href="https://interactive-examples.mdn.mozilla.net/" pr="0.75">
+  <link rel="preconnect" href="https://interactive-examples.mdn.mozilla.net/" pr="0.75">
+
+  <link rel="alternate" type="application/json" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website$json">
+  <link rel="canonical" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+
+  
+  <link rel="alternate" hreflang="zh-TW" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="將你的網站發佈上線">
+  
+    
+      <link rel="alternate" hreflang="en-US" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Publishing your website">
+    
+      <link rel="alternate" hreflang="bg" href="https://developer.mozilla.org/bg/docs/Learn/%D0%94%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D1%87%D0%BD%D0%B5%D0%BC_%D1%81_%D0%9C%D1%80%D0%B5%D0%B6%D0%B0%D1%82%D0%B0/Publishing_your_website" title="Публикуване на вашия сайт">
+    
+      <link rel="alternate" hreflang="ca" href="https://developer.mozilla.org/ca/docs/Learn/Getting_started_with_the_web/Publicar_nostre_lloc_web" title="Publicar el nostre lloc web">
+    
+      <link rel="alternate" hreflang="de" href="https://developer.mozilla.org/de/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Ihre Webseite veröffentlichen">
+    
+      <link rel="alternate" hreflang="es" href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Publicar tu sitio web">
+    
+      <link rel="alternate" hreflang="fr" href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Publier_votre_site_web" title="Publier votre site web">
+    
+      <link rel="alternate" hreflang="id" href="https://developer.mozilla.org/id/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Publishing your website">
+    
+      <link rel="alternate" hreflang="it" href="https://developer.mozilla.org/it/docs/Learn/Getting_started_with_the_web/Pubblicare_il_tuo_sito" title="Pubblicare il tuo sito">
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B" title="ウェブサイトの公開">
+    
+      <link rel="alternate" hreflang="ko" href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8_%EC%B6%9C%ED%8C%90%ED%95%98%EA%B8%B0" title="웹사이트 출판하기">
+    
+      <link rel="alternate" hreflang="nl" href="https://developer.mozilla.org/nl/docs/Learn/Getting_started_with_the_web/Publicatie_website" title="De publicatie van je website">
+    
+      <link rel="alternate" hreflang="pl" href="https://developer.mozilla.org/pl/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Publishing your website">
+    
+      <link rel="alternate" hreflang="pt-BR" href="https://developer.mozilla.org/pt-BR/docs/Aprender/Getting_started_with_the_web/Publicando_seu_site" title="Publicando seu site">
+    
+      <link rel="alternate" hreflang="pt-PT" href="https://developer.mozilla.org/pt-PT/docs/Learn/Comecar_com_a_Web/Publicar_o_seu_site_da_Web" title="Publicar o seu site da Web">
+    
+      <link rel="alternate" hreflang="ro" href="https://developer.mozilla.org/ro/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Publicarea siteului tău">
+    
+      <link rel="alternate" hreflang="ru" href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Публикация вашего веб-сайта">
+    
+      <link rel="alternate" hreflang="tr" href="https://developer.mozilla.org/tr/docs/%C3%96%C4%9Fren/Getting_started_with_the_web/Publishing_your_website" title="Websitenizi Yayımlamak">
+    
+      <link rel="alternate" hreflang="uk" href="https://developer.mozilla.org/uk/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Публікація вашого сайту">
+    
+      <link rel="alternate" hreflang="vi" href="https://developer.mozilla.org/vi/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="Xuất bản trang web của bạn">
+    
+      <link rel="alternate" hreflang="zh-CN" href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/Publishing_your_website" title="发布网站">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="將你的網站發佈上線">
+  <meta property="og:url" content="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+  <meta name="twitter:url" content="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+  <meta name="twitter:title" content="將你的網站發佈上線">
+  
+  <meta property="og:description" content="發佈網站並不是一個幾句話就能說得完的課題，主要是因為有太多方法能夠發佈網站。在這個章節中，我們不會介紹所有可能的方法，但是我們會簡單講解三個概念，並從初學者的角度分別說明它們的優缺點，然後一步一步帶你用一個你現階段有辦法完成的方法發佈網站。">
+  <meta name="description" content="發佈網站並不是一個幾句話就能說得完的課題，主要是因為有太多方法能夠發佈網站。在這個章節中，我們不會介紹所有可能的方法，但是我們會簡單講解三個概念，並從初學者的角度分別說明它們的優缺點，然後一步一步帶你用一個你現階段有辦法完成的方法發佈網站。">
+  <meta name="twitter:description" content="發佈網站並不是一個幾句話就能說得完的課題，主要是因為有太多方法能夠發佈網站。在這個章節中，我們不會介紹所有可能的方法，但是我們會簡單講解三個概念，並從初學者的角度分別說明它們的優缺點，然後一步一步帶你用一個你現階段有辦法完成的方法發佈網站。">
+  
+
+</head>
+<body data-slug="Learn/Getting_started_with_the_web/Publishing_your_website" contextmenu="edit-history-menu" data-search-url="" class="document">
+
+  <script>
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        (function(){
+  var FLAGS = {
+    'kumaediting': false,'page_move': false,'section_edit': false,'spam_checks_enabled': true,'spam_submissions_enabled': false,'spam_admin_override': false,'spam_spammer_override': false,'spam_testing_mode': false,'sg_task_completion': false,'contrib_beta': false,'recurring_payment_beta': true
+    },
+    SWITCHES = {
+    'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'foundation_callout': false,'helpful-survey-2': true,'wiki_spam_training': true,'registration_disabled': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = '/static/js/libs/ckeditor/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.siteUrl = '';
+        win.mdn.staticPath = 'https://developer.mozilla.org/static/';
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/zh-TW/docs/get-documents'
+        };
+        win.mdn.assets = {
+            css: {
+                'editor-content': ['https://developer.mozilla.org/static/build/styles/editor-content.64716f0f9cc8.css','https://developer.mozilla.org/static/build/styles/editor-locale-zh-TW.adc1ec005034.css',
+                ],
+
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/styles/wiki-compat-tables.eef64bf9b6fe.css',]
+            },
+            js: {
+                'syntax-prism': ['https://developer.mozilla.org/static/build/js/syntax-prism.c3ad62e11c30.js',],
+                'wiki-compat-tables': ['https://developer.mozilla.org/static/build/js/wiki-compat-tables.3a4ab2cc8ca1.js',]
+            }
+        };
+
+        win.mdn.notifications = [];
+        win.mdn.contributions = {
+            enabled: true,
+            popup: false
+        };
+
+        
+
+        // interactive editor config
+        win.mdn.interactiveEditor = {
+            siteUrl: "https://developer.mozilla.org",
+            editorUrl: "https://interactive-examples.mdn.mozilla.net"
+        };
+        win.mdn.langCookieName = "django_language";
+
+    })(this);
+</script>
+    
+    <ul id="nav-access">
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#content" id="skip-main">跳到主要內容</a></li>
+  <li><a id="skip-language" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#language">選擇語言</a></li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#q" id="skip-search">跳到搜尋</a></li>
+</ul>
+
+    <!-- Header -->
+    <header id="main-header" class="header-main">
+      <a href="https://developer.mozilla.org/zh-TW/" class="logo">MDN Web Docs</a>
+      <div class="nav-toolbox-wrapper">
+        <nav id="main-nav" class="nav-main" role="navigation">
+    <ul>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/zh-TW/docs/Web">技術
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-tech-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTML">HTML</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/CSS">CSS</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">JavaScript</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/Guide/Graphics">圖形</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP">HTTP</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API">API / DOM</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Mozilla/Add-ons/WebExtensions">瀏覽擴充套件</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/MathML">MathML</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/zh-TW/docs/Learn">參考資料與導覽
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-learn-submenu">
+                <div class="submenu-column">
+                  <ul>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn">學習網頁開發</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/Tutorials">教學</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/Reference">參照</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/Guide">開發者指南</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/Accessibility">親和力</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Games">遊戲開發</a></li>
+                    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web">…更多文件</a></li>
+                  </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-main-item">
+            <a href="https://developer.mozilla.org/zh-TW/docs/MDN/Feedback">意見回饋
+                <svg class="icon icon-caret-down" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><path d="M16 11a.99.99 0 0 1-.297.703l-7 7C8.516 18.89 8.265 19 8 19s-.516-.109-.703-.297l-7-7A.996.996 0 0 1 0 11c0-.547.453-1 1-1h14c.547 0 1 .453 1 1z"></path></svg>
+            </a>
+            <div class="submenu js-submenu" id="nav-contact-submenu">
+              <div class="submenu-column">
+                <ul>
+                  <li>
+                      <a href="https://support.mozilla.org/">取得 Firefox 說明
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://stackoverflow.com/">取得網頁開發教學
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                      <a href="https://developer.mozilla.org/zh-TW/docs/MDN/Community">加入 MDN 社群</a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://github.com/mdn/sprints/issues/new?template=issue-template.md&amp;projects=mdn/sprints/2&amp;labels=user-report&amp;title=https%3A//developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website">回報內容問題
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                  <li>
+                      <a target="_blank" rel="noopener" href="https://bugzilla.mozilla.org/form.mdn">回報 bug
+                          <svg class="icon icon-external-link" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 14.5v5c0 2.484-2.016 4.5-4.5 4.5h-13A4.502 4.502 0 0 1 0 19.5v-13C0 4.016 2.016 2 4.5 2h11c.281 0 .5.219.5.5v1c0 .281-.219.5-.5.5h-11A2.507 2.507 0 0 0 2 6.5v13C2 20.875 3.125 22 4.5 22h13c1.375 0 2.5-1.125 2.5-2.5v-5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zM28 1v8c0 .547-.453 1-1 1a.99.99 0 0 1-.703-.297l-2.75-2.75L13.36 17.14c-.094.094-.234.156-.359.156s-.266-.063-.359-.156l-1.781-1.781c-.094-.094-.156-.234-.156-.359s.063-.266.156-.359L21.048 4.454l-2.75-2.75a.996.996 0 0 1-.297-.703c0-.547.453-1 1-1h8c.547 0 1 .453 1 1z"></path></svg>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </li>
+  </ul>
+</nav>
+        <div id="toolbox" class="toolbox">
+  <ul>
+    
+    <li class="nav-login"><div class="login">
+    
+        
+        <a href="https://developer.mozilla.org/users/github/login/?next=%2Fzh-TW%2Fdocs%2FLearn%2FGetting_started_with_the_web%2FPublishing_your_website" class="login-link js-login-link" data-service="GitHub" rel="nofollow">
+            登入<svg class="icon icon-github" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-label="GitHub" role="img" focusable="false">
+    <title>Github</title>
+    <path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-.609.109-.828-.266-.828-.578 0-.391.016-1.687.016-3.297 0-1.125-.375-1.844-.812-2.219 2.672-.297 5.484-1.313 5.484-5.922 0-1.313-.469-2.375-1.234-3.219.125-.313.531-1.531-.125-3.187-1-.313-3.297 1.234-3.297 1.234a11.28 11.28 0 0 0-6 0S6.704 6.656 5.704 6.969c-.656 1.656-.25 2.875-.125 3.187-.766.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-.344.313-.656.844-.766 1.609-.688.313-2.438.844-3.484-1-.656-1.141-1.844-1.234-1.844-1.234-1.172-.016-.078.734-.078.734.781.359 1.328 1.75 1.328 1.75.703 2.141 4.047 1.422 4.047 1.422 0 1 .016 1.937.016 2.234 0 .313-.219.688-.828.578C3.439 23.796.002 19.296.002 13.999c0-6.625 5.375-12 12-12zM4.547 19.234c.031-.063-.016-.141-.109-.187-.094-.031-.172-.016-.203.031-.031.063.016.141.109.187.078.047.172.031.203-.031zm.484.532c.063-.047.047-.156-.031-.25-.078-.078-.187-.109-.25-.047-.063.047-.047.156.031.25.078.078.187.109.25.047zm.469.703c.078-.063.078-.187 0-.297-.063-.109-.187-.156-.266-.094-.078.047-.078.172 0 .281s.203.156.266.109zm.656.656c.063-.063.031-.203-.063-.297-.109-.109-.25-.125-.313-.047-.078.063-.047.203.063.297.109.109.25.125.313.047zm.891.391c.031-.094-.063-.203-.203-.25-.125-.031-.266.016-.297.109s.063.203.203.234c.125.047.266 0 .297-.094zm.984.078c0-.109-.125-.187-.266-.172-.141 0-.25.078-.25.172 0 .109.109.187.266.172.141 0 .25-.078.25-.172zm.906-.156c-.016-.094-.141-.156-.281-.141-.141.031-.234.125-.219.234.016.094.141.156.281.125s.234-.125.219-.219z"></path>
+</svg>
+        </a>
+    
+</div></li>
+  </ul>
+</div>
+      </div>
+      <form id="nav-main-search" action="https://developer.mozilla.org/zh-TW/search" method="get" role="search" class="nav-main-search">
+  <div class="search-wrap">
+    <label for="main-q" class="offscreen">搜尋</label>
+    <input type="search" id="main-q" name="q" placeholder="搜尋" data-value="" value="" aria-hidden="true">
+    <span class="search-trigger">
+        <svg class="icon icon-search" xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28" aria-hidden="true">
+    <path d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zm8 13c0 1.094-.906 2-2 2a1.96 1.96 0 0 1-1.406-.594l-5.359-5.344a10.971 10.971 0 0 1-6.234 1.937c-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-.672 4.406-1.937 6.234l5.359 5.359c.359.359.578.875.578 1.406z"></path>
+</svg>
+    </span>
+    <button type="submit" class="offscreen">搜尋</button>
+    <button type="button" id="close-header-search" class="close-header-search transparent">
+        <span class="offscreen">關閉搜尋</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true"><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+  </div>
+</form>
+    </header> 
+
+  <!-- Content will go here -->
+  <main id="content" role="main">
+      
+  <!-- heading -->
+  <div id="wiki-document-head" class="document-head">
+    <div class="center">
+      <div class="document-title">
+        <h1>將你的網站發佈上線</h1>
+      </div>
+
+      <!-- action buttons -->
+      <div class="document-actions">
+        
+
+  
+    
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons">
+      <li>
+          <button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false">
+              <svg class="icon icon-language" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M10.219 16.844c-.031.109-.797-.25-1-.328-.203-.094-1.125-.609-1.359-.766s-1.125-.891-1.234-.938a28.275 28.275 0 0 1-2.094 2.828c-.281.328-1.125 1.391-1.641 1.719-.078.047-.531.094-.594.063.25-.187.969-1.078 1.281-1.437.391-.453 2.25-3.047 2.562-3.641.328-.594 1.312-2.562 1.359-2.75-.156-.016-1.391.406-1.719.516-.313.094-1.172.297-1.234.344-.063.063-.016.25-.047.313s-.313.203-.484.234a1.647 1.647 0 0 1-.734 0c-.203-.047-.391-.25-.438-.328 0 0-.063-.094-.078-.359.187-.063.5-.078.844-.172s1.188-.344 1.641-.5 1.328-.484 1.594-.547c.281-.047.984-.516 1.359-.641s.641-.281.656-.203 0 .422-.016.516c-.016.078-.766 1.547-.875 1.781-.063.125-.5.953-1.203 2.047.25.109.781.328 1 .438.266.125 2.125.906 2.219.938s.266.75.234.875zM7.016 9.25c.047.266-.031.375-.063.438-.156.297-.547.5-.781.594s-.625.187-.938.187c-.141-.016-.422-.063-.766-.406-.187-.203-.328-.75-.266-.688s.516.125.719.078.688-.187.906-.25c.234-.078.703-.203.859-.219.156 0 .281.063.328.266zm10.906 2.016l.984 3.547-2.172-.656zM.609 23.766l10.844-3.625V4.016L.609 7.657v16.109zM20 18.813l1.594.484-2.828-10.266-1.563-.484-3.375 8.375 1.594.484.703-1.719 3.297 1.016zM12.141 3.781l8.953 2.875V.718zM17 24.453l2.469.203-.844 2.5L18 26.125c-1.266.812-2.828 1.437-4.312 1.687-.453.094-.969.187-1.422.187h-1.313c-1.656 0-4.672-.984-5.984-1.937-.094-.078-.125-.141-.125-.25 0-.172.125-.297.281-.297.141 0 .875.453 1.078.547 1.406.703 3.375 1.344 4.953 1.344 1.953 0 3.281-.25 5.063-1.016.516-.234.969-.531 1.453-.797zm7-16.859v16.859c-12.078-3.844-12.094-3.844-12.094-3.844C11.656 20.718.453 24.5.297 24.5a.3.3 0 0 1-.281-.203c0-.016-.016-.031-.016-.047V7.406c.016-.047.031-.125.063-.156.094-.109.219-.141.313-.172.047-.016 1-.328 2.328-.781v-6l8.719 3.094C11.532 3.36 21.251 0 21.392 0c.172 0 .313.125.313.328v6.531z"></path>
+</svg>
+              <span>語言</span>
+          </button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li lang="en-US"><bdi><a rel="internal" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="en-US" title="英語（美國）">English (US) (en-US)</a></bdi></li>
+                
+                  <li lang="bg"><bdi><a rel="internal" href="https://developer.mozilla.org/bg/docs/Learn/%D0%94%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D1%87%D0%BD%D0%B5%D0%BC_%D1%81_%D0%9C%D1%80%D0%B5%D0%B6%D0%B0%D1%82%D0%B0/Publishing_your_website" data-locale="bg" title="保加利亞語">Български (bg)</a></bdi></li>
+                
+                  <li lang="ca"><bdi><a rel="internal" href="https://developer.mozilla.org/ca/docs/Learn/Getting_started_with_the_web/Publicar_nostre_lloc_web" data-locale="ca" title="加泰隆語">Català (ca)</a></bdi></li>
+                
+                  <li lang="de"><bdi><a rel="internal" href="https://developer.mozilla.org/de/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="de" title="德語">Deutsch (de)</a></bdi></li>
+                
+                  <li lang="es"><bdi><a rel="internal" href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="es" title="西班牙語">Español (es)</a></bdi></li>
+                
+                  <li lang="fr"><bdi><a rel="internal" href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Publier_votre_site_web" data-locale="fr" title="法語">Français (fr)</a></bdi></li>
+                
+                  <li lang="id"><bdi><a rel="internal" href="https://developer.mozilla.org/id/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="id" title="印尼語">Bahasa Indonesia (id)</a></bdi></li>
+                
+                  <li lang="it"><bdi><a rel="internal" href="https://developer.mozilla.org/it/docs/Learn/Getting_started_with_the_web/Pubblicare_il_tuo_sito" data-locale="it" title="義大利語">Italiano (it)</a></bdi></li>
+                
+                  <li lang="ja"><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B" data-locale="ja" title="日語">日本語 (ja)</a></bdi></li>
+                
+                  <li lang="ko"><bdi><a rel="internal" href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8_%EC%B6%9C%ED%8C%90%ED%95%98%EA%B8%B0" data-locale="ko" title="韓語">한국어 (ko)</a></bdi></li>
+                
+                  <li lang="nl"><bdi><a rel="internal" href="https://developer.mozilla.org/nl/docs/Learn/Getting_started_with_the_web/Publicatie_website" data-locale="nl" title="荷蘭語">Nederlands (nl)</a></bdi></li>
+                
+                  <li lang="pl"><bdi><a rel="internal" href="https://developer.mozilla.org/pl/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="pl" title="波蘭語">Polski (pl)</a></bdi></li>
+                
+                  <li lang="pt-BR"><bdi><a rel="internal" href="https://developer.mozilla.org/pt-BR/docs/Aprender/Getting_started_with_the_web/Publicando_seu_site" data-locale="pt-BR" title="葡萄牙語（巴西）">Português (do&nbsp;Brasil) (pt-BR)</a></bdi></li>
+                
+                  <li lang="pt-PT"><bdi><a rel="internal" href="https://developer.mozilla.org/pt-PT/docs/Learn/Comecar_com_a_Web/Publicar_o_seu_site_da_Web" data-locale="pt-PT" title="葡萄牙語（葡萄牙）">Português (Europeu) (pt-PT)</a></bdi></li>
+                
+                  <li lang="ro"><bdi><a rel="internal" href="https://developer.mozilla.org/ro/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="ro" title="羅馬尼亞語">Română (ro)</a></bdi></li>
+                
+                  <li lang="ru"><bdi><a rel="internal" href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="ru" title="俄語">Русский (ru)</a></bdi></li>
+                
+                  <li lang="tr"><bdi><a rel="internal" href="https://developer.mozilla.org/tr/docs/%C3%96%C4%9Fren/Getting_started_with_the_web/Publishing_your_website" data-locale="tr" title="土耳其語">Türkçe (tr)</a></bdi></li>
+                
+                  <li lang="uk"><bdi><a rel="internal" href="https://developer.mozilla.org/uk/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="uk" title="烏克蘭語">Українська (uk)</a></bdi></li>
+                
+                  <li lang="vi"><bdi><a rel="internal" href="https://developer.mozilla.org/vi/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="vi" title="越南語">Tiếng Việt (vi)</a></bdi></li>
+                
+                  <li lang="zh-CN"><bdi><a rel="internal" href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/Publishing_your_website" data-locale="zh-CN" title="中文（簡體）">中文 (简体) (zh-CN)</a></bdi></li>
+                
+              
+
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+      
+      <li class="page-buttons-edit">
+          <a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website$edit" class="button neutral" id="edit-button" rel="nofollow">
+              <svg class="icon icon-pencil" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M5.672 24l1.422-1.422-3.672-3.672L2 20.328V22h2v2h1.672zm8.172-14.5a.329.329 0 0 0-.344-.344.368.368 0 0 0-.266.109l-8.469 8.469a.366.366 0 0 0-.109.266c0 .203.141.344.344.344a.368.368 0 0 0 .266-.109l8.469-8.469a.366.366 0 0 0 .109-.266zM13 6.5l6.5 6.5-13 13H0v-6.5zM23.672 8c0 .531-.219 1.047-.578 1.406L20.5 12 14 5.5l2.594-2.578c.359-.375.875-.594 1.406-.594s1.047.219 1.422.594l3.672 3.656c.359.375.578.891.578 1.422z"></path>
+</svg>
+              編輯
+          </a>
+      </li>
+      
+
+        
+
+        <li class="page-buttons-advanced">
+            <button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false">
+                <svg class="icon icon-gear" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M16 14c0-2.203-1.797-4-4-4s-4 1.797-4 4 1.797 4 4 4 4-1.797 4-4zm8-1.703v3.469c0 .234-.187.516-.438.562l-2.891.438a8.86 8.86 0 0 1-.609 1.422c.531.766 1.094 1.453 1.672 2.156.094.109.156.25.156.391s-.047.25-.141.359c-.375.5-2.484 2.797-3.016 2.797a.795.795 0 0 1-.406-.141l-2.156-1.687a9.449 9.449 0 0 1-1.422.594c-.109.953-.203 1.969-.453 2.906a.573.573 0 0 1-.562.438h-3.469c-.281 0-.531-.203-.562-.469l-.438-2.875a9.194 9.194 0 0 1-1.406-.578l-2.203 1.672c-.109.094-.25.141-.391.141s-.281-.063-.391-.172c-.828-.75-1.922-1.719-2.578-2.625a.607.607 0 0 1 .016-.718c.531-.719 1.109-1.406 1.641-2.141a8.324 8.324 0 0 1-.641-1.547l-2.859-.422A.57.57 0 0 1 0 15.705v-3.469c0-.234.187-.516.422-.562l2.906-.438c.156-.5.359-.969.609-1.437a37.64 37.64 0 0 0-1.672-2.156c-.094-.109-.156-.234-.156-.375s.063-.25.141-.359c.375-.516 2.484-2.797 3.016-2.797.141 0 .281.063.406.156L7.828 5.94a9.449 9.449 0 0 1 1.422-.594c.109-.953.203-1.969.453-2.906a.573.573 0 0 1 .562-.438h3.469c.281 0 .531.203.562.469l.438 2.875c.484.156.953.344 1.406.578l2.219-1.672c.094-.094.234-.141.375-.141s.281.063.391.156c.828.766 1.922 1.734 2.578 2.656a.534.534 0 0 1 .109.344c0 .141-.047.25-.125.359-.531.719-1.109 1.406-1.641 2.141.266.5.484 1.016.641 1.531l2.859.438a.57.57 0 0 1 .453.562z"></path>
+</svg>
+                <span>進階</span>
+            </button>
+            <div class="submenu js-submenu" id="advanced-menu-submenu">
+                <!-- this page -->
+                <div class="submenu-column">
+                    <div class="title">進階</div>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website$history" rel="nofollow">歷史紀錄</a></li>
+                        
+                        
+                        
+
+
+                
+
+                <li class="page-print"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#" onclick="return window.print();">列印此文件</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+      </div>
+    </div>
+  </div>
+  
+  <div id="toc" class="toc">
+    <div class="center">
+      <div class="toc-head">跳到:</div>
+        <ol class="toc-links">
+          <li><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%81%B8%E9%A0%85%EF%BC%9F" class="">有哪些選項？</a></li><li><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E9%80%8F%E9%81%8E_GitHub_%E7%99%BC%E5%B8%83" class="toc-current">透過 GitHub 發布</a></li><li><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E5%8F%83%E9%96%B1" class="toc-current">參閱</a></li><li><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E5%9C%A8%E6%9C%AC%E6%A8%A1%E7%B5%84%E5%85%A7">在本模組內</a>
+        </li></ol>
+    </div>
+  </div>
+  
+
+      <div class="center clear">
+      
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-main wiki-column text-content">
+
+              
+
+              
+              
+
+              
+
+              
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <div></div>
+
+<div><div class="prevnext">
+    <div><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/JavaScript_basics" style="float: left; width: 20%; text-align: left;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"><i class="icon-arrow-left"></i> 前頁 </span></a><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web" style="float: left; width: 60%; text-align: center;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"><i class="icon-arrow-up"></i> Overview: Getting started with the web</span></a><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/How_the_Web_works" style="width: 20%; float: right; text-align: right;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"> 次頁  <i class="icon-arrow-right"></i></span></a></div>
+    <p>&nbsp;</p>
+</div></div>
+
+<div class="summary">
+<p>當你完成你的網頁程式碼後，你需要把它放到網路上，這樣人們才可以搜尋得到。這個章節將介紹如何快速的把你的程式碼放到網路上。</p>
+</div>
+
+<h2 id="有哪些選項？">有哪些選項？<a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%81%B8%E9%A0%85%EF%BC%9F" data-heading-id="有哪些選項？"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h2>
+
+<p>發佈網站並不是一個幾句話就能說得完的課題，主要是因為有太多方法能夠發佈網站。在這個章節中，我們不會介紹所有可能的方法，但是我們會簡單講解三個概念，並從初學者的角度分別說明它們的優缺點，然後一步一步帶你用一個你現階段有辦法完成的方法發佈網站。</p>
+
+<h3 id="取得主機（hosting）和網域名稱（domain_name）" class="highlight-spanned"><span class="highlight-span">取得主機（hosting）和網域名稱（domain name）</span><a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E5%8F%96%E5%BE%97%E4%B8%BB%E6%A9%9F%EF%BC%88hosting%EF%BC%89%E5%92%8C%E7%B6%B2%E5%9F%9F%E5%90%8D%E7%A8%B1%EF%BC%88domain_name%EF%BC%89" data-heading-id="取得主機（hosting）和網域名稱（domain_name）"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h3>
+
+<p>如果想要完全掌控你發佈的網站，那你可能需要花錢買：</p>
+
+<ul>
+ <li>主機：跟主機租借商（hosting company）的<a href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions/What_is_a_web_server">網路伺服器</a>（web server）租一個放置檔案的空間。你把你建置的網頁檔案放到這個空間中，然後想要連結到網頁的人就能透過網頁伺服器連結到你的網站。</li>
+ <li><a href="https://developer.mozilla.org/zh-TW/Learn/Understanding_domain_names">網域名稱</a>(domain name)：人們可以透過這個獨特的網址來尋找你的網站，像是 <code>http://www.mozilla.org</code> 或 <code>http://www.bbc.co.uk</code>。你需要向<strong>網域名稱註冊商(domain registrar)</strong>租借網域名稱。</li>
+</ul>
+
+<p>許多專業的網站是用這個方法發佈的。</p>
+
+<p>除此之外，你還會需要一個 <a href="https://developer.mozilla.org/en-US/docs/Glossary/FTP" class="glossaryLink" title="File Transfer Protocol (FTP): FTP (File Transfer Protocol) was the standard protocol for many years for transferring files from one host to another over the Internet. Increasingly, though, teams and hosting accounts don&#39;t allow FTP and instead rely on a version control system like Git. You will still find it used on older hosting accounts, but it is safe to say that FTP is no longer considered best practice.">File Transfer Protocol (FTP)</a> 程式（點選<a href="https://developer.mozilla.org/zh-TW/Learn/How_much_does_it_cost#Software">How much does it cost: software</a> 來取得更多資訊），這樣才能真正的把你建置的網頁檔案傳達給伺服器。FTP 程式很廣泛，但一般來說，你可以用你公司提供的資訊，像是使用者名稱、密碼以及host name來登入你的網頁伺服器，它就會以兩個視窗的形式分別顯示你電腦裡的檔案和你網頁伺服器上的檔案，然後你就可以移動你的檔案。</p>
+
+<p><img src="./將你的網站發佈上線 _ MDN_files/ftp.jpg" alt="" style="display: block; height: 487px; margin: 0px auto; width: 800px;"></p>
+
+<h4 id="租借主機和網域的方法">租借主機和網域的方法</h4>
+
+<ul>
+ <li>在這裡我們不介紹特定的主機租借商(hosting companies)或網域名稱註冊商(domain name registrars)，你只要搜尋「web hosting」與「domain names」就能找到。所有的註冊商都會提供方法，讓你檢查你想要的網域名稱可否使用、或有沒有被註冊過。</li>
+ <li>你的 <a href="https://developer.mozilla.org/en-US/docs/Glossary/ISP" class="glossaryLink" title="網路供應商: An ISP (Internet Service Provider) sells Internet access, and sometimes email, web hosting, and voice over IP, either by a dial-up connection over a phone line (formerly more common), or through a broadband connection such as a cable modem or DSL service.">網路供應商</a> 可能會提供有限制的主機，這可以讓你發佈一些比較簡易的網站，雖然會有些限制，但嘗試使用它來發佈你的第一個網站也是很不錯的 — 聯絡並詢問他們！</li>
+ <li>有些公司提供免費的服務，像是 <a rel="noopener" href="https://neocities.org/" class="external external-icon">Neocities</a>、<a rel="noopener" href="https://www.blogger.com/" class="external external-icon">Blogger</a>和 <a rel="noopener" href="https://wordpress.com/" class="external external-icon">WordPress</a>，但是我要強調，你付出多少得到多少，不過使用它們來發佈你的第一個網站何嘗不是一個理想的方法? 而且免費的服務大部分不需要FTP程序來上傳檔案，你只需要用它們提供的介面來移動檔案。</li>
+ <li>有些公司同時提供主機(hosting)和網域(domains)的服務。</li>
+</ul>
+
+<h3 id="使用線上工具，像是_GitHub_或_Google_App_Engine" class="highlight-spanned"><span class="highlight-span">使用線上工具，像是 GitHub 或 Google App Engine</span><a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E4%BD%BF%E7%94%A8%E7%B7%9A%E4%B8%8A%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%83%8F%E6%98%AF_GitHub_%E6%88%96_Google_App_Engine" data-heading-id="使用線上工具，像是_GitHub_或_Google_App_Engine"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h3>
+
+<p>使用工具來發佈網站：</p>
+
+<ul>
+ <li><a rel="noopener" href="https://github.com/" class="external external-icon">GitHub</a> 可以交流程式的平台，它提供你一個空間來存放程式碼，這個空間是基於 <a rel="noopener" href="http://git-scm.com/" class="external external-icon">Git</a> 的<strong>版本控制系統，</strong>你能夠透過系統共同編輯平台上的程式專案，而這個系統是開放資源，也就是說全世界的人都可以找到你的 GitHub code，包括使用它、從中學習並將它改得更好。GitHub 提供一個非常實用的工具— <a rel="noopener" href="https://pages.github.com/" class="external external-icon">GitHub Pages</a>，它能讓你發佈網站。</li>
+ <li><a rel="noopener" href="https://cloud.google.com/appengine/" class="external external-icon" title="App Engine - Build Scalable Web &amp; Mobile Backends in Any Language  |  Google Cloud Platform">Google App Engine</a> 是一個強大的平台，不管是要從頭建置 multi-tiered web 程式還是託管靜態網站，它都能讓你在 Google 的基礎下建置和運行應用程式。點選 <a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions/How_do_you_host_your_website_on_Google_App_Engine" class="new">How do you host your website on Google App Engine?</a> 以獲得更多資訊。</li>
+</ul>
+
+<p>這類工具和託管不同，通常他們都是免費的，不過功能當然也會受限。</p>
+
+<h3 id="透過如_Thimble_這樣的網路_IDE" class="highlight-spanned"><span class="highlight-span">透過如 Thimble 這樣的網路 IDE</span><a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E9%80%8F%E9%81%8E%E5%A6%82_Thimble_%E9%80%99%E6%A8%A3%E7%9A%84%E7%B6%B2%E8%B7%AF_IDE" data-heading-id="透過如_Thimble_這樣的網路_IDE"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h3>
+
+<p>有些 web app 會模擬網站的開發環境，讓你能執行 HTML, CSS, JavaScript，顯示程式碼執行結果、並渲染至網站上－－一切都在瀏覽器的一個頁籤內完成。通常這些工具用起來都簡單、學起來簡單、基本功能還是免費的。他們用獨一無二的網址，替你保管渲染好的頁面。不過，基本功能基本上很受限，而且 app 通常都不提供如圖像這種 asset 的託管。</p>
+
+<p>試試以下網站，看看你能想到什麼點子：</p>
+
+<ul>
+ <li><a rel="noopener" href="https://jsfiddle.net/" class="external external-icon">JSFiddle</a></li>
+ <li><a rel="noopener" href="https://thimble.mozilla.org/" class="external external-icon">Thimble</a></li>
+ <li><a rel="noopener" href="http://jsbin.com/" class="external external-icon">JS Bin</a></li>
+ <li><a rel="noopener" href="https://codepen.io/" class="external external-icon">CodePen</a></li>
+</ul>
+
+<p><img src="./將你的網站發佈上線 _ MDN_files/jsbin-screen.png" alt="" style="display: block; height: 849px; margin: 0px auto; width: 1392px;"></p>
+
+<h2 id="透過_GitHub_發布">透過 GitHub 發布<a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E9%80%8F%E9%81%8E_GitHub_%E7%99%BC%E5%B8%83" data-heading-id="透過_GitHub_發布"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h2>
+
+<p>來看看把網站用 Github Pages 發佈多簡單。</p>
+
+<ol>
+ <li>首先註冊 <a rel="noopener" href="https://github.com/" class="external external-icon">GitHub</a> 並驗證電子郵件。</li>
+ <li>接著針對要上傳的檔案<a rel="noopener" href="https://github.com/new" class="external external-icon">建立一個 repository</a>。</li>
+ <li>在頁面的 <em>Repository name</em> 標籤輸入 <em>username</em>.github.io，<em>username</em> 是指你的用戶名。例如我們的好朋友 bobsmith 就會輸入 <em>bobsmith.github.io</em>.<br>
+  另外，請句選 <em>Initialize this repository with a README</em> 後點選 <em>Create repository</em>。<img src="./將你的網站發佈上線 _ MDN_files/github-create-repo.png" alt="" style="display: block; height: 849px; margin: 0px auto; width: 1392px;"></li>
+ <li>之後，把網站內容拖曳到 repository 目錄，並句選 <em>Commit changes</em>。
+  <div class="note">
+  <p><strong>注</strong>：請確定目錄內有 <em>index.html</em> 檔案。</p>
+  </div>
+ </li>
+ <li>
+  <p>現在讓瀏覽器連到 <em>username</em>.github.io 來看看你的網站。例如你的用戶名字是 <em>chrisdavidmills</em>，就連到 <a rel="noopener" href="http://chrisdavidmills.github.io/" class="external external-icon">chrisdavidmills.github.io</a>。</p>
+
+  <div class="note">
+  <p><strong>注</strong>：讓網站上線需要一點時間。如果網站沒有馬上運行，稍等一段時間後再試一次。</p>
+  </div>
+ </li>
+</ol>
+
+<p>想多理解的話，請參考 <a rel="noopener" href="https://help.github.com/categories/github-pages-basics/" class="external external-icon">GitHub Pages Help</a>.</p>
+
+<h2 id="參閱">參閱<a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E5%8F%83%E9%96%B1" data-heading-id="參閱"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h2>
+
+<ul>
+ <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions/What_is_a_web_server">何謂網路伺服器</a></li>
+ <li><a href="https://developer.mozilla.org/zh-TW/Learn/Understanding_domain_names">Understanding domain names</a></li>
+ <li><a href="https://developer.mozilla.org/zh-TW/Learn/How_much_does_it_cost">How much does it cost to do something on the web?</a></li>
+ <li><a rel="noopener" href="https://www.codecademy.com/learn/deploy-a-website" class="external external-icon">Deploy a Website</a>: A nice tutorial from Codecademy that goes a bit further and shows some additional techniques.</li>
+ <li><a rel="noopener" href="http://alignedleft.com/resources/cheap-web-hosting" class="external external-icon">Cheap or Free Static Website Hosting</a> by Scott Murray has some useful ideas on available services.</li>
+</ul>
+
+<p></p><div class="prevnext">
+    <div><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/JavaScript_basics" style="float: left; width: 20%; text-align: left;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"><i class="icon-arrow-left"></i> 前頁 </span></a><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web" style="float: left; width: 60%; text-align: center;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"><i class="icon-arrow-up"></i> Overview: Getting started with the web</span></a><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/How_the_Web_works" style="width: 20%; float: right; text-align: right;"><span style="display: inline-block; background: #eaeff2; border-radius: 4px; box-shadow: inset 0 -1px #bbbfc2; color: #4d4353; padding: 0.3em 0.8em;"> 次頁  <i class="icon-arrow-right"></i></span></a></div>
+    <p>&nbsp;</p>
+</div><p></p>
+
+<h2 id="在本模組內">在本模組內<a class="local-anchor" href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#%E5%9C%A8%E6%9C%AC%E6%A8%A1%E7%B5%84%E5%85%A7" data-heading-id="在本模組內"><svg class="icon icon-link" version="1.1" width="24" height="28" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg><span>區段</span></a></h2>
+
+<ul>
+ <li id="Installing_basic_software"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/Installing_basic_software">安裝基本軟體</a></li>
+ <li id="What_will_your_website_look_like"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/What_will_your_website_look_like">你的網站看起來會是什麼樣子？</a></li>
+ <li id="Dealing_with_files"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/Dealing_with_files">與各式各樣檔案打交道</a></li>
+ <li id="HTML_basics"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/HTML_basics">HTML 基礎</a></li>
+ <li id="CSS_basics"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/CSS_basics">CSS 基本</a></li>
+ <li id="JavaScript_basics"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/JavaScript_basics">JavaScript 基礎</a></li>
+ <li id="Publishing_your_website"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/Publishing_your_website">將你的網站發佈上線</a></li>
+ <li id="How_the_web_works"><a href="https://developer.mozilla.org/zh-TW/Learn/Getting_started_with_the_web/How_the_Web_works">網路的運作方式</a></li>
+</ul>
+                  
+                
+              </article>
+
+              <!-- contributors -->
+              <div class="wiki-block contributors">
+                <h2 class="offscreen">文件標籤與貢獻者</h2>
+                
+                
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-group" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
+    <path d="M9.266 14a5.532 5.532 0 0 0-4.141 2H3.031C1.468 16 0 15.25 0 13.516 0 12.25-.047 8 1.937 8c.328 0 1.953 1.328 4.062 1.328.719 0 1.406-.125 2.078-.359A7.624 7.624 0 0 0 7.999 10c0 1.422.453 2.828 1.266 4zM26 23.953C26 26.484 24.328 28 21.828 28H8.172C5.672 28 4 26.484 4 23.953 4 20.422 4.828 15 9.406 15c.531 0 2.469 2.172 5.594 2.172S20.063 15 20.594 15C25.172 15 26 20.422 26 23.953zM10 4c0 2.203-1.797 4-4 4S2 6.203 2 4s1.797-4 4-4 4 1.797 4 4zm11 6c0 3.313-2.688 6-6 6s-6-2.688-6-6 2.688-6 6-6 6 2.688 6 6zm9 3.516C30 15.25 28.531 16 26.969 16h-2.094a5.532 5.532 0 0 0-4.141-2A7.066 7.066 0 0 0 22 10a7.6 7.6 0 0 0-.078-1.031A6.258 6.258 0 0 0 24 9.328C26.109 9.328 27.734 8 28.062 8c1.984 0 1.937 4.25 1.937 5.516zM28 4c0 2.203-1.797 4-4 4s-4-1.797-4-4 1.797-4 4-4 4 1.797 4 4z"></path>
+</svg>
+                    <strong>此頁面的貢獻者:</strong>
+                    
+        <a href="https://developer.mozilla.org/zh-TW/profiles/iigmir" rel="nofollow">iigmir</a>, 
+    
+        <a href="https://developer.mozilla.org/zh-TW/profiles/MLJ" rel="nofollow">MLJ</a>
+    
+                  </div>
+                
+
+                
+                  <div class="contributors-sub">
+                    <svg class="icon icon-clock" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" aria-hidden="true">
+    <path d="M14 8.5v7c0 .281-.219.5-.5.5h-5a.494.494 0 0 1-.5-.5v-1c0-.281.219-.5.5-.5H12V8.5c0-.281.219-.5.5-.5h1c.281 0 .5.219.5.5zm6.5 5.5c0-4.688-3.813-8.5-8.5-8.5S3.5 9.313 3.5 14s3.813 8.5 8.5 8.5 8.5-3.813 8.5-8.5zm3.5 0c0 6.625-5.375 12-12 12S0 20.625 0 14 5.375 2 12 2s12 5.375 12 12z"></path>
+</svg>
+                    <strong>最近更新:</strong>
+                    <a href="https://developer.mozilla.org/zh-TW/profiles/iigmir" rel="nofollow">iigmir</a>,
+                    <time datetime="2018-01-07T20:54:36.093177-08:00">Jan 7, 2018, 8:54:36 PM</time>
+                  </div>
+                
+              </div>
+            </div>
+
+            
+              <!-- quick links and approvals strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+                <!-- crumbs -->
+                
+  
+    <nav class="crumbs" role="navigation">
+      <ol typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumbs">
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="https://developer.mozilla.org/zh-TW/docs/Learn" property="item" typeof="WebPage">
+              <span property="name">學習該如何開發 Web</span>
+            </a>
+            <meta property="position" content="1">
+          </li>
+        
+          <li property="itemListElement" typeof="ListItem" class="crumb">
+            <a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web" property="item" typeof="WebPage">
+              <span property="name">Web 入門</span>
+            </a>
+            <meta property="position" content="2">
+          </li>
+        
+        <li property="itemListElement" typeof="ListItem" class="crumb">
+          <span property="name" aria-current="page">將你的網站發佈上線</span>
+        </li>
+      </ol>
+    </nav>
+  
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="quick-links-head">相關主題</div>
+    
+
+<ol>
+  <li data-default-state="open"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web"><strong>全新手請從這開始！</strong></a></li>
+  <li class="toggle">
+      <details open="">
+          <summary>Web 入門</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web">Web 概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Installing_basic_software">安裝基本軟體</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/What_will_your_website_look_like">自己的網站會是什麼樣子？</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Dealing_with_files">處理檔案</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/HTML_basics">HTML 基礎概念</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS 基礎概念</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/JavaScript_basics">JavaScript 基礎概念</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website">發佈自己的網站</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/How_the_Web_works">Web 的運作方式</a></li>
+          </ol>
+      </details>
+  </li>
+  <li data-default-state="closed"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML"><strong>HTML — 架構 Web</strong></a></li>
+  <li class="toggle">
+      <details>
+          <summary>HTML 介紹</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML">HTML 概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Getting_started">HTML 入門</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML">標題裡是什麼？HTML 中的後設資料 (Metadata)</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals" class="new">HTML 文字基礎概念</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks" class="new">建立超連結</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting">進階文字格式</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure" class="new">文件與網站架構</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML" class="new">HTML 除錯</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter" class="new">親和度：設個字母</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Introduction_to_HTML/Structuring_a_page_of_content" class="new">親和度：架構出具備內容的網頁</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>多媒體與嵌入</summary>
+          <ol>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding" class="new">多媒體與嵌入的概述</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML" class="new">HTML 中的圖片</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content" class="new">視訊與音訊內容</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies" class="new">從物件到 iframe — 其他嵌入技巧</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web" class="new">為 Web 新增向量圖</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" class="new">適應性圖片</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Multimedia_and_embedding/Mozilla_splash_page" class="new">親和度：Mozilla 形象頁面</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>HTML tables</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Tables">HTML tables overview</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Tables/Basics" class="new">HTML table basics</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Tables/Advanced" class="new">HTML Table advanced features and accessibility</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Tables/Structuring_planet_data" class="new">Assessment: Structuring planet data</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>HTML forms</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms">HTML forms overview</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Your_first_HTML_form" class="new">Your first HTML form</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form">How to structure an HTML form</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/The_native_form_widgets" class="new">The native form widgets</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data" class="new">Sending form data</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Form_validation" class="new">Form validation</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/How_to_build_custom_form_widgets" class="new">How to build custom form widgets</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript" class="new">Sending forms through JavaScript</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/HTML_forms_in_legacy_browsers" class="new">HTML forms in legacy browsers</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Styling_HTML_forms" class="new">Styling HTML forms</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Advanced_styling_for_HTML_forms" class="new">Advanced styling for HTML forms</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Forms/Property_compatibility_table_for_form_widgets" class="new">Property compatibility table for form widgets</a></li>
+          </ol>
+      </details>
+  </li>
+  <li data-default-state="closed"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS"><strong>CSS — 設計 Web 的風格</strong></a></li>
+  <li class="toggle">
+      <details>
+          <summary>CSS 介紹</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS">CSS 概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/How_CSS_works">CSS 運作方式</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Syntax">CSS 語法</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Selectors">選擇器介紹</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors" class="new">簡易選擇器</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Attribute_selectors" class="new">屬性選擇器</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements" class="new">擬 (Pseudo) 類別與擬元素</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Combinators_and_multiple_selectors" class="new">整合器與多重選擇器</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Values_and_units" class="new">CSS 數值與單位</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance" class="new">串聯與繼承</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Box_model" class="new">區塊模型</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Debugging_CSS" class="new">CSS 除錯</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Introduction_to_CSS/Fundamental_CSS_comprehension" class="new">親合度：CSS 基礎概念</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>樣式化文字</summary>
+          <ol>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text" class="new">樣式化文字概述</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text/Fundamentals" class="new">基礎的文字與字型樣式化</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text/Styling_lists" class="new">樣式化列表</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text/Styling_links" class="new">樣式化連結</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text/Web_fonts" class="new">Web 字型</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_text/Typesetting_a_homepage" class="new">親合度：設定社區大學首頁的版面</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>樣式化區塊</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes">樣式化區塊概述</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Box_model_recap" class="new">再述區塊模型扼要</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Backgrounds" class="new">背景</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Borders" class="new">邊界</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Styling_tables" class="new">樣式化表格</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Advanced_box_effects" class="new">進階區塊效果</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/Creating_fancy_letterheaded_paper" class="new">親合度：建立有趣的標題抬頭</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Styling_boxes/A_cool_looking_box" class="new">親合度：酷炫外觀區塊</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>CSS 版面配置</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout">CSS 版面配置概述</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Introduction" class="new">介紹</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Normal_Flow" class="new">Normal Flow</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Flexbox" class="new">彈性區塊</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Grids" class="new">格線</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Floats" class="new">浮動</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Positioning" class="new">定位</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Multiple-column_Layout" class="new">Multiple-column Layout</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Legacy_Layout_Methods" class="new">Legacy Layout Methods</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Supporting_Older_Browsers" class="new">Supporting Older Browsers</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/CSS_layout/Fundamental_Layout_Comprehension" class="new">Fundamental Layout Comprehension</a></li>
+          </ol>
+      </details>
+  </li>
+  <li data-default-state="closed"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript"><strong>JavaScript — 動態的用戶端指令</strong></a></li>
+  <li class="toggle">
+      <details>
+          <summary>JavaScript 第一步</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps">JavaScript 第一步概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/What_is_JavaScript">什麼是 JavaScript？</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/A_first_splash">初次接觸 JavaScript</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/What_went_wrong">出了什麼問題？JavaScript 疑難排解</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Variables" class="new">儲存你所需的資訊 — 變數</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Math" class="new">JavaScript 基礎概念 — 數字與運算子</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Strings" class="new">處理文字 — JavaScript 中的字串</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Useful_string_methods" class="new">有用的字串函式</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Arrays" class="new">陣列</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/First_steps/Silly_story_generator" class="new">親合度：傻瓜故事產生器</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>JavaScript 基礎要件</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks">JavaScript 基礎要件概述</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/conditionals" class="new">於程式碼中決策 — 條件</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Looping_code" class="new">程式碼迴圈</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Functions" class="new">函式 — 可重複使用的程式碼區塊</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Build_your_own_function" class="new">建立自己的函式</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Return_values" class="new">函式回傳值</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Events" class="new">事件介紹</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Building_blocks/Image_gallery">親合度：圖庫</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+      <details>
+          <summary>JavaScript 物件介紹</summary>
+          <ol>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects">JavaScript 物件概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Basics">物件基礎概念</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Object-oriented_JS">適合新手的物件導向 (OO) JavaScript</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Object_prototypes">物件原型</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Inheritance">JavaScript 中的繼承</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/JSON">使用 JSON 資料</a></li>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Object_building_practise" class="new">物件建構實作</a></li>
+            <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/Adding_bouncing_balls_features">親合度：為彈跳球展示新增功能</a></li>
+          </ol>
+      </details>
+  </li>
+  <li class="toggle">
+    <details>
+        <summary>Client-side web APIs</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs">Client-side web APIs</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Introduction" class="new">Introduction to web APIs</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents" class="new">Manipulating documents</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data" class="new">Fetching data from the server</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs" class="new">Third party APIs</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics" class="new">Drawing graphics</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs" class="new">Video and audio APIs</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage" class="new">Client-side storage</a></li>
+        </ol>
+    </details>
+  </li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility"><strong>Accessibility — Make the web usable by everyone</strong></a></li>
+  <li class="toggle">
+    <details>
+        <summary>Accessibility guides</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility">Accessibility overview</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/What_is_accessibility">What is accessibility?</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/HTML" class="new">HTML: A good basis for accessibility</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/CSS_and_JavaScript" class="new">CSS and JavaScript accessibility best practices</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/WAI-ARIA_basics">WAI-ARIA basics</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/Multimedia" class="new">Accessible multimedia</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/Mobile" class="new">Mobile accessibility</a></li>
+        </ol>
+    </details>
+  </li>
+  <li class="toggle">
+    <details>
+        <summary>Accessibility assessment</summary>
+        <ol>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Accessibility/Accessibility_troubleshooting" class="new">Assessment: Accessibility troubleshooting</a></li>
+        </ol>
+    </details>
+  </li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing"><strong>工具與測試</strong></a></li>
+  <li class="toggle">
+    <details>
+        <summary>跨瀏覽器測試</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing">跨瀏覽器測試概述</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction" class="new">跨瀏覽器測試介紹</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Testing_strategies" class="new">測試執行策略</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/HTML_and_CSS" class="new">處理常見的 HTML 與 CSS 問題</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/JavaScript" class="new">處理常見的 JavaScript 問題</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility" class="new">處理常見的親合度問題</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection" class="new">建置功能偵測</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing">自動化測試介紹</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment" class="new">設定自己的自動化測試環境</a></li>
+        </ol>
+    </details>
+  </li>
+
+  <li data-default-state="closed"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side"><strong>伺服端網站程式設計</strong></a></li>
+  <li class="toggle">
+    <details>
+        <summary>第一步</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps">第一步概述</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Introduction" class="new">伺服端介紹</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Client-Server_overview" class="new">用戶端概述</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Web_frameworks" class="new">伺服端網路框架</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/First_steps/Website_security" class="new">網站安全</a></li>
+        </ol>
+    </details>
+  </li>
+  <li class="toggle">
+    <details>
+        <summary>Django 網站框架 (Python)</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django">Django 網站框架 (Python) 概述</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Introduction">介紹</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/development_environment">設定開發環境</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Tutorial_local_library_website">線上教學：本地圖書館網站</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/skeleton_website">線上教學 2：建立網站骨架</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Models">線上教學 3：使用模型</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Admin_site">線上教學 4：Django 管理網站</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Home_page">線上教學 5：建立我們的首頁</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Generic_views">線上教學 6：泛型清單與細節檢視</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Sessions">線上教學 7：會話 (Sessions) 框架</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Authentication">線上教學 8：使用者授權與許可</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Forms">線上教學 9：搭配表單</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Testing">線上教學 10：測試 Django 的 Web App</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Deployment">線上教學 11：佈署 Django 至產品</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/web_application_security">Web App 安全性</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/django_assessment_blog">親合度：DIY 迷你部落格</a></li>
+        </ol>
+    </details>
+  </li>
+  <li class="toggle">
+    <details>
+        <summary>Express Web Framework (node.js/JavaScript)</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs">Express Web Framework (Node.js/JavaScript) overview</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/Introduction">Express/Node introduction</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/development_environment">Setting up a Node (Express) development environment</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website">Express tutorial: The Local Library website</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/skeleton_website">Express Tutorial Part 2: Creating a skeleton website</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/mongoose">Express Tutorial Part 3: Using a database (with Mongoose)</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/routes">Express Tutorial Part 4: Routes and controllers</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/Displaying_data">Express Tutorial Part 5: Displaying library data</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/forms">Express Tutorial Part 6: Working with forms</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Express_Nodejs/deployment">Express Tutorial Part 7: Deploying to production</a></li>
+        </ol>
+    </details>
+  </li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website#"><strong>更多資源</strong></a></li>
+  <li class="toggle">
+    <details>
+        <summary>進階學習教材</summary>
+        <ol>
+            <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/WebGL" class="new">WebGL：圖形處理</a></li>
+        </ol>
+    </details>
+  </li>
+  <li class="toggle">
+    <details>
+        <summary>常見問題</summary>
+        <ol>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/HTML/Howto">HTML 問題</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/CSS/Howto" class="new">CSS 問題</a></li>
+          <li><a rel="nofollow" href="https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Howto" class="new">JavaScript questions</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions#How_the_Web_works">Web 的運作方式</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions#Tools_and_setup">工具與設定</a></li>
+          <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions#Design_and_accessibility">設計與親合度</a></li>
+        </ol>
+    </details>
+  </li>
+  <li data-default-state="closed"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/How_to_contribute">如何貢獻</a></li>
+</ol>
+
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+    
+      <div class="newsletter-box">
+        <div class="newsletter">
+    <form id="newsletterForm" class="newsletter-form nodisable" name="newsletter-form" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <div class="newsletter-head">
+            <h2 class="newsletter-teaser">了解網頁開發精華</h2>
+            <p class="newsletter-description">發送最新最棒的 MDN 新聞到您的信件匣中。</p>
+            
+            <p class="newsletter-lang">電子報目前僅有英文版。</p>
+            
+        </div>
+
+        <div class="newsletter-fields">
+            <input type="hidden" id="fmt" name="fmt" value="H">
+            <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev">
+            <div id="newsletterErrors" class="newsletter-errors"></div>
+
+            <div id="newsletterEmail" class="form-group newsletter-group-email">
+                <label for="newsletterEmailInput" class="form-label offscreen">電子郵件</label>
+                <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required="" placeholder="you@example.com" size="30">
+            </div>
+
+            <div id="newsletterPrivacy" class="form-group form-group-agree newsletter-group-privacy hidden">
+                <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required="">
+                <label for="newsletterPrivacyInput">
+                我同意 Mozilla 依照 <a href="https://www.mozilla.org/privacy/">隱私權保護政策</a> 當中描述的方式處理我的資訊。
+                </label>
+            </div>
+            <div id="newsletterSubmit" class="newsletter-group-submit">
+                <button id="newsletter-submit" type="submit" class="button neutral newsletter-submit">
+                    立即註冊<svg class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="28" viewBox="0 0 23 28" aria-hidden="true">
+    <path d="M23 15a2.01 2.01 0 0 1-.578 1.422L12.25 26.594c-.375.359-.891.578-1.422.578s-1.031-.219-1.406-.578L8.25 25.422c-.375-.375-.594-.891-.594-1.422s.219-1.047.594-1.422L12.828 18h-11C.703 18 0 17.062 0 16v-2c0-1.062.703-2 1.828-2h11L8.25 7.406a1.96 1.96 0 0 1 0-2.812l1.172-1.172c.375-.375.875-.594 1.406-.594s1.047.219 1.422.594l10.172 10.172c.375.359.578.875.578 1.406z"></path>
+</svg>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>感謝您！請到信箱收信確認訂閱。</h2>
+        <p>若您先前沒有確認訂閱過 Mozilla 電子報，現在可能需要確認。請到信箱收信，或到垃圾信件匣中看看有沒有來自我們的訊息。
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide">
+        <span>隱藏註冊電子報</span>
+        <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28" aria-hidden="true"><path d="M20.281 20.656c0 .391-.156.781-.438 1.062l-2.125 2.125c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438L11 19.249l-4.594 4.594c-.281.281-.672.438-1.062.438s-.781-.156-1.062-.438l-2.125-2.125c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062L6.751 15l-4.594-4.594c-.281-.281-.438-.672-.438-1.062s.156-.781.438-1.062l2.125-2.125c.281-.281.672-.438 1.062-.438s.781.156 1.062.438L11 10.751l4.594-4.594c.281-.281.672-.438 1.062-.438s.781.156 1.062.438l2.125 2.125c.281.281.438.672.438 1.062s-.156.781-.438 1.062L15.249 15l4.594 4.594c.281.281.438.672.438 1.062z"></path></svg>
+    </button>
+</div>
+      </div>
+    
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website$edit" label="編輯頁面"></menuitem>
+    <menuitem data-action="/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website$history" label="檢視頁面歷史紀錄"></menuitem>
+  </menu>
+
+      </div>
+  </main>
+
+  <!-- Footer -->
+    <footer id="nav-footer" class="nav-footer">
+      <div class="center">
+          <a href="https://developer.mozilla.org/zh-TW/" class="nav-footer-logo">MDN Web Docs</a>
+<div class="footer-group footer-group-mdn">
+  <h2 class="footer-title">MDN</h2>
+  <ul class="footer-list">
+    <li><a href="https://developer.mozilla.org/zh-TW/docs/Web">網頁技術</a></li>
+    <li><a href="https://developer.mozilla.org/zh-TW/docs/Learn">學習網頁開發</a></li>
+    <li><a href="https://developer.mozilla.org/docs/MDN/About">關於 MDN</a></li>
+    <li><a href="https://developer.mozilla.org/zh-TW/docs/MDN/Feedback">意見回饋</a></li>
+    <li class="footer-social">
+        <a href="https://twitter.com/mozdevnet">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-twitter" width="26" height="28" viewBox="0 0 26 28" aria-label="Twitter" role="img" focusable="false">
+    <title>Twitter</title>
+    <path d="M25.312 6.375a10.85 10.85 0 0 1-2.531 2.609c.016.219.016.438.016.656 0 6.672-5.078 14.359-14.359 14.359-2.859 0-5.516-.828-7.75-2.266.406.047.797.063 1.219.063 2.359 0 4.531-.797 6.266-2.156a5.056 5.056 0 0 1-4.719-3.5c.313.047.625.078.953.078.453 0 .906-.063 1.328-.172a5.048 5.048 0 0 1-4.047-4.953v-.063a5.093 5.093 0 0 0 2.281.641 5.044 5.044 0 0 1-2.25-4.203c0-.938.25-1.797.688-2.547a14.344 14.344 0 0 0 10.406 5.281 5.708 5.708 0 0 1-.125-1.156 5.045 5.045 0 0 1 5.047-5.047 5.03 5.03 0 0 1 3.687 1.594 9.943 9.943 0 0 0 3.203-1.219 5.032 5.032 0 0 1-2.219 2.781c1.016-.109 2-.391 2.906-.781z"></path>
+</svg>
+        </a>
+    </li>
+    <li class="footer-social">
+        <a href="https://github.com/mdn/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-github" width="24" height="28" viewBox="0 0 24 28" aria-label="GitHub" role="img" focusable="false">
+    <title>GitHub</title>
+    <path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-.609.109-.828-.266-.828-.578 0-.391.016-1.687.016-3.297 0-1.125-.375-1.844-.812-2.219 2.672-.297 5.484-1.313 5.484-5.922 0-1.313-.469-2.375-1.234-3.219.125-.313.531-1.531-.125-3.187-1-.313-3.297 1.234-3.297 1.234a11.28 11.28 0 0 0-6 0S6.704 6.656 5.704 6.969c-.656 1.656-.25 2.875-.125 3.187-.766.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-.344.313-.656.844-.766 1.609-.688.313-2.438.844-3.484-1-.656-1.141-1.844-1.234-1.844-1.234-1.172-.016-.078.734-.078.734.781.359 1.328 1.75 1.328 1.75.703 2.141 4.047 1.422 4.047 1.422 0 1 .016 1.937.016 2.234 0 .313-.219.688-.828.578C3.439 23.796.002 19.296.002 13.999c0-6.625 5.375-12 12-12zM4.547 19.234c.031-.063-.016-.141-.109-.187-.094-.031-.172-.016-.203.031-.031.063.016.141.109.187.078.047.172.031.203-.031zm.484.532c.063-.047.047-.156-.031-.25-.078-.078-.187-.109-.25-.047-.063.047-.047.156.031.25.078.078.187.109.25.047zm.469.703c.078-.063.078-.187 0-.297-.063-.109-.187-.156-.266-.094-.078.047-.078.172 0 .281s.203.156.266.109zm.656.656c.063-.063.031-.203-.063-.297-.109-.109-.25-.125-.313-.047-.078.063-.047.203.063.297.109.109.25.125.313.047zm.891.391c.031-.094-.063-.203-.203-.25-.125-.031-.266.016-.297.109s.063.203.203.234c.125.047.266 0 .297-.094zm.984.078c0-.109-.125-.187-.266-.172-.141 0-.25.078-.25.172 0 .109.109.187.266.172.141 0 .25-.078.25-.172zm.906-.156c-.016-.094-.141-.156-.281-.141-.141.031-.234.125-.219.234.016.094.141.156.281.125s.234-.125.219-.219z"></path>
+</svg>
+        </a>
+    </li>
+  </ul>
+</div>
+
+          <a href="https://mozilla.org/" class="nav-footer-mozilla">Mozilla</a>
+<div class="footer-group footer-group-mozilla">
+  <h2 class="footer-title">Mozilla</h2>
+  <ul class="footer-list">
+    <li><a href="https://www.mozilla.org/about/">關於</a></li>
+    <li><a href="https://www.mozilla.org/contact/">聯絡我們</a></li>
+    <li><a href="https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&amp;utm_campaign=footer&amp;utm_medium=referral">Firefox</a></li>
+    <li class="footer-social">
+        <a href="https://twitter.com/mozilla">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-twitter" width="26" height="28" viewBox="0 0 26 28" aria-label="Twitter" role="img" focusable="false">
+    <title>Twitter</title>
+    <path d="M25.312 6.375a10.85 10.85 0 0 1-2.531 2.609c.016.219.016.438.016.656 0 6.672-5.078 14.359-14.359 14.359-2.859 0-5.516-.828-7.75-2.266.406.047.797.063 1.219.063 2.359 0 4.531-.797 6.266-2.156a5.056 5.056 0 0 1-4.719-3.5c.313.047.625.078.953.078.453 0 .906-.063 1.328-.172a5.048 5.048 0 0 1-4.047-4.953v-.063a5.093 5.093 0 0 0 2.281.641 5.044 5.044 0 0 1-2.25-4.203c0-.938.25-1.797.688-2.547a14.344 14.344 0 0 0 10.406 5.281 5.708 5.708 0 0 1-.125-1.156 5.045 5.045 0 0 1 5.047-5.047 5.03 5.03 0 0 1 3.687 1.594 9.943 9.943 0 0 0 3.203-1.219 5.032 5.032 0 0 1-2.219 2.781c1.016-.109 2-.391 2.906-.781z"></path>
+</svg>
+        </a>
+    </li>
+    <li class="footer-social">
+        <a href="https://www.facebook.com/mozilla">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-facebook" width="16" height="28" viewBox="0 0 16 28" aria-label="Facebook" role="img" focusable="false">
+    <title>Facebook</title>
+    <path d="M14.984.187v4.125h-2.453c-1.922 0-2.281.922-2.281 2.25v2.953h4.578l-.609 4.625H10.25v11.859H5.469V14.14H1.485V9.515h3.984V6.109C5.469 2.156 7.891 0 11.422 0c1.687 0 3.141.125 3.563.187z"></path>
+</svg>
+        </a>
+    </li>
+    <li class="footer-social">
+        <a href="https://www.instagram.com/mozillagram/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-instagram" width="24" height="28" viewBox="0 0 24 28" aria-label="Instagram" role="img" focusable="false">
+    <title>Instagram</title>
+    <path d="M16 14c0-2.203-1.797-4-4-4s-4 1.797-4 4 1.797 4 4 4 4-1.797 4-4zm2.156 0c0 3.406-2.75 6.156-6.156 6.156S5.844 17.406 5.844 14 8.594 7.844 12 7.844s6.156 2.75 6.156 6.156zm1.688-6.406c0 .797-.641 1.437-1.437 1.437S16.97 8.39 16.97 7.594s.641-1.437 1.437-1.437 1.437.641 1.437 1.437zM12 4.156c-1.75 0-5.5-.141-7.078.484-.547.219-.953.484-1.375.906s-.688.828-.906 1.375c-.625 1.578-.484 5.328-.484 7.078s-.141 5.5.484 7.078c.219.547.484.953.906 1.375s.828.688 1.375.906c1.578.625 5.328.484 7.078.484s5.5.141 7.078-.484c.547-.219.953-.484 1.375-.906s.688-.828.906-1.375c.625-1.578.484-5.328.484-7.078s.141-5.5-.484-7.078c-.219-.547-.484-.953-.906-1.375s-.828-.688-1.375-.906C17.5 4.015 13.75 4.156 12 4.156zM24 14c0 1.656.016 3.297-.078 4.953-.094 1.922-.531 3.625-1.937 5.031s-3.109 1.844-5.031 1.937c-1.656.094-3.297.078-4.953.078s-3.297.016-4.953-.078c-1.922-.094-3.625-.531-5.031-1.937S.173 20.875.08 18.953C-.014 17.297.002 15.656.002 14s-.016-3.297.078-4.953c.094-1.922.531-3.625 1.937-5.031s3.109-1.844 5.031-1.937c1.656-.094 3.297-.078 4.953-.078s3.297-.016 4.953.078c1.922.094 3.625.531 5.031 1.937s1.844 3.109 1.937 5.031C24.016 10.703 24 12.344 24 14z"></path>
+</svg>
+        </a>
+    </li>
+  </ul>
+</div>
+
+          
+  
+    <form class="languages go" method="get" action="https://developer.mozilla.org/zh-TW/docs/Web">
+      <label for="language">其他語言:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="中文（正體）" data-locale="zh-TW" value="/zh-TW/docs/Learn/Getting_started_with_the_web/Publishing_your_website" selected="">
+          正體中文 (繁體) (zh-TW)
+        </option>
+        
+          <option title="英語（美國）" data-locale="zh-TW" value="/en-US/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            English (US) (en-US)
+          </option>
+          <option title="保加利亞語" data-locale="zh-TW" value="/bg/docs/Learn/%D0%94%D0%B0_%D0%B7%D0%B0%D0%BF%D0%BE%D1%87%D0%BD%D0%B5%D0%BC_%D1%81_%D0%9C%D1%80%D0%B5%D0%B6%D0%B0%D1%82%D0%B0/Publishing_your_website">
+            Български (bg)
+          </option>
+          <option title="加泰隆語" data-locale="zh-TW" value="/ca/docs/Learn/Getting_started_with_the_web/Publicar_nostre_lloc_web">
+            Català (ca)
+          </option>
+          <option title="德語" data-locale="zh-TW" value="/de/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Deutsch (de)
+          </option>
+          <option title="西班牙語" data-locale="zh-TW" value="/es/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Español (es)
+          </option>
+          <option title="法語" data-locale="zh-TW" value="/fr/docs/Apprendre/Commencer_avec_le_web/Publier_votre_site_web">
+            Français (fr)
+          </option>
+          <option title="印尼語" data-locale="zh-TW" value="/id/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Bahasa Indonesia (id)
+          </option>
+          <option title="義大利語" data-locale="zh-TW" value="/it/docs/Learn/Getting_started_with_the_web/Pubblicare_il_tuo_sito">
+            Italiano (it)
+          </option>
+          <option title="日語" data-locale="zh-TW" value="/ja/docs/Learn/Getting_started_with_the_web/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B">
+            日本語 (ja)
+          </option>
+          <option title="韓語" data-locale="zh-TW" value="/ko/docs/Learn/Getting_started_with_the_web/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8_%EC%B6%9C%ED%8C%90%ED%95%98%EA%B8%B0">
+            한국어 (ko)
+          </option>
+          <option title="荷蘭語" data-locale="zh-TW" value="/nl/docs/Learn/Getting_started_with_the_web/Publicatie_website">
+            Nederlands (nl)
+          </option>
+          <option title="波蘭語" data-locale="zh-TW" value="/pl/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Polski (pl)
+          </option>
+          <option title="葡萄牙語（巴西）" data-locale="zh-TW" value="/pt-BR/docs/Aprender/Getting_started_with_the_web/Publicando_seu_site">
+            Português (do&nbsp;Brasil) (pt-BR)
+          </option>
+          <option title="葡萄牙語（葡萄牙）" data-locale="zh-TW" value="/pt-PT/docs/Learn/Comecar_com_a_Web/Publicar_o_seu_site_da_Web">
+            Português (Europeu) (pt-PT)
+          </option>
+          <option title="羅馬尼亞語" data-locale="zh-TW" value="/ro/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Română (ro)
+          </option>
+          <option title="俄語" data-locale="zh-TW" value="/ru/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Русский (ru)
+          </option>
+          <option title="土耳其語" data-locale="zh-TW" value="/tr/docs/%C3%96%C4%9Fren/Getting_started_with_the_web/Publishing_your_website">
+            Türkçe (tr)
+          </option>
+          <option title="烏克蘭語" data-locale="zh-TW" value="/uk/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Українська (uk)
+          </option>
+          <option title="越南語" data-locale="zh-TW" value="/vi/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            Tiếng Việt (vi)
+          </option>
+          <option title="中文（簡體）" data-locale="zh-TW" value="/zh-CN/docs/Learn/Getting_started_with_the_web/Publishing_your_website">
+            中文 (简体) (zh-CN)
+          </option>
+      </select>
+      <noscript><button type="submit">衝</button></noscript>
+    </form>
+  
+
+
+          
+            <ul class="footer-tos">
+              <li><a href="https://www.mozilla.org/about/legal/terms/mozilla">使用條款</a></li>
+              <li><a href="https://www.mozilla.org/privacy/websites/">隱私權</a></li>
+              <li><a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            </ul>
+
+            <div id="license" class="contentinfo">
+              <p>© 2005-2019 Mozilla 與各貢獻者。</p> <p>內容依照<a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">這些授權條款</a>提供大眾使用。</p>
+            </div>
+          
+      </div>
+    </footer> 
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.mozilla.org/static/build/js/selectivizr.8bb9e662e963.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script src="./將你的網站發佈上線 _ MDN_files/javascript.8dd32e381268.js.download"></script>
+    <script type="text/javascript" src="./將你的網站發佈上線 _ MDN_files/main.0ed22a584ec2.js.download" charset="utf-8"></script>
+    <script>
+    if (window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+  </script>
+    
+  
+
+    <script async="" type="text/javascript" src="./將你的網站發佈上線 _ MDN_files/wiki.2780b51fe209.js.download" charset="utf-8"></script>
+    <script type="text/javascript" src="./將你的網站發佈上線 _ MDN_files/codepen-iex.90ec97979519.js.download" charset="utf-8"></script>
+
+    <script async="" src="./將你的網站發佈上線 _ MDN_files/ei.js.download"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+    <script async="" type="text/javascript" src="./將你的網站發佈上線 _ MDN_files/newsletter.a85c5c2892e5.js.download" charset="utf-8"></script>
+  
+
+
+
+</body></html>
