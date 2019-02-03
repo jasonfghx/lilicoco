@@ -5,3 +5,23 @@ G:\我的雲端硬碟\data_science\Django\練習\myproject\project>python manage
 G:\我的雲端硬碟\data_science\Django\練習\myproject\project>python manage.py runserver
 
 http://127.0.0.1:8000/admin/login/?next=/admin/
+
+
+urls.py
+from django.conf.urls import url
+#from app import views
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^hello/','app.views.hello')
+]
+
+
+
+views.py
+from django.shortcuts import render,HttpResponse
+
+# Create your views here.
+def hello(request):
+    return HttpResponse('fuck')
