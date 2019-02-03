@@ -1,1 +1,3 @@
 G:\我的雲端硬碟\data_science\Django\練習\myproject>django-admin startproject project
+
+G:\我的雲端硬碟\data_science\Django\練習\myproject\project>python manage.py migrate
