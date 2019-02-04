@@ -25,3 +25,5 @@ from django.shortcuts import render,HttpResponse
 # Create your views here.
 def hello(request):
     return HttpResponse('fuck')
+    
+https://blog.csdn.net/c_beautiful/article/details/79755368    
