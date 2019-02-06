@@ -26,4 +26,5 @@ from django.shortcuts import render,HttpResponse
 def hello(request):
     return HttpResponse('fuck')
     
-https://blog.csdn.net/c_beautiful/article/details/79755368    
+https://blog.csdn.net/c_beautiful/article/details/79755368  
+https://www.itread01.com/content/1521874601.html
