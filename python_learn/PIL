@@ -7,3 +7,5 @@ im=np.array(pm)
 cv2.imshow("1",im)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+#放text  https://stackoverflow.com/questions/16373425/add-text-on-image-using-pil
