@@ -37,3 +37,10 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 
 keras 自己就有戴模型的 method、不需另外用 pickle or joblib
 model = keras.models.load_model("2019-02-11T0735_.h5")
+
+import pickle
+f = open('/content/gdrive/My Drive/智慧製造/py/output/store_p2.pckl', 'rb')
+
+
+[ model,history]=pickle.load(f)
+f.close()
