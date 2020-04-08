@@ -1,0 +1,14 @@
+!pip install PyExecJS 
+import execjs
+
+jsFunc = '''
+    function secret(){
+        var colors = [null,null, "Green", "Blue"];
+        var a=colors.length;
+ 
+        return (a);
+    }
+'''
+jscontext = execjs.compile(jsFunc)
+a = jscontext.call('secret')
+print(a)
