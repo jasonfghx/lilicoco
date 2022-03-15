@@ -1,0 +1,12 @@
+#將ARO01  ARO02 (ARO2-LIMS-s922@MX, ARO1-LIMS-s912-744-m-Xylene) 作圖
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+aro12=pd.read_csv("/content/gdrive/Shareddrives/明志的日子/aroma廠/data/MX含量.csv")
+sns.kdeplot(aro12['ARO2'])
+sns.kdeplot(aro12['ARO1'])
+# plt.plot()
+plt.show()
+
+#遇到問題: 回收率0.96上下跳，浮動很大
