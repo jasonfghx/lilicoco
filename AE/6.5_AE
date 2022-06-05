@@ -1,0 +1,61 @@
+input_img = Input(shape=(120, 120, 3))
+l1 = Conv2D(64, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(input_img)
+
+l2 = Conv2D(64, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l1)
+
+l3 = MaxPooling2D(padding = 'same')(l2)
+l3 = Dropout(0.3)(l3)
+
+l4 = Conv2D(128, (3, 3),  padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l3)
+
+l5 = Conv2D(128, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l4)
+
+l6 = MaxPooling2D(padding = 'same')(l5)
+
+l7 = Conv2D(256, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l6)
+l8 = Conv2D(256, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l7)
+l9 = MaxPooling2D(padding = 'same')(l8)
+l10 = Conv2D(100, (3, 3), padding = 'same', activation = 'relu', 
+            activity_regularizer = regularizers.l1(10e-10))(l9)# 我改這!!!!!!!!!!!!!!!!!
+
+encoder = Model(input_img, l10)
+encoder.summary()
+
+l11 = UpSampling2D(size=(2,2))(l10)
+l12 = Conv2D(256, (3, 3), padding = 'same', activation = 'relu',
+            activity_regularizer = regularizers.l1(10e-10))(l11)
+
+l13 = Conv2D(256, (3, 3), padding = 'same', activation = 'relu',
+             activity_regularizer = regularizers.l1(10e-10))(l12)
+l14 = add([l8, l13])
+l15 = UpSampling2D()(l14)
+
+l16 = Conv2D(128, (3, 3), padding = 'same', activation = 'relu',
+            activity_regularizer = regularizers.l1(10e-10))(l15)
+
+l17 = Conv2D(128, (3, 3), padding = 'same', activation = 'relu',
+             activity_regularizer = regularizers.l1(10e-10))(l16)
+
+l18 = add([l5, l17])
+l19 = UpSampling2D()(l18)
+
+l20 = Conv2D(64, (3, 3), padding = 'same', activation = 'relu',
+             activity_regularizer = regularizers.l1(10e-10))(l19)
+
+l21 = Conv2D(64, (3, 3), padding = 'same', activation = 'relu',
+             activity_regularizer = regularizers.l1(10e-10))(l20)
+
+l22 = add([l21, l2])
+
+decoded = Conv2D(3, (3, 3), padding = 'same', 
+                 activation = 'relu', activity_regularizer = regularizers.l1(10e-10))(l22)
+
+autoencoder = Model(input_img, decoded)
+autoencoder_hfenn = Model(input_img, decoded)
+autoencoder.summary()
