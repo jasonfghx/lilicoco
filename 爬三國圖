@@ -284,3 +284,6 @@ class DEC(object):
         self.model.save_weights(save_dir + '/DEC_model_final.h5')
 
         return y_pred
+        
+        
+        https://github.com/XifengGuo/DEC-keras/blob/master/DEC.py
