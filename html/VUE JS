@@ -1,5 +1,4 @@
 
-
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
@@ -12,21 +11,21 @@
 	<!-- 當 userInput 更新，也會同步輸入框數值 -->
 	<input	type="text" v-model="userInput" />
 
-<select v-model="selected">
+<select v-model.number="selected">
     <option disabled value="">请选择</option>
     <option>1</option>
     <option>2</option>
     <option>3</option>
 </select>
 
-<select v-model="selected1">
+<select v-model.number="selected1">
     <option disabled value="">请选择</option>
     <option>1</option>
     <option>2</option>
     <option>3</option>
 </select>
 	
-<span> selected: {{ selected }}</span>
+<span> selected: {{ selected+selected1 }}</span>
 </div>
 
 <script>
@@ -41,8 +40,6 @@ selected1:"",
 });
 
 </script>
-
-
 
 
 
