@@ -1,26 +1,31 @@
-
-
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<script>
-new Vue({
-	el: '#app",
-	data: {
-		msg: 'Vue rock!',
-		userInput: ''
-	}
-});
+<div id="app">
+	<!-- 將 message 呈現於UI -->
+	<p>{{ msg }}</p>
+	
+	<hr>
+	
+	<!-- 取得使用者當前輸入，更新 userInput -->
+	<!-- 當 userInput 更新，也會同步輸入框數值 -->
+	<input	type="text" v-model="userInput" />
 
-</script>
-
-
+<select v-model="selected">
+    <option disabled value="">请选择</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+</select>	
+<span> selected: {{ selected }}</span>
+</div>
 
 <script>
 var app =new Vue({
-	el: '#app",
+	el: "#app",
 	data: {
 		msg: 'Vue rock!',
-		userInput: ''
+		userInput: [],
+selected : ""	,
 	}
 });
 
