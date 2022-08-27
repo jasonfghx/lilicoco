@@ -11,18 +11,18 @@
 	<!-- 當 userInput 更新，也會同步輸入框數值 -->
 	<input	type="text" v-model="userInput" />
 
-<select v-model.number="selected">
+<select v-model.number="selected" :value="selected">
     <option disabled value="">请选择</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
+    <option value='4.5'>低</option>
+    <option value='5'>能</option>
+    <option value='6'>而</option>
 </select>
 
-<select v-model.number="selected1">
+<select v-model.number="selected1" :value="selected1">
     <option disabled value="">请选择</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
+    <option value='1'>+</option>
+    <option value='2'>-</option>
+    <option value='3'>*</option>
 </select>
 	
 <span> selected: {{ selected+selected1 }}</span>
@@ -42,5 +42,5 @@ selected1:"",
 </script>
 
 
-
+讓選項以value可以相加
 https://ithelp.ithome.com.tw/articles/10246594
