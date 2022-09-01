@@ -44,3 +44,56 @@ selected1:"",
 
 讓選項以value可以相加
 https://ithelp.ithome.com.tw/articles/10246594
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+	<!-- 將 message 呈現於UI -->
+	<p>{{ msg }}</p>
+
+	<hr>
+
+	<!-- 取得使用者當前輸入，更新 userInput -->
+	<!-- 當 userInput 更新，也會同步輸入框數值 -->
+	<input type="text" v-model="userInput" />
+
+	<select v-model.number="selected" :value="selected">
+		<option disabled value="">请选择</option>
+		<option value='4.5'>低</option>
+		<option value='5'>能</option>
+		<option value='6'>而</option>
+	</select>
+
+	<select v-model.number="selected1" :value="selected1">
+		<option disabled value="">请选择</option>
+		<option value='1'>+</option>
+		<option value='2'>-</option>
+		<option value='3'>*</option>
+	</select>
+	<button @click='handle'>计算</button>
+	{{result}}
+	<!-- <span v-if="(selected+selected1)===5.5">123</span> -->
+	<!-- <span> selected: {{ selected+selected1 }}</span> -->
+</div>
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			msg: 'Vue rock!',
+			userInput: [],
+			selected: "",
+			selected1: "",
+			result: "",
+		},
+		methods: {
+			handle: function () {
+				//实现逻辑计算
+				this.result = (this.selected) + (this.selected1);
+			}
+		}
+		
+	});
+
+</script>
