@@ -1,0 +1,20 @@
+<div id="components-demo">
+    <!--元件可以重複使用-->
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+
+<script>
+Vue.component("button-counter", {
+  data: function() {
+    return {
+      count: 0
+    };
+  },
+  template: '<button v-on:click="count+=1">你點我 {{ count }} 次</button>'
+  // template 中可以取用 data 方法所回傳的資料
+});
+	var app = new Vue({ el: "#components-demo" });
+
+</script>
