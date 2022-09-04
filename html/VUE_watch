@@ -1,0 +1,79 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+<input v-model.lazy="search"           placeholder="Search for..." />
+
+
+	<hr>
+
+	<!-- 取得使用者當前輸入，更新 userInput -->
+	<!-- 當 userInput 更新，也會同步輸入框數值 -->
+	<input type="text" v-model="userInput" />
+
+	<select v-model="selected" :value="selected">
+		<option disabled value="">请选择</option>
+		<option value='4.5a'>低</option>
+		<option value='5b'>能</option>
+		<option value='6c'>而</option>
+	</select>
+
+	<select v-model="selected1" :value="selected1" @change="handle">
+		<option disabled value="">请选择</option>
+		<option value='1a'>+</option>
+		<option value='2b'>-</option>
+		<option value='3c'>*</option>
+	</select>
+	<!-- <button @click='handle'>计算</button> -->
+	{{result}}
+	<!-- <span v-if="(selected+selected1)===5.5">123</span> -->
+	<!-- <span> selected: {{ selected+selected1 }}</span> -->
+</div>
+
+
+
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			msg: 'Vue rock!',
+			search: '',
+			userInput: [],
+			selected: "",
+			selected1: "",
+			result: "",
+		},
+		methods: {
+			handle: function () {
+				//实现逻辑计算
+				this.result = (this.selected) + (this.selected1);
+				if (this.result=='4.5a1a'){
+					this.result='a'
+					return this.result
+				};
+				if(this.result=='5b2b'){
+				this.result='b'
+					return this.result	
+				}
+
+				// else if(this.result=='6c3c'){
+				// this.result='c'
+				// 	return this.result	
+				// }
+				else {
+					this.result='c'
+					return this.result
+				}
+
+			}
+				
+		},
+		watch: {
+            search: function (value) {
+                console.log(value);
+            }
+        }
+		
+	});
+
+</script>
