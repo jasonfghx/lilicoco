@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+<link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+
+<div id="app">
+
+	<multiselect v-model=selectedOptions :multiple="true" :options="optionsList" :hide-selected="true"
+		:disabled="selectedOptions.length>=optionsLimit"></multiselect>
+
+</div>
+<script>
+	Vue.component('multiselect', window.VueMultiselect.default)
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+			selectedOptions: [],
+			optionsLimit: 3,
+			optionsList: ["a", "b", "c", "d", "e",]
+		},
+	})
+</script>
