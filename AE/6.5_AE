@@ -1,3 +1,23 @@
+'11-Metal_Discoloration',
+ '13-Metal_Void',
+ '14-Metal_Poor_adherence',
+ '16-Metal_Residue',
+ '21-PAD_Discoloration',
+ '24-PAD_Contamination',
+ '31-Passivation_Scratch',
+ '32-Passivation_Particle',
+ '33-Passivation_Contamination',
+ '34-PSV_Hole',
+ '36-Passivation_PIQ_BP',
+ '38-Passivation_Peelig',
+ '38-Passivation_Peeling',
+ '39-Passivation_Masking',
+ '41-Probe_Mark_Shift',
+ '45-Probe_Defect_Cluster',
+ '52-Metal_Under_Layer_Defect',
+ '62-Laser_marking_Particle',
+
+
 input_img = Input(shape=(120, 120, 3))
 l1 = Conv2D(64, (3, 3), padding = 'same', activation = 'relu', 
             activity_regularizer = regularizers.l1(10e-10))(input_img)
