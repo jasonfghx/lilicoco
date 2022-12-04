@@ -1,0 +1,8 @@
+import py7zr
+filenames = ['20221011_第三次_20221103.7z.001', '20221011_第三次_20221103.7z.002','20221011_第三次_20221103.7z.003','20221011_第三次_20221103.7z.004','20221011_第三次_20221103.7z.005']
+with open('20221011_第三次_20221103.7z', 'ab') as outfile:  # append in binary mode
+    for fname in filenames:
+        with open(fname, 'rb') as infile:        # open in binary mode also
+            outfile.write(infile.read())
+with py7zr.SevenZipFile("20221011_第三次_20221103.7z", "r") as archive:
+    archive.extractall('/content/gdrive/Shareddrives/明志的日子/wafer/20221204/unzip')
