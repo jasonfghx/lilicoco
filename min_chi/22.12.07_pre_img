@@ -1,0 +1,25 @@
+from tqdm import tqdm
+k=0
+add=glob.glob("/content/gdrive/Shareddrives/明志的日子/wafer/20221204/normal/*DEF.JPG")
+clahe = cv2.createCLAHE(clipLimit=20,tileGridSize=(4,4))
+for a in tqdm(add[999:3000]):
+  add_MA=glob.glob("/content/gdrive/Shareddrives/明志的日子/wafer/20221204/normal/"+a.split("/")[-1].split("DEF")[0]+"MA*")[0]
+  # add_DEF=glob.glob("/content/gdrive/Shareddrives/明志的日子/wafer/20221204/normal/"+a.split("/")[-1].split("DEF")[0]+"DEF*")[0]
+  image1 = Image.open(add_MA)
+  mask1=255-np.array(image1)
+  image3 = Image.fromarray(mask1)
+  # image2 = Image.open(add_DEF) 
+  img1 = cv2.imread(a, cv2.IMREAD_COLOR)
+  img = cv2.cvtColor(img1, cv2.COLOR_RGB2Lab)
+  
+  img[:,:,0] = clahe.apply(img[:,:,0])
+
+  img = cv2.cvtColor(img, cv2.COLOR_Lab2RGB)
+  image2=img[:,:,::-1]
+  image2=Image.fromarray(image2)
+  enh_bri = ImageEnhance.Brightness(image2)
+  new_img = enh_bri.enhance(factor=1.5)
+  alphaBlended = Image.blend(new_img, image3,alpha = 0.2)
+  alphaBlended=(alphaBlended).crop((200, 200, 500, 500))
+  # print(alphaBlended)
+  im1 = alphaBlended.save("/content/gdrive/Shareddrives/明志的日子/wafer/20221204/221206_example/"+a.split("/")[-1])
