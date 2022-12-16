@@ -1,0 +1,78 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+	<!-- 將 message 呈現於UI -->
+  <button v-on:click="inc">按一下</button> 
+<div v-if="total==0">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\1.JPG" width="400" height="400">
+</div>
+<div v-if="total==1">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\2.JPG" width="400" height="400">
+</div>
+<div v-if="total==2">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\3.JPG" width="400" height="400">
+</div>
+<div v-if="total==3">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\4.JPG" width="400" height="400">
+</div>
+<div v-if="total==4">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\5.JPG" width="400" height="400">
+</div>
+<div v-if="total==5">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\6.JPG" width="400" height="400">
+</div>
+<div v-if="total==6">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\7.JPG" width="400" height="400">
+</div>
+<div v-if="total==7">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\8.JPG" width="400" height="400">
+</div>
+<div v-if="total==8">
+  <img src="C:\Users\ADSL\Desktop\HealthConnect-master\assets\img\9.JPG" width="400" height="400">
+</div>
+</div>
+	<hr>
+	
+	<!-- 取得使用者當前輸入，更新 userInput -->
+	<!-- 當 userInput 更新，也會同步輸入框數值 -->
+	<input	type="text" v-model="userInput" />
+
+<select v-model.number="selected" :value="selected">
+    <option disabled value="">请选择</option>
+    <option value='4.5'>低</option>
+    <option value='5'>能</option>
+    <option value='6'>而</option>
+</select>
+
+<select v-model.number="selected1" :value="selected1">
+    <option disabled value="">请选择</option>
+    <option value='1'>+</option>
+    <option value='2'>-</option>
+    <option value='3'>*</option>
+</select>
+	
+<span> selected: {{ selected+selected1 }}</span>
+</div>
+
+<script>
+var app =new Vue({
+	el: "#app",
+	data: {
+    total: '0',
+		msg: 'Vue rock!',
+		userInput: [],
+selected : ""	,
+selected1:"",
+	},
+  methods: {
+    inc() {
+      this.total++;
+      if (this.total==9)
+      {
+        this.total=0
+      }
+    },
+  }
+});
+
+</script>
