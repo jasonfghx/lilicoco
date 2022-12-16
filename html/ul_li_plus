@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style type="text/css">
+  ul li {
+    border: 1px #cccccc solid;
+    width: 200px;
+    float: left;
+  }
+</style>
+<div id="app">
+  <ul>
+    　<li v-on:click="inc">這裡是項目一</li>
+    　<li v-on:click="minus">這裡是項目二</li>
+  </ul>
+  <br>
+  <p>{{total}}</p>
+</div>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      total: '0',
+      msg: 'Vue rock!',
+      userInput: [],
+      selected: "",
+      selected1: "",
+    },
+    methods: {
+      inc() {
+        this.total++;
+        if (this.total == 9) {
+          this.total = 0
+        }
+      },
+      minus() {
+        this.total--;
+        if (this.total == 0) {
+          this.total = 0
+        }
+      },
+    }
+  });
+
+</script>
