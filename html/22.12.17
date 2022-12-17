@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style-match.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&family=Poppins:wght@200&family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<title>Cola</title>
+	</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+.round-face {
+    display: block;
+    width: 90%;
+    height: 700px;
+    position: relative;
+
+    background:#FFFAF2;
+    border-radius: 10px;
+box-shadow: -5px 10px 30px 10px #C0C0C0;
+    margin: 20px;
+}
+</style>
+
+	<body>
+		<div class="container">
+			<div class="side">
+				<div class="header">
+					<div class="avatar">
+						<img src="1.jpg" alt="This is the photo" width="60%">
+					</div>
+
+					<div class="title">BAYMAX</div>
+
+					<div class="icon" align="right">
+						<a href="#"><img src="s.png" alt="This is a icon"></a>
+						<a href="#"><img src="h.png" alt="This is a icon"></a>
+						<a href="#"><img src="u.png" alt="This is a icon"></a>
+					</div>
+				</div>
+
+				<div class="menu">
+					<ul>
+						<li class="active">Match<li>
+						<li>Chat<li>
+						
+					</ul>
+<div class="round-face">
+  
+</div>
+<p>  enter message:  <input id="text"/>  <input type="button" value="sned" /></p>
+				</div>	
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="card">
+				<div class="user">
+					<img class="user" src="mermaid.jpg" alt="This is the photo">
+					<div class="profile">
+						<div class="name">Mermaid <span>20</span></div>
+						<div class="local">
+							<img src="marker.png">
+							<span>Taoyuan</span>
+						</div>
+					</div>
+				</div>
+				<div class="buttons">
+					<div class="no">
+						<img src="cross.png">
+					</div>
+					<div class="like">
+						<img src="heart.png">
+					</div>
+				</div> 
+			</div>
+		</div>
+	</body>
+</html>
