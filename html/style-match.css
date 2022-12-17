@@ -1,0 +1,173 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #F5F7FA;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+}
+
+.side {
+	min-width:320px;
+	height: 200px;
+	backgroung-color: #FFF;
+	height: 100%;
+	min-height: 100vh;
+	border-right: 1px solid #E1E1E1;
+}
+
+.side .header {
+	background: linear-gradient(262deg, #FF7854, #FD267D);
+	width: 100%;
+	height: 80px;
+	box-shadow: 0 1px 8px 0 rgba(0, 20, 20, 0.2);
+	display: flex;
+	align-items: center;
+	padding: 0 10px 0 20px;
+}
+
+.side .header .avatar img {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	border: 2px solid #FFF;
+	box-shadow: 0 1px 8px 0 rgba(0, 20, 20, 0.2);
+}
+
+.side .header .title {
+	padding: 0 10px;
+	color: #FFF;
+	font-size: 23px;
+}
+
+.side .header .icon img {
+	width: 20px;
+	height: 20px;
+	margin-left: 30px;
+	float: left;
+}
+
+.side .header .icon img:hover {
+	transform:scale(1.2);
+}
+
+.side .menu ul {
+	display: flex;
+	padding: 0 20px;
+}
+
+.side .menu ul li {
+	list-style: none;
+	margin: 0 10px;
+	font-weight: 700;
+	font-size:15px;
+	letter-spacing: 0.5px;
+}
+
+.side .menu .active {
+	border-bottom: 3px solid #FD5068;
+	padding-bottom: 2px;
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	padding: 20px 0;
+	align-items: center;
+	flex-direction: column;
+}
+
+.content .card  {
+	position: relative;
+	height: 450px;
+}
+
+.content .card .user {
+	width: 380px;
+	height:  450px;
+	object-fit: cover;
+	border-radius: 10px;
+	box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+}
+
+.content .card .user .profile {
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+}
+
+.content .card .user .name {
+	color:#FFF;
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-shadow: 1px 1px 3px #444;
+}
+
+.content .card .user .name span {
+	font-size: 26px;
+}
+
+.content .card .local {
+	display: flex;
+	align-items: center;
+	padding: 0 0 20px 0;
+}
+
+.content .card .local img {
+	margin: 5px 0;
+	width: 5%;
+	color: #FFF;
+}
+
+.content .card .local span {
+	color: #FFF;
+	padding: 0 10px;
+	text-shadow: 1px 1px 3px #444;
+}
+
+.content .card .buttons {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.content .card .buttons .no img {
+	font-size: 33px;
+	width: 35px;
+	height: 35px;
+	margin-left: 100px;
+}
+
+.content .card .buttons .like img {
+	font-size: 33px;
+	width: 35px;
+	height: 35px;
+	margin-left: 100px;
+}
+
+/*
+.no, .like {
+	background-color: #FFF;
+	width: 70px;
+	height: 70px;
+	box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.1);
+	display: flex;
+	justify-content: center;
+	aligh-items: center;
+	border-radius: 70px;
+	margin: 4px;
+	transition: 0.2s transition;
+}
+*/
+
+.no:hover, .like:hover {
+	transform: scale(1.1);
+}
+
