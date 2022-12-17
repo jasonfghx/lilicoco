@@ -12,7 +12,7 @@
 <style>
 .round-face {
     display: block;
-    width: 90%;
+    width: 290px;
     height: 700px;
     position: relative;
 
@@ -41,15 +41,57 @@ box-shadow: -5px 10px 30px 10px #C0C0C0;
 				</div>
 
 				<div class="menu">
+<div id='app1'>
 					<ul>
-						<li class="active">Match<li>
-						<li>Chat<li>
+						<li v-on:click="makeRed" :class="{'active': isRed}">Match<li>
+						<li v-on:click="makeRed1" :class="{'active': isRed1}">Chat<li>
 						
 					</ul>
-<div class="round-face">
-  
+<div v-if="isRed1==true" >
+<div class="round-face"></div>
+<p>  <input id="text"/ placeholder='enter message: '>   <input type="button" value="sned" /></p>
 </div>
-<p>  enter message:  <input id="text"/>  <input type="button" value="sned" /></p>
+</div>
+<script>
+var app =new Vue({
+	el: "#app1",
+	data: {
+isRed: true,
+isRed1: false,
+	                     total: '0',
+		msg: 'Vue rock!',
+		userInput: [],
+selected : ""	,
+selected1:"",
+	},
+  methods: {
+    makeRed: function() {
+                this.isRed =!this.isRed;
+               if (this.isRed ==true){
+this.isRed1=false;
+}
+
+        },
+ makeRed1: function() {
+                this.isRed1 = !this.isRed1;
+               if (this.isRed1 ==true){
+this.isRed=false;
+}
+        },
+    inc() {
+      this.total++;
+      if (this.total==9)
+      {
+        this.total=0
+      }
+    },
+  }
+});
+</script>
+
+  
+
+
 				</div>	
 			</div>
 		</div>
