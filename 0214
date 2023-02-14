@@ -1,0 +1,50 @@
+fig = plt.figure(figsize=(12, 12))
+# my_cmap = plt.get_cmap("viridis")
+# Add a gridspec with two rows and two columns and a ratio of 1 to 4 between
+# the size of the marginal axes and the main axes in both directions.
+# Also adjust the subplot parameters for a square plot.
+gs = fig.add_gridspec(2, 2,  width_ratios=(4, 1), height_ratios=(1, 4),
+                      left=0.1, right=0.9, bottom=0.1, top=0.9,
+                      wspace=0.05, hspace=0.05)
+# Create the Axes.
+ax = fig.add_subplot(gs[1, 0])
+ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
+ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
+ax_histx.tick_params(axis="x", labelbottom=False)
+ax_histy.tick_params(axis="y", labelleft=False)
+m=ax.scatter(df['angle'], df['Row Labels'],c=df['ratio'],marker='s',s=200,cmap="cool")
+# plt.sca(ax[1, 0])
+# plt.xticks((0,30,60,90,120,150,180,210,240,270,300,330,360))
+# ax_histx.hist(x, )
+
+m1=ax_histx.bar(text,list(df.groupby(['angle'])['ratio'].sum()), width = 10)
+ax_histx.set_ylim((0,2))
+
+ax_histy.barh(df['Row Labels'].unique(),list(df.groupby(['Row Labels'])['ratio'].sum()))
+fig.colorbar(m)
+
+
+# PCM=ax.get_children()[5]
+
+# plt.text(-10,4,'This text starts at point (2,4)')
+# y=-14
+# for an in [30,60,90,120,150,180,210,240,270,300,330,360]:
+#     for i in df[df['angle']==an]['ratio']:
+#         for x1 in range(0,18):
+#             plt.text(y,x1,str(i))
+#         y=y+20
+# x1=0
+y1=-17.1
+for an in [30,60,90,120,150,180,210,240,270,300,330,360]:
+        x1=-0.3
+        for i in df[df['angle']==an]['ratio']:
+                if str(i)!='nan':
+                        plt.text(y1,x1,str(round(i,2)))
+                x1+=1
+        y1=y1+1.4
+# cb = colorbar(ax(2),'orientation','horizontal','Location','SouthOutside')
+#         y=y+20
+        # print(x1)
+# fig.colorbar(mappable, ax=ax)
+# im = ax.imshow(fig)
+# plt.show()
