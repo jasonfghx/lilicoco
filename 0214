@@ -16,24 +16,16 @@ m=ax.scatter(df['angle'], df['Row Labels'],c=df['ratio'],marker='s',s=200,cmap="
 # plt.sca(ax[1, 0])
 # plt.xticks((0,30,60,90,120,150,180,210,240,270,300,330,360))
 # ax_histx.hist(x, )
+clist = [(0, cmap(0)), (0.125, cmap(15)), (0.25, cmap(25)), (0.5, cmap(50)), 
+         (0.65, cmap(75)), (0.75, cmap(100)), (1, cmap(125))]
+rvb = mcolors.LinearSegmentedColormap.from_list("", clist)
 
-m1=ax_histx.bar(text,list(df.groupby(['angle'])['ratio'].sum()), width = 10)
+m1=ax_histx.bar(text,list(df.groupby(['angle'])['ratio'].sum()), width = 10, color=rvb(list(df.groupby(['angle'])['ratio'].sum())))
 ax_histx.set_ylim((0,2))
 
-ax_histy.barh(df['Row Labels'].unique(),list(df.groupby(['Row Labels'])['ratio'].sum()))
+ax_histy.barh(df['Row Labels'].unique(),list(df.groupby(['Row Labels'])['ratio'].sum()), color=rvb(list(df.groupby(['Row Labels'])['ratio'].sum())))
 fig.colorbar(m)
 
-
-# PCM=ax.get_children()[5]
-
-# plt.text(-10,4,'This text starts at point (2,4)')
-# y=-14
-# for an in [30,60,90,120,150,180,210,240,270,300,330,360]:
-#     for i in df[df['angle']==an]['ratio']:
-#         for x1 in range(0,18):
-#             plt.text(y,x1,str(i))
-#         y=y+20
-# x1=0
 y1=-17.1
 for an in [30,60,90,120,150,180,210,240,270,300,330,360]:
         x1=-0.3
