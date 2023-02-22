@@ -1,0 +1,24 @@
+suckle MJ
+print('Precision ',8592/(1052+8592))#suckle_MJ
+print('recall ',8592/(1107+8592))
+print('F1 ',2*0.89*0.885/(0.89+0.885))
+
+
+Precision  0.8909166321028619
+recall  0.885864522115682
+F1  0.887492957746479
+
+contract MJ
+Precision  0.8401989740401057
+recall  0.8391554106505201
+F1  0.8394997022036927
+
+NMC_MJ
+Precision  0.9524488825487399
+recall  0.9662325132657984
+F1  0.9395744680851065
+
+GIVEBIRTH_MJ 
+Precision  1
+recall  1
+F1  1
