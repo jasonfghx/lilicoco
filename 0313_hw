@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+import cv2 
+import math
+import matplotlib.pyplot as plt
+image_bw = cv2.imread('/content/sample4.png',0)
+image_bw_o = cv2.imread('/content/sample3.png',0)
+
+noiseless_image_bw = cv2.fastNlMeansDenoising(image_bw, None, 20, 7, 31) 
+# searchWindowSize =21 templateWindowSize =7 h=20
+plt.imshow(image_bw,cmap='gray')
+plt.show()
+plt.imshow(noiseless_image_bw,cmap='gray')
+plt.show()
+plt.imshow(image_bw_o,cmap='gray')
+plt.show()
+
+def psnr(original, contrast):
+    mse = np.mean((original - contrast) ** 2)
+    if mse == 0:
+        return 100
+    PIXEL_MAX = 255.0
+    PSNR = 10 * math.log10(PIXEL_MAX / math.sqrt(mse))
+    return PSNR
+
+
+import math
+print(psnr(image_bw,noiseless_image_bw))
+print(psnr(image_bw_o,noiseless_image_bw))
+print(psnr(image_bw_o,image_bw))
