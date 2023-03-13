@@ -28,3 +28,17 @@ import math
 print(psnr(image_bw,noiseless_image_bw))
 print(psnr(image_bw_o,noiseless_image_bw))
 print(psnr(image_bw_o,image_bw))
+
+
+image_bw = cv2.imread('/content/sample5.png',0)
+image_bw_o = cv2.imread('/content/sample3.png',0)
+blur = cv2.medianBlur(image_bw, 9)
+plt.imshow(image_bw,cmap='gray')
+plt.show()
+plt.imshow(blur,cmap='gray')
+plt.show()
+plt.imshow(image_bw_o,cmap='gray')
+plt.show()
+print(psnr(image_bw,blur))
+print(psnr(image_bw_o,blur))
+print(psnr(image_bw_o,image_bw))
