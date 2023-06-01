@@ -1,0 +1,4 @@
+test=cv_imread(r"C:\Users\ADSL\Desktop\CV_HW2\20221011_第三次\637826095380370272_32_Passivation_Particle/637826096926849126_RTEC_Regular_DEF.JPG")
+gray= cv2.cvtColor(test, cv2.COLOR_BGR2GRAY)
+ 
+ret, binary = cv2.threshold(gray, 720, 80, cv2.THRESH_BINARY)
