@@ -1,45 +1,113 @@
 
-https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-get-request-examples
-https://docs.opencv.org/4.x/da/d6e/tutorial_py_geometric_transformations.html
-fig = plt.figure(figsize=(12, 12))
-# my_cmap = plt.get_cmap("viridis")
-# Add a gridspec with two rows and two columns and a ratio of 1 to 4 between
-# the size of the marginal axes and the main axes in both directions.
-# Also adjust the subplot parameters for a square plot.
-gs = fig.add_gridspec(2, 2,  width_ratios=(4, 1), height_ratios=(1, 4),
-                      left=0.1, right=0.9, bottom=0.1, top=0.9,
-                      wspace=0.05, hspace=0.05)
-# Create the Axes.
-ax = fig.add_subplot(gs[1, 0])
-ax_histx = fig.add_subplot(gs[0, 0], sharex=ax)
-ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
-ax_histx.tick_params(axis="x", labelbottom=False)
-ax_histy.tick_params(axis="y", labelleft=False)
-m=ax.scatter(df['angle'], df['Row Labels'],c=df['ratio'],marker='s',s=200,cmap="cool")
-# plt.sca(ax[1, 0])
-# plt.xticks((0,30,60,90,120,150,180,210,240,270,300,330,360))
-# ax_histx.hist(x, )
-clist = [(0, cmap(0)), (0.125, cmap(15)), (0.25, cmap(25)), (0.5, cmap(50)), 
-         (0.65, cmap(75)), (0.75, cmap(100)), (1, cmap(125))]
-rvb = mcolors.LinearSegmentedColormap.from_list("", clist)
+import random
+import math 
+import copy
+import numpy as np
+import matplotlib
+matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
+simT=2000
+arrR=5
+serR=3
+k=2
+arrivalList = []
+serviceList = []
+startList = []
+departureList = []
+serverList = [] 
+# record the departure times of servers that are busy
 
-m1=ax_histx.bar(text,list(df.groupby(['angle'])['ratio'].sum()), width = 10, color=rvb(list(df.groupby(['angle'])['ratio'].sum())))
-ax_histx.set_ylim((0,2))
+# generate arrival time list (indepedent)
+arrivalTime = 0
+while arrivalTime < simT:
+    arrivalTime += random.expovariate(arrR)
+    arrivalList.append(arrivalTime)
 
-ax_histy.barh(df['Row Labels'].unique(),list(df.groupby(['Row Labels'])['ratio'].sum()), color=rvb(list(df.groupby(['Row Labels'])['ratio'].sum())))
-fig.colorbar(m)
+'''
+Show ArrivalList
+'''
+printArrivalList = [round(a, 3) for a in arrivalList]
+# print(printArrivalList)
+aList = copy.copy(arrivalList)
 
-y1=-17.1
-for an in [30,60,90,120,150,180,210,240,270,300,330,360]:
-        x1=-0.3
-        for i in df[df['angle']==an]['ratio']:
-                if str(i)!='nan':
-                        plt.text(y1,x1,str(round(i,2)))
-                x1+=1
-        y1=y1+1.4
-# cb = colorbar(ax(2),'orientation','horizontal','Location','SouthOutside')
-#         y=y+20
-        # print(x1)
-# fig.colorbar(mappable, ax=ax)
-# im = ax.imshow(fig)
+# run simulation
+currentTime = 0
+while currentTime < simT:
+
+    currentTime = aList[0] # time stamp for reference
+
+    if len(serverList) < k:
+        startTime = aList[0]
+    else: 
+        startTime = serverList[serverList.index(min(serverList))]
+        del(serverList[serverList.index(min(serverList))])
+    
+    startList.append(startTime)
+    
+    serviceTime = random.expovariate(serR)
+    serviceList.append(serviceTime)
+
+    departureTime = startTime + serviceTime
+
+    departureList.append(departureTime)
+    serverList.append(departureTime)
+    aList.pop(0)
+
+    if len(aList) == 0: break
+
+    while len(serverList) > 0:
+        if serverList[serverList.index(min(serverList))] < aList[0]:
+            del(serverList[serverList.index(min(serverList))])
+        else: break
+    
+'''
+Performance Measure
+'''
+waitList = [startList[i] - arrivalList[i] for i in range(len(startList))]
+
+# [1] plot waiting time 
+# [2] plot service time 
+bins = np.linspace(0, max(serviceList), 11)
+
+plt.hist(waitList, bins ,facecolor='red', alpha=0.5,label='Waiting Time (Counts)')
+arr=plt.hist(waitList, bins, facecolor='red', alpha=0.5)
+for i in range(10):
+    plt.text(arr[1][i], arr[0][i]+100, str(int(arr[0][i])),color='red')
+
+plt.hist(serviceList, bins, facecolor='green', alpha=0.5,label='Service Time (Counts')
+arr=plt.hist(serviceList, bins, facecolor='green', alpha=0.5)
+for i in range(10):
+    plt.text(arr[1][i], arr[0][i]+100, str(int(arr[0][i])),color='green')
+
+# plt.xlabel('Service Time')
+# plt.ylabel('Counts')
+# plt.title('Counts of Waiting & Service Time for {} Patients in {} Minutes'.format(len(waitList), simT))
+# plt.axis([min(serviceList), max(serviceList),0,len(serviceList)])
+# plt.grid(True)
+# plt.legend(loc='upper right')
 # plt.show()
+
+avgWait = sum(waitList)/len(waitList)
+avgService = sum(serviceList)/len(serviceList)
+avgTime = avgWait + avgService
+avgCustomer_inSys = avgTime * arrR
+
+rho = arrR / (k * serR)
+'''
+Verify the True/Expected Waiting Time
+'''
+p1 = 0 
+for n in range(k):
+    p1 += (k*rho)**n / math.factorial(n)
+p2 = (k*rho)**k / (math.factorial(k)*(1-rho))
+p0 = 1 / (p1 + p2)
+expectWait = ((arrR/serR)**k * serR / (math.factorial(k-1)*(k*serR - arrR)**2))*p0
+expectTime = expectWait + 1/serR
+expectCustomer_inSys = expectTime * arrR
+
+# expWait_v1 = ((args.arrR/args.serR)**args.k / (math.factorial(args.k)*(args.k*args.serR)*(1-args.arrR/(args.k*args.serR))**2))*p0
+
+print(round(avgWait,5),'[average wait]')
+print(round(expectWait,5),'[expect wait]')
+print(round(avgCustomer_inSys, 3),'[average customer in system]')
+print(round(expectCustomer_inSys, 3),'[expect customer in system]')
