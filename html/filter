@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id='app'>
+<p>{{mes}}</p>
+<p>{{price}}</p>
+<p>{{price|myCurrency('$$')}}</p>
+</div>
+
+<script>
+var app =new Vue({
+	el: "#app",
+	data: {
+		mes: 'Vue rock!',
+		price: 331,
+selected : ""	,
+selected1:"",
+	},
+filters:{
+myCurrency:function(arg,myinput){
+console.log(arg);
+var result=arg+myinput
+return result
+}
+}
+});
+</script>
