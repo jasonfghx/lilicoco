@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+.fade_enter, .fade_leave_to{
+opacity:0;
+}
+.fade_enter_active, fade_leave_active{
+transition: opacity ls;
+}
+</style>
+<div id='app'>
+
+<transition mode='out-in' name='fade'>
+<component :is='type'></component>
+</transition>
+
+<button @click="handleclick">click</button>
+
+
+</div>
+
+<script>
+Vue.component('child',{
+template: '<div>c</div>'})
+Vue.component('child-one',{
+template: '<div>c_one</div>'})
+var app =new Vue({
+	el: "#app",
+	data: {
+		type: 'child',
+	},
+methods:{
+handleclick:function(){
+this.type = this.type ==='child'? 'child-one':'child'
+console.log(this.type)
+}
+}
+});
+</script>
