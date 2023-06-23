@@ -1,0 +1,101 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body,
+            #app {
+                width: 100%;
+                height: 100%;
+            }
+
+            #app {
+                background-color: #c9c9c9;
+                position: relative;
+            }
+
+            #app .center {
+                position: absolute;
+                background-color: #fff;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+            }
+
+            #app .center>img {
+                display: block;
+                width: 700px;
+                height: 458px;
+            }
+
+            #app .center a {
+                position: absolute;
+                top: 50%;
+                margin-top: -20px;
+                width: 80px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 14px;
+                background-color: #666;
+                color: #fff;
+
+
+            }
+
+            #app .center a:nth-of-type(1) {
+                left: 0;
+            }
+
+            #app .center a:nth-of-type(2) {
+                right: 0;
+            }
+
+            #app .center a:hover {
+                opacity: 0.5;
+                cursor: pointer;
+
+            }
+</style>
+ <div id="app">
+            <div class="center">
+                <img :src="imgList[index]" alt="" />
+                <a class="switch" @click="prev" v-show="index>0">上一张</a>
+                <a class="switch" @click="next" v-show="index<imgList.length-1">下一章</a>
+            </div>
+        </div>
+<script>
+var app =new Vue({
+	el: "#app",
+	data: {
+                    imgList: [
+                        "https://scpic.chinaz.net/files/pic/pic9/202104/apic32471.jpg",
+                        "https://scpic.chinaz.net/files/pic/pic9/202104/apic32465.jpg",
+                        "https://scpic.chinaz.net/files/pic/pic9/202105/apic32826.jpg",
+                        "https://scpic.chinaz.net/files/pic/pic9/202105/apic32820.jpg",
+                       
+                    ],
+                    index: 0
+                },
+ methods: {
+                    // 上一张
+                    prev() {
+                        this.index--;
+                    },
+                    // 下一张
+                    next() {
+                        this.index++;
+                    }
+                }
+});
+</script>
+
+
+
+
