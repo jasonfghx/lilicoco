@@ -1,0 +1,22 @@
+from flask_caching import Cache
+import random
+ 
+
+from flask import Flask
+
+ 
+config = {
+    "CACHE_TYPE": "simple",
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+ 
+app = Flask(__name__)
+app.config.from_mapping(config)
+cache = Cache(app)
+
+@cache.memoize(timeout=50)
+def big_foo(a, b):
+  c=random.randrange(0, 1000)
+  print(c)
+  return a + b +c
+big_foo(5, 3)
