@@ -20,3 +20,37 @@ def big_foo(a, b):
   print(c)
   return a + b +c
 big_foo(5, 3)
+
+
+================================================================================================
+from flask import Flask
+from flask_ngrok import run_with_ngrok
+import random
+from flask.views import View
+from flask_caching import Cache
+app = Flask(__name__)
+config = {
+    "CACHE_TYPE": "simple",
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+
+app.config.from_mapping(config)
+run_with_ngrok(app)  # Start ngrok when app is run
+cache = Cache(app)
+
+# view = cache(minutes=2)(view)
+# view = login_required(view)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+# @app.route("/users/")
+def user_list():
+  print(random.randint(1,10))
+  temp=random.randint(1,10)
+  return 'abc'+str(temp)
+cached_zen_view = cache.cached(timeout=10)(user_list)
+app.add_url_rule('/users/', view_func=cached_zen_view)
+if __name__ == '__main__':
+    app.run()  # If address is in use, may need to terminate other sessions:
+               # Runtime > Manage Sessions > Terminate Other Sessions
