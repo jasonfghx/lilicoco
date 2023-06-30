@@ -1,0 +1,35 @@
+def judge_mask(a,MASK_list):
+  temp=a.split("/")[-1]
+  temp=temp.replace("DEF","MASK")
+  # print(temp)
+  if temp in MASK_list:
+    return 'Y'
+  else:
+    return 'N'
+DEF=glob.glob('/content/gdrive/Shareddrives/明志的日子/wafer/20221204/unzip/20221011_第三次/*/*DEF*')
+MASK_list=glob.glob('/content/gdrive/Shareddrives/明志的日子/wafer/20221204/unzip/20221011_第三次/*/*MASK*')
+MASK_list_s=[v.split('/')[-1] for v in MASK_list  ]
+DEF_df=pd.DataFrame(DEF)
+DEF_df['judge']=DEF_df[0].apply(lambda x:judge_mask(x,MASK_list_s))
+temp=[]
+for i in MASK_list[:50]:
+  image=cv2.imread(i)
+  gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+  labels_mask_temp = label(gray > 0)
+  props = regionprops(labels_mask_temp)
+  attr_area = [o.area for o in props]
+  lines_hough = cv2.HoughLinesP(
+                image = gray, # Input edge image
+                rho = 1, # Distance resolution in pixels
+                theta = np.pi/4, # Angle resolution in radians
+                threshold = 100, # Min number of votes for valid line
+                minLineLength = 400, # Min allowed length of line
+                maxLineGap = 2 # Max allowed gap between line for joining them
+                )
+  if max(attr_area)>1000 and lines_hough is not None:
+    # print(i)
+    temp.append(i)
+    # plt.imshow(gray)
+    # plt.show()
+temp=list(DEF_df[DEF_df['judge']=='N'][0])+temp
+# pd.DataFrame(temp).to_csv("")
