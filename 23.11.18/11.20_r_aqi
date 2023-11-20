@@ -1,0 +1,46 @@
+import os
+from sklearn.metrics import r2_score
+import pandas as pd
+import glob
+import plotly.express as px
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt
+%matplotlib inline
+from pandas import datetime
+import math, time
+import itertools
+import datetime
+# from operator import itemgetter
+from math import sqrt
+import requests
+name=glob.glob(r"空氣品質/*")
+a=pd.read_csv(name[0],encoding='big5')
+for i in name[1:]:
+  temp=pd.read_csv(i,encoding='big5')
+  a=pd.concat([a,temp])
+a=a.reset_index()
+a=a.dropna()
+R=[]
+site=[]
+date_list=[]
+a['datetime']=a['publishtime'].apply(pd.to_datetime)
+for i in a['sitename'].unique():
+    temp_sitename=a[a['sitename']==i]
+    start=temp_sitename.iloc[0,25]
+    while(start<temp_sitename.iloc[-1,25]):
+    
+        temp_r=temp_sitename[(temp_sitename['datetime']>start)&(temp_sitename['datetime']<start+datetime.timedelta(days=6))]
+        if not temp_r.empty:
+            R.append(Pearson_correlation(temp_r['so2'],temp_r['aqi']))
+            site.append(temp_sitename.iloc[0,1])
+            
+            date_list.append(temp_r.iloc[0,17])
+            start=start+datetime.timedelta(days=6)
+            print(temp_sitename.iloc[0,1],start)  
+        else:
+            break
+dataframe=pd.DataFrame({'site':site,"date_list":date_list,'R':R})
+dataframe['date_list']=dataframe['date_list'].apply(pd.to_datetime)
+fig = px.line(dataframe, x="date_list", y="R", color='site')
+fig.show()
