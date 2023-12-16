@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Other head elements go here -->
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1Ax3VcAgli8tY-GT9DnTuFoptEDZewKLj_f7JhCHUU9svqtLejdFwQ_48wv2RaoKA9MM1FTfvNl6TQ1fB95BTvLdn4hhs0zjwVkZU7Ljd4S9_AF1gKL-RevQNQeOR1N6pY1BIByjI4QdDDirD9EaVw-M7GrmW19YuAcnzA1mAlVo60DJ4wdFd5gkSSAZudHRZsstzXpYh8QbkoHqY3hSfz0sVlIQv8B6-gIYXJW80qiL2THcYaLM_KPDmhsrUhnliFDz4pX18LnBkoB1zpqpaMO9ncbznFJGb5B7lpmdvm02qDwRkaRVVU47iP0NPr3yMktYxhl8k4eii84d5kzBTdvkkTREk5BxGrUTfSP2ln4KKamegWQvIFqmAdP5glFZLiyNuZR0WthUPd0g2pEqYaw-m5wWgbq689J0-M94Y9zuu6O17MLlWrZT8-_aCvbrQiupuwgp-eLvYiEiySUzMen97jxroaEqYTZyt-DAvyTtrt0WJClTPp918AL_Tz2Nh45yPNdMjMJK3afgu89P3NxM511LDiFq0HZ2t2iSJFZqocCyxiVorjxJ0revkCzx2aSHnSCqxC4oReMWww6Q45f6N_k0sSBINQRapUY3uHnG5DCh8rFRR2qOz5g9ummiKKT6bBvIQld7NH0I4PE4_ZPLuRU3VG0ivWbT6zRKJrCqHYOnSstHmwaJXcDgNVW6-OLThReeHa4YMBgcOcGoz2sEN6JQG8HXUcqIwG_uYUN9FXvga-lEj8sfnYejxb6N-c7Q3l1XUgLbmomUbZwNUayLSbulP45I_sN62a_-Sv-4faEfREChxO9nRDGQk_LMO7NW2mjdvsTAx7G5X37yYnFdU_nkRfmiTQxfI30BnbbV1Do3tcQ0BOc-NNbNLpRkyj65CuTbTPQkeEyGqqrNVzZXP3BjgslWv2mrnbJtFLqrNq6eNZUhnTtkHsa2hP8fu9Ir_ssx5qIV1Qj7ja7GXCHCrX_a7ZLssokLWpk7pFuFkgzJh-sCjit8XaAgJWn6Z42NISbxxQmdWTZvpdw640l8M3lFD0wgIYEzskTCWeyU-8bIzBGYWVO-GfoVHE_7KZVtwHHOjlD7elQxHcXdUKt66gZitYKmMejZ8D8PKuqOy2BpOZyYbuAkrYsfO-JpJqjEg5AtcUXxEzhy6Ost-0Tu0E0Ybb-glUYogdZC2S6BxHrjP48chQlu5IQW3krFzcC0CUFdxJjtL3hS0arz1aM15vm1AvUphe4D5vaXnS7N72YI284_y7VZqt7CG24Rkju8acxDq4GV1g94Iq63wFGWRa9dIYFtlTNmUTkXnQEbRv4mcK6OjVQVd4J27xHp3b0IMSiW9ljKUXQV09amuQ2CzlhMudRdWLMX2tZ_BlUwxqQ8mHpkl8pcifj4u28GpoOu8c3QrJj08SRl34uS6ydryYPpMCZFWWsF4J5-bB8RqVKIvGxrpPE4mMYshWDdzQxPrgszQ94VoUNyjtUhQ0fjFR1Eu_BRM1vSW1haMs2F6IP0z9i7wB8VIUYYaBBhCwnJyobufXRZpAjySNQMKSdg0-t9eqFkeNRwC_78AcLFqZ5j-B7I_nv-BRt8TP73oTLYxvG7jpVBPrqyAK4q3kG2hDFKTiK7rAYbjma__8GN_TlLEgLjkPxfRIfceK_g" nonce="6c4abe207caf2249b6332e85718d063a" charset="UTF-8"></script><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    margin-right: 10px;
+    /* Adjust as needed for spacing between items */
+  }
+
+  .m li:hover {
+    color: white;
+    background-color: red;
+    /* Change background color on hover, if desired */
+    cursor: pointer;
+    /* Optional: Change the cursor on hover */
+  }
+
+  .f1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .meal_display {
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-evenly
+  }
+
+  .f2 {
+    margin-right: 10px;
+    border: 1px solid black;
+  }
+</style>
+<div id='app'>
+  <div style="float: right;">
+    <h4>您好，{{ USR }}</h4>
+    <form action="{{url_for('logout')}}" method="GET">
+      <button>登出</button>
+    </form>
+  </div>
+  <form method="post" action="{{url_for('meal_add')}}">
+    <div v-show='f1'>
+      <ul class='m'>
+        <li @click='one(1)'>­個人餐</li>
+        <li @click='one(2)'>多人餐</li>
+        <li @click='one(3)'>早餐</li>
+        <li @click='one(4)'>單點</li>
+      </ul>
+      <div v-show='whichmeal===1'>
+        <input type="checkbox" v-model="checkini" value="A" name="Am" /><label>A餐</label>
+        <input type="checkbox" v-model="checkini1" value="B" name="Bm" /><label>B餐</label>
+        <input type="checkbox" v-model="checkini2" value="C" name="Cm" /><label>C餐</label>
+        <input type="checkbox" v-model="checkini21" value="C" name="C1m" /><label>C1餐</label>
+        <input type="checkbox" v-model="checkini22" value="C" name="C2m" /><label>C2餐</label>
+      </div>
+      <div v-show='whichmeal===2'>
+        <input type="checkbox" v-model="checkini3" value="D" name="Dm" /><label>D餐</label>
+        <input type="checkbox" v-model="checkini4" value="E" name="Em" /><label>E餐</label>
+        <input type="checkbox" v-model="checkini5" value="F" name="Fm" /><label>F餐</label>
+        <input type="checkbox" v-model="checkini51" value="F" name="Fm" /><label>F1餐</label>
+        <input type="checkbox" v-model="checkini52" value="F" name="Fm" /><label>F2餐</label>
+      </div>
+      <div v-show='whichmeal===3'>
+        <input type="checkbox" v-model="checkini6" value="G" name="Dm" /><label>G餐</label>
+        <input type="checkbox" value="G" name="Dm" /><label>G1餐</label>
+        <input type="checkbox" value="G" name="Dm" /><label>G2餐</label>
+        <input type="checkbox" value="G" name="Dm" /><label>G3餐</label>
+        <input type="checkbox" value="G" name="Dm" /><label>G4餐</label>
+      </div>
+      <div v-show='whichmeal===4'>
+        <input type="checkbox" v-model="checkini7" value="H" name="Hm" /><label>H餐</label>
+        <input type="checkbox" value="H" name="Hm" /><label>H1餐</label>
+        <input type="checkbox" value="H" name="Hm" /><label>H2餐</label>
+        <input type="checkbox" value="H" name="Hm" /><label>H3餐</label>
+        <input type="checkbox" value="H" name="Hm" /><label>H4餐</label>
+        <input type="checkbox" value="H" name="Hm" /><label>H5餐</label>
+      </div>
+      <br>
+      <ul class='f1'>
+        <li class='f2' @click='expect'>預定快取</li>
+        <li class='f2' @click='takeout'>專業外送</li>
+
+      </ul>
+      <template v-if='meal==1'>
+        <select v-model='city' @click='area'>
+          <option value="桃園市">桃園市</option>
+          <option value="台北市">台北市</option>
+          <option value="新北市">新北市</option>
+        </select>
+        <br><br>
+        <select v-model='area2' @click='addj'>
+          <option v-for="item in area1" v-bind:value="item">
+            ${ item }}
+          </option>
+        </select>
+        <!-- <input type='radio' v-model=''  > -->
+        <input type="radio" v-bind:value='address' v-model="address" name='final' />
+        <label>${address}}</label>
+
+      </template>
+
+      </template>
+      <template v-if='meal==2'>
+        <p>輸入地址</p>
+        <input name='fina2' />
+
+      </template>
+      <br>
+      <input type='datetime-local' v-model="time_show" required name="time">
+      <div v-show="checkini">
+        <p>A餐</p>
+        <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+        <p>原味蛋撻x3顆</p>
+        <p>楓糖香蒜脆雞x2</p>
+        <p>金燦鹽之花可可蛋撻x3顆</p>
+        <p>小計:220元</p>
+      </div>
+      <div v-show="checkini1">
+        <p>B餐</p>
+        <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+        <p>楓糖香蒜脆雞x4</p>
+        <p>咔啦脆雞x4</p>
+        <p>金燦鹽之花可可蛋撻x3顆</p>
+        <p>小計:230元</p>
+      </div>
+      <div v-show="checkini2">
+        <p>C餐</p>
+        <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+        <p>咔啦脆雞x3</p>
+        <p>咔啦脆雞漢堡x2</p>
+        <p>蛋塔x6</p>
+        <p>小計:240元</p>
+      </div>
+      <div v-show="checkini3">
+        <p>D餐</p>
+        <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+        <p>咔啦脆雞x2</p>
+        <p>咔啦脆雞漢堡x3</p>
+        <p>蛋塔x6</p>
+        <p>小計:240元</p>
+      </div>
+      <div v-show="checkini4">
+        <p>E餐</p>
+        <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+        <p>咔啦脆雞x4</p>
+        <p>咔啦脆雞漢堡x1</p>
+        <p>蛋塔x6</p>
+        <p>小計:250元</p>
+      </div>
+
+      <button type="button" @click='decide_meal' class="btn btn-primary">送出餐點</button>
+    </div>
+    <div v-show='f2'>
+      <div class="meal_display">
+        <div v-show="show_detail1">
+          <p>A餐</p>
+          <img src="{{ url_for('static', filename='123.jpg') }} " width='20%' height='20%'>
+          <p>原味蛋撻x3顆</p>
+          <p>楓糖香蒜脆雞x2</p>
+          <p>金燦鹽之花可可蛋撻x3顆</p>
+          <div>
+            <button type="button" class="round" @click="minusOne(product1,1)">-</button>
+            <span>${ product1 }}</span>
+            <button type="button" class="round" @click="addOne(product1,1)">+</button>
+          </div>
+          <p>小計:${product1*product1_price}}元</p>
+          <button type="button" @click="remove(1)">刪除</button>
+        </div>
+        <div v-show="show_detail2">
+          <p>B餐</p>
+          <img src="/static/123.jpg">
+          <p>原味蛋撻x3顆</p>
+          <p>楓糖香蒜脆雞x2</p>
+          <p>金燦鹽之花可可蛋撻x3顆</p>
+          <div>
+            <button type="button" class="round" @click="minusOne(product2,2)">-</button>
+            <span>${ product2 }}</span>
+            <button type="button" class="round" @click="addOne(product2,2)">+</button>
+          </div>
+          <p>小計:${product2*product2_price}}元</p>
+          <button type="button" @click="remove(2)">刪除</button>
+        </div>
+        <div v-show="show_detail3">
+          <p>C餐</p>
+          <img src="/static/123.jpg">
+          <p>楓糖香蒜脆雞x4</p>
+          <p>咔啦脆雞x4</p>
+          <p>金燦鹽之花可可蛋撻x3顆</p>
+          <div>
+            <button type="button" class="round" @click="minusOne(product3,3)">-</button>
+            <span>${ product3 }}</span>
+            <button type="button" class="round" @click="addOne(product3,3)">+</button>
+          </div>
+
+          <p>小計:${product3*product3_price}}元</p>
+          <button type="button" @click="remove(3)">刪除</button>
+        </div>
+      </div><br><br><br><br>
+      <div v-if="show_detail1 ||show_detail2||show_detail3">
+        <input type="checkbox" v-model="fries" name="Am" /><label>加薯條</label>
+        <input type="checkbox" v-model="drink" name="Am" /><label>加飲料</label>
+        <input type="checkbox" v-model="bag" value="A" name="Am" /><label>購物袋(1元)</label>
+        <p>總價:${price_cal}}</p>
+      </div>
+      <button v-if="show_detail1 ||show_detail2||show_detail3" type="button" @click='checkout'
+        class="btn btn-primary">結帳</button>
+    </div>
+    <div v-show="f3">
+      <div v-if="check_price">
+        <div v-show="show_detail1">
+          <p>A餐:${product1}}份</p>
+          <button type="button" @click="remove(1)">刪除</button>
+          <button type="button" @click="revise">修改</button>
+        </div>
+        <div v-show="show_detail2">
+          <p>B餐:${product2}}份</p>
+          <button type="button" @click="remove(2)">刪除</button>
+          <button type="button" @click="revise">修改</button>
+        </div>
+        <div v-show="show_detail3">
+          <p>C餐:${product3}}份</p>
+          <button type="button" @click="remove(3)">刪除</button>
+          <button type="button" @click="revise">修改</button>
+        </div>
+        <div v-if="bag">
+          <p>購物袋</p>
+        </div>
+        <div v-if="drink">
+          <p>加飲料</p>
+        </div>
+        <div v-if="fries">
+          <p>加薯條</p>
+        </div>
+        <p>總價:${price_cal}}元</p>
+        <hr>
+        <p>訂購人:{{name}}</p>
+        <p>mail:{{mail}}</p>
+        <p>電話:{{tel}}</p>
+        <p>取餐門市:${address}}</p>
+        <p>取餐時間:${time_show}}</p>
+        <hr>
+        <input type="radio" v-model="strategy" value="0" /><label>列印電子發票</label>
+        <input type="radio" v-model="strategy" value="1" /><label>手機載具條碼</label>
+        <input type="radio" v-model="strategy" value="2" /><label>捐發票</label>
+        <hr>
+        <p>線上刷卡</p>
+        <input type="number" v-model="number_pay" min="100000000000" maxlength="999999999999" />
+      </div>
+
+
+      <br><button type="button" @click="greet" v-if="number_pay!=0" class="btn btn-primary">送出訂單</button>
+    </div>
+    <div v-show="f4">
+      <p>訂餐明細</p>
+      <div v-show="show_detail1">
+        <p>A餐:${product1}}份</p>
+      </div>
+      <div v-show="show_detail2">
+        <p>B餐:${product2}}份</p>
+      </div>
+      <div v-show="show_detail3">
+        <p>C餐:${product3}}份</p>
+      </div>
+      <div v-if="bag">
+        <p>購物袋</p>
+      </div>
+      <div v-if="drink">
+        <p>加飲料</p>
+      </div>
+      <div v-if="fries">
+        <p>加薯條</p>
+      </div>
+      <p>總價:${price_cal}}元</p>
+      <hr>
+      <p>訂購人:{{name}}</p>
+      <p>mail:{{mail}}</p>
+      <p>電話:{{tel}}</p>
+      <p>取餐門市:${address}}</p>
+      <p>取餐時間:${time_show}}</p>
+      <button  class="btn btn-primary">回首頁</button>
+    </div>
+  </form>
+</div>
+<script>
+  var app = new Vue({
+    el: "#app",
+    delimiters: ['${', '}}'],
+    data: {
+      f1: true,
+      f2: true,
+      f3: true,
+      f4:false,
+      meal: '',
+      whichmeal: '',
+      city: '',
+      area1: [],
+      area2: '',
+      address: '',
+      total: '0',
+      checkini: false,
+      checkini1: false,
+      checkini2: false,
+      checkini21: false,
+      checkini22: false,
+      checkini3: false,
+      checkini4: false,
+      checkini5: false,
+      checkini51: false,
+      checkini52: false,
+      checkini6: false,
+      checkini7: false,
+      show_detail1: false,
+      show_detail2: false,
+      show_detail3: false,
+      userInput: [],
+      selected: "",
+      selected1: "",
+      decide_meal_show: false,
+      product1: 0,
+      product1_price: 220,
+      product2: 0,
+      product2_price: 230,
+      product3: 0,
+      product3_price: 230,
+      bag: '',
+      price_total: 0,
+      check_price: false,
+      fries: '',
+      drink: '',
+      time_show: '',
+      number_pay: 0,
+      strategy: '',
+    },
+    methods: {
+      greet() {
+        // `this` inside methods points to the Vue instance
+        this.f3=false
+        this.f4=true
+        // `event` is the native DOM event
+
+      },
+      minusOne(product, meal) {
+        if (meal == 1) {
+          product--
+          this.product1 = (product < 1) ? 1 : product
+        }
+        if (meal == 2) {
+          product--
+          this.product2 = (product < 1) ? 1 : product
+        }
+        if (meal == 3) {
+          product--
+          this.product3 = (product < 1) ? 1 : product
+        }
+      },
+      revise() {
+        this.check_price = false
+      },
+      addOne(product, meal) {
+        if (meal == 1) {
+          product++
+          this.product1 = (product > 9) ? 9 : product
+        }
+        if (meal == 2) {
+          product++
+          this.product2 = (product > 9) ? 9 : product
+        }
+        if (meal == 3) {
+          product++
+          this.product3 = (product > 9) ? 9 : product
+        }
+
+      },
+      checkout() {
+        this.check_price = true
+        this.f2 = false
+      },
+      decide_meal() {
+        this.f1 = false
+        if (this.checkini) {
+          this.show_detail1 = true
+          this.product1 = 1
+        }
+        if (this.checkini1) {
+          this.show_detail2 = true
+          this.product2 = 1
+        }
+        if (this.checkini2) {
+          this.show_detail3 = true
+          this.product3 = 1
+        }
+      },
+      expect() {
+        this.meal = 1
+      },
+      one(v) {
+        if (v == 1) {
+          this.whichmeal = 1
+        }
+        if (v == 2) {
+          this.whichmeal = 2
+        }
+        if (v == 3) {
+          this.whichmeal = 3
+        }
+        if (v == 4) {
+          this.whichmeal = 4
+        }
+
+      },
+      takeout() {
+        this.meal = 2
+      },
+      area() {
+        if (this.city == '桃園市') {
+          this.area1 = ['八德區', '大園區', '中壢區']
+
+        }
+        if (this.city == '台北市') {
+          this.area1 = ['松山區', '中山區', '中正區']
+
+        }
+        if (this.city == '新北市') {
+          this.area1 = ['板橋區', '新莊區', '三重區']
+
+        }
+      },
+      addj() {
+        if (this.area2 == '八德區') {
+          this.address = '桃園八德餐廳 (大潤發1樓)'
+        }
+        if (this.area2 == '大園區') {
+          this.address = '桃園大園餐廳 (大園農會對面)'
+        }
+        if (this.area2 == '中壢區') {
+          this.address = '中壢餐廳'
+        }
+        if (this.area2 == '中山區') {
+          this.address = '台北中山餐廳 (南京復興捷運站3號)'
+        }
+        if (this.area2 == '中正區') {
+          this.address = '台北八德餐廳(數位未來店) (光華商場)'
+        }
+        if (this.area2 == '松山區') {
+          this.address = '台北南京東二餐廳(數位未來店) (南京三民捷運站2號)'
+        }
+        if (this.area2 == '板橋區') {
+          this.address = '板橋中山二餐廳 (近府中捷運站)'
+        }
+        if (this.area2 == '三重區') {
+          this.address = '三重三和餐廳 (徐匯捷運站)'
+        }
+        if (this.area2 == '新莊區') {
+          this.address = '新北市新莊區中正路516-3號'
+        }
+
+      },
+      makeRed1: function () {
+        this.isRed1 = !this.isRed1;
+        if (this.isRed1 == true) {
+          this.isRed = false;
+        }
+      },
+      remove(meal) {
+        if (meal == 1) {
+          this.show_detail1 = false
+
+        }
+        if (meal == 2) {
+          this.show_detail2 = false
+
+        }
+        if (meal == 3) {
+          this.show_detail3 = false
+
+        }
+      },
+    },
+    watch: {
+      bag: function (value) {
+        console.log(this.bag);
+      }
+    },
+    computed: {
+      price_cal: function () {
+        if (this.fries) {
+          a = 10
+        }
+        else {
+          a = 0
+        }
+        if (this.drink) {
+          b = 10
+        }
+        else {
+          b = 0
+        }
+        if (this.bag) {
+          return 1 + this.product3 * this.product3_price + this.product2 * this.product2_price + this.product1 * this.product1_price + a + b
+        }
+        else {
+          return this.product3 * this.product3_price + this.product2 * this.product2_price + this.product1 * this.product1_price + a + b
+        }
+      }
+    }
+  });
+</script>
+<!-- https://www.kfcclub.com.tw/#tab-1 -->
