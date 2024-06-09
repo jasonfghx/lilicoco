@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A109280062 HK(1)</title>
+<!--Bootstrap 5 CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!--my CSS -->
+<link rel="stylesheet" type="text/css" href="css/mycss.css">
+<!--my JavaScript code -->
+<script type="text/javascript" src="js/photoplay.js"></script>
+    </head>
+    <body>
+        <header class="col text-center font-weight-bold">林韋辰 HK(1)</header>
+        <nav class="navbar navcolor justify-content-start">
+            <a href="index.html"><button type="button" class="btn btn-success">Home</button></a>&nbsp&nbsp
+            <a href="photo.html"><button type="button" class="btn btn-success">照片輪播</button></a>&nbsp&nbsp
+            <a href="music.html"><button type="button" class="btn btn-success">聽音樂</button></a>&nbsp&nbsp
+            <a href="video.html"><button type="button" class="btn btn-success">看預告</button></a>&nbsp&nbsp
+        </nav>
+        <main class="container-fluid navcolor">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-6">
+                    <h3 class="text-center mt-4">隨機輪播的照片</h3>
+                    <div id="ran_div" onload="randomImg()"></div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <h3 class="text-center mt-4">依序輪播的照片</h3>
+                    <div id="seq_div" onload="sequentiaImg()"></div>
+                </div>
+            </div>
+        </main>
+        <footer class="row  py-5">
+            <div class="row mx-0 justify-content-center align-items-center w-100">
+                <div class="text-center text-light bg-primary w-50">
+                    <div>
+                        <strong>飛行日誌</strong>
+                    </div>
+                <div>
+                    <strong>電話:(02)20420420</strong><br>
+                    <strong>peace</strong>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

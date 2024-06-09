@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A109280062 HK(1)</title>
+<!--Bootstrap 5 CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!--my CSS -->
+<link rel="stylesheet" type="text/css" href="css/mycss.css">
+    </head>
+    <body>
+        <header class="col text-center font-weight-bold">林韋辰 HK(1)</header>
+        <nav class="navbar navcolor justify-content-center">
+            <a href="index.html"><button type="button" class="btn btn-success">Home</button></a>&nbsp&nbsp
+            <a href="photo.html"><button type="button" class="btn btn-success">照片輪播</button></a>&nbsp&nbsp
+            <a href="music.html"><button type="button" class="btn btn-success">聽音樂</button></a>&nbsp&nbsp
+            <a href="video.html"><button type="button" class="btn btn-success">看預告</button></a>
+        </nav>
+        <main class="container-fluid navcolor" style="font-family: 標楷體">
+            <div class="row">   
+                <div class="col">
+                    <center><marquee id="info">歡迎與我一起chill~!!</marquee></center>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="padding-top:5%">           
+                <div class="mx-auto">
+                    <h3 class="text-center mt-4">放鬆Time</h3>         
+                    <audio id="music_play1" src="musics/music1.mp3"></audio>
+                    <audio id="music_play2" src="musics/music2.mp3"></audio>
+                    <audio id="music_play3" src="musics/music3.mp3"></audio>
+                    <audio id="music_play4" src="musics/music4.mp3"></audio>
+                    <audio id="music_play5" src="musics/music5.mp3"></audio>
+                    <audio id="music_play6" src="musics/music6.mp3"></audio>
+                    
+                    <center style="padding-top:10%; font-family: 標楷體">
+                        <!--點擊時執行play() -->
+                        <button class="btn btn-success" type="button" onclick="start();">播放音樂&#9654</button>
+                        <!--點擊時執行pause() -->
+                        <button class="btn btn-info" type="button" onclick="pause();">暫停播放&#9208</button>   
+                        <!--點擊時執行next() -->
+                        <button class="btn btn-success" type="button" onclick="next();">播放下一首</button>   
+                        <!--點擊時執行previous() -->
+                        <button class="btn btn-success" type="button" onclick="previous();">播放前一首</button> 
+                        <!---音量大小調整-->
+                        <button class="btn btn-info" type="button" onclick="upVolume();">聲音放大&#8593</button> 
+                        <button class="btn btn-info" type="button" onclick="downVolume();">聲音降低&#8595</button> 
+                        <p><font size="5">該首音樂時間全長: </font><span id="dur_time"></span><br>
+                            <span><font size="5">&nbsp;&nbsp;&nbsp;目前已播放時間: </font></span><span id="cur_time"></span>
+                        </p>
+                    </center>                       
+                </div>
+            </div>     
+        </main>  
+        <footer class="row  py-5">
+            <div class="row mx-0 justify-content-center align-items-center w-100">
+                <div class="text-center text-light bg-primary w-50">
+                    <div>
+                        <strong>飛行日誌</strong>
+                    </div>
+                <div>
+                    <strong>電話:(02)20420420</strong><br>
+                    <strong>peace</strong>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!--my JavaScript code -->
+<script type="text/javascript" src="js/musicplay.js"></script>
+</body>
+</html>

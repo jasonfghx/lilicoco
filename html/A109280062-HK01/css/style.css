@@ -1,0 +1,227 @@
+/*------------------ */
+/* $Catalog */
+/*------------------ */
+/* $Catalog */
+/* $Global */
+/* $Outer Box */
+/* $Header */
+/* $Image Slider */
+/* $Arrow button */
+/* $Page button */
+/*------------------ */
+/* $Font */
+/*------------------ */
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans");
+/*------------------ */
+/* $Global */
+/*------------------ */
+* {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Merriweather Sans", sans-serif;
+  background-color: #f8f8f8;
+}
+
+.container {
+  padding: 24px 28px;
+  overflow: hidden;
+  padding-top: 12px;
+}
+
+/*------------------ */
+/* $Outer Box */
+/*------------------ */
+.box {
+  background-color: #e5e5e5;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  -webkit-box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.6);
+          box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/*------------------ */
+/* $Header */
+/*------------------ */
+h3 {
+  margin: 4px 0;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  font-size: 42px;
+}
+@media (max-width: 576px) {
+  h3 {
+    font-size: 30px;
+  }
+}
+
+/*------------------ */
+/* $Image Slider */
+/*------------------ */
+.imgbox .main {
+  display: block;
+  width: 100%;
+}
+
+.thumb {
+  display: block;
+  width: 160px;
+  position: absolute;
+  bottom: 75px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+.thumb.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*------------------ */
+/* $Arrow button */
+/*------------------ */
+.imgbox span {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #878787;
+  font-family: "Comic Sans MS";
+  font-size: 24px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+@media (max-width: 768px) {
+  .imgbox span {
+    display: none;
+  }
+}
+.imgbox span.prev {
+  left: 8px;
+  -webkit-animation: arrow_prev 1s infinite;
+          animation: arrow_prev 1s infinite;
+}
+.imgbox span.next {
+  right: 8px;
+  -webkit-animation: arrow_next 1s infinite;
+          animation: arrow_next 1s infinite;
+}
+.imgbox span:hover {
+  color: #000;
+}
+
+@-webkit-keyframes arrow_prev {
+  50% {
+    -webkit-transform: translate(15%, -50%);
+            transform: translate(15%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+  }
+}
+
+@keyframes arrow_prev {
+  50% {
+    -webkit-transform: translate(15%, -50%);
+            transform: translate(15%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+  }
+}
+@-webkit-keyframes arrow_next {
+  50% {
+    -webkit-transform: translate(-15%, -50%);
+            transform: translate(-15%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+  }
+}
+@keyframes arrow_next {
+  50% {
+    -webkit-transform: translate(-15%, -50%);
+            transform: translate(-15%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+  }
+}
+/*------------------ */
+/* $Page button */
+/*------------------ */
+.page {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.page span {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  margin: 0 8px;
+  color: #878787;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+@media (max-width: 768px) {
+  .page span {
+    font-size: 0;
+    width: calc(36px / 2);
+    height: calc(36px / 2);
+    line-height: 0px;
+    margin: 0 4px;
+  }
+}
+.page span.active {
+  color: #000;
+  background-color: #f8c43a;
+}
+.page span:hover:not(.active) {
+  color: #000;
+}
+
+/*# sourceMappingURL=style.css.map */
