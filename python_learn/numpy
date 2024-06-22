@@ -1,3 +1,0 @@
-a=np.arange(25);a
-
-np.zeros((10,4))
