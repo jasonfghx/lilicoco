@@ -1,0 +1,93 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+
+
+	<hr>
+
+	<!-- 取得使用者當前輸入，更新 userInput -->
+	<!-- 當 userInput 更新，也會同步輸入框數值 -->
+	<input type="text" v-model="msg" />
+
+	<select v-model="selected" :value="selected">
+		<option disabled value="">请选择</option>
+		<option value='4.5a'>低</option>
+		<option value='5b'>能</option>
+		<option value='6c'>而</option>
+	</select>
+
+	<select v-model="selected1" :value="selected1" >
+		<option disabled value="">请选择</option>
+		<option value='1a'>+</option>
+		<option value='2b'>-</option>
+		<option value='3c'>*</option>
+	</select>
+	<span>{{total(selected,selected1)}}</span>
+	<!-- <button @click='handle'>计算</button> -->
+	<!-- <p>{{handle()}}</p> -->
+		<select v-model="selected2" :value="selected2">
+		<option disabled value="">请选择</option>
+		<option value='4.5a'>低</option>
+		<option value='5b'>能</option>
+		<option value='6c'>而</option>
+	</select>
+
+	<select v-model="selected3" :value="selected3" >
+		<option disabled value="">请选择</option>
+		<option value='1a'>+</option>
+		<option value='2b'>-</option>
+		<option value='3c'>*</option>
+	</select>
+	<span>{{total(selected2,selected3)}}</span>
+
+	<button @click='prompt'>123</button>
+{{msg}}
+</div>
+
+
+
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			msg: 'Vue rock!',
+			search: '',
+			userInput: [],
+			selected: "",
+			selected1: "",
+			selected2: "",
+			selected3: "",
+			result: "",
+			msg:'123',
+		},
+		methods:{
+			prompt() {
+      			a=this.msg.replace(/(\d)\s+(\d)/g, '$1,$2');
+			b=a.split(',').map(numStr => parseInt(numStr.trim(), 10));
+console.log(b);
+			}
+		},
+		computed:{
+			total: function(){
+				return(selected,selected1)=>{
+				result = (selected) + (selected1);
+				if (result=='4.5a1a'){
+					result='a'
+					return "a"
+				};
+				if(result=='5b2b'){
+				// this.result='b'
+					return 'b'
+				}
+			}
+				// return this.price * this.quantity * this.discount
+    }
+},
+		
+		
+		
+	});
+
+</script>
