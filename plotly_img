@@ -1,0 +1,26 @@
+import pandas as pd
+import plotly.graph_objects as go
+df=pd.DataFrame({'W':['W1','W2'],'F':[2,6],'B':[8,9]})
+fig = go.Figure()
+
+# Add trace for 'F' vs 'W'
+fig.add_trace(go.Scatter(x=df['W'], y=df['F'], mode='lines+markers', name='F'))
+
+# Add trace for 'B' vs 'W'
+fig.add_trace(go.Scatter(x=df['W'], y=df['B'], mode='lines+markers', name='B'))
+
+# Update layout
+fig.update_layout(
+    title='Line Plot of F and B vs W',
+    xaxis_title='W',
+    yaxis_title='Values',
+    legend_title='Legend'
+)
+
+# Show the plot
+fig.show()
+import plotly.io as pio
+import kaleido
+
+fig.write_image("fig1.png")
+!pip install -U kaleido
