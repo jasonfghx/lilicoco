@@ -82,3 +82,84 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>錄音器</title>
+</head>
+<body>
+    <h1>錄音器</h1>
+    <button id="startRecording">開始錄音</button>
+    <button id="stopRecording" disabled>停止錄音</button>
+    <audio id="audioPlayback" controls></audio>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        document.getElementById('startRecording').onclick = async () => {
+            audioChunks = [];
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.ondataavailable = (event) => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audioPlayback').src = audioUrl;
+
+                // 發送錄音到服務器
+                const formData = new FormData();
+                formData.append('audio', audioBlob, 'recording.wav');
+                fetch('/save-audio', { method: 'POST', body: formData });
+            };
+
+            mediaRecorder.start();
+            document.getElementById('startRecording').disabled = true;
+            document.getElementById('stopRecording').disabled = false;
+        };
+
+        document.getElementById('stopRecording').onclick = () => {
+            mediaRecorder.stop();
+            document.getElementById('startRecording').disabled = false;
+            document.getElementById('stopRecording').disabled = true;
+        };
+    </script>
+</body>
+</html>
+
+
+from flask import Flask, request, send_file
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return send_file('templates/index.html')
+
+@app.route('/save-audio', methods=['POST'])
+def save_audio():
+    if 'audio' not in request.files:
+        return 'No audio file', 400
+    
+    audio_file = request.files['audio']
+    if audio_file.filename == '':
+        return 'No selected file', 400
+    
+    if audio_file:
+        filename = 'recorded_audio.wav'
+        audio_file.save(os.path.join('recordings', filename))
+        return 'File saved successfully', 200
+
+if __name__ == '__main__':
+    os.makedirs('recordings', exist_ok=True)
+    app.run(debug=True)
