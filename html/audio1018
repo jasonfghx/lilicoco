@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聲音錄製</title>
+</head>
+<body>
+    <h1>錄製聲音</h1>
+    <button id="startBtn">開始錄製</button>
+    <button id="stopBtn" disabled>停止錄製</button>
+    <audio id="audioPlayback" controls></audio>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        document.getElementById('startBtn').onclick = async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                audioChunks = [];
+                const audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audioPlayback').src = audioUrl;
+
+                // 上傳音訊檔案
+                const formData = new FormData();
+                formData.append('audio', audioBlob, 'recording.wav');
+
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+            };
+
+            mediaRecorder.start();
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+        };
+
+        document.getElementById('stopBtn').onclick = () => {
+            mediaRecorder.stop();
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+        };
+    </script>
+</body>
+</html>
+
+
+from flask import Flask, request, redirect, url_for
+import os
+
+app = Flask(__name__)
+
+# 設定上傳檔案的儲存路徑
+UPLOAD_FOLDER = 'uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/')
+def index():
+    return redirect(url_for('static', filename='index.html'))
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'audio' not in request.files:
+        return 'No file part', 400
+    
+    file = request.files['audio']
+    if file.filename == '':
+        return 'No selected file', 400
+    
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+    return 'File uploaded successfully', 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
