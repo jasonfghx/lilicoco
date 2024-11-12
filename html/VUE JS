@@ -1,6 +1,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.12/vue.min.js"></script>
 <div id="app">
 	<!-- 將 message 呈現於UI -->
 	<p>{{ msg }}</p>
