@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>電影</title>
+    <!--不請求icon-->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/> -->
+    <link href="../static/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    li {
+        font-size: 20px;
+        padding-bottom: 5%;
+    }
+
+</style>
+<body>
+    <div id='app'>
+        <div class="showtimeQuickSelect">
+            <div id="quickSelect">
+                <div class="quickSelect"><img src={{ url_for('static', filename='quickSelect02.png' ) }}></div>
+                <div>
+                    <div class="SelectTitle">戲院查詢</div>
+                    <form action="" method="post" name="showtime_select_theater">
+                        <select name="area" size="1" onclick="" v-model='theater1' style="font-size:11pt;width:100%;">
+                            <option value="">請選擇地區</option>
+                            <option value="a07">嘉義</option>
+                            <option value="a06">台南</option>
+                            <option value="a08">高雄</option>
+                            <option value="a09">屏東</option>
+                        </select>
+                        <select name="theater_id" size="1" v-model='theater2' style="font-size:11pt;width:100%;">
+                            <option value="">請選擇戲院</option>
+                            <!-- <option v-show='theater1=="a07"' value="http://www.atmovies.com.tw/showtime/t05502/a05/">
+                                嘉年華戲院</option>
+                            <option v-show='theater1=="a07"' id='t05504'
+                                value="http://www.atmovies.com.tw/showtime/t05504/a05/">嘉義秀泰影城</option>
+                            <option v-show='theater1=="a07"' id='t05505'
+                                value="http://www.atmovies.com.tw/showtime/t05505/a05/">嘉義in89豪華影城</option> -->
+                            <option v-show='theater1=="a06"' id='t06607'
+                                value="http://www.atmovies.com.tw/showtime/t06607/a06/">台南新光影城</option>
+                            <option v-show='theater1=="a06"' id='t06609'
+                                value="http://www.atmovies.com.tw/showtime/t06609/a06/">台南大遠百威秀影城</option>
+                            <option v-show='theater1=="a06"' id='t06611'
+                                value="http://www.atmovies.com.tw/showtime/t06611/a06/">台南FOCUS威秀影城</option>
+                            <option v-show='theater1=="a06"' id='t06608'
+                                value="http://www.atmovies.com.tw/showtime/t06608/a06/">台南國賓影城</option>
+                            <option v-show='theater1=="a06"' id='t06610'
+                                value="http://www.atmovies.com.tw/showtime/t06610/a06/">台南南紡威秀影城</option>
+                            <option v-show='theater1=="a06"' id='t06602'
+                                value="http://www.atmovies.com.tw/showtime/t06602/a06/">南台電影城</option>
+                            <option v-show='theater1=="a06"' id='t06623'
+                                value="http://www.atmovies.com.tw/showtime/t06623/a06/">全美戲院</option>
+                            <option v-show='theater1=="a06"' id='t06625'
+                                value="http://www.atmovies.com.tw/showtime/t06625/a06/">麻豆戲院</option>
+                            <!-- <option v-show='theater1=="a08"' id='t07703'
+                                value="http://www.atmovies.com.tw/showtime/t07703/a07/">高雄大遠百威秀影城</option>
+                            <option v-show='theater1=="a08"' id='t07702'
+                                value="http://www.atmovies.com.tw/showtime/t07702/a07/">in89駁二電影院</option>
+                            <option v-show='theater1=="a08"' id='t07704'
+                                value="http://www.atmovies.com.tw/showtime/t07704/a07/">高雄環球影城</option>
+                            <option v-show='theater1=="a08"' id='t07705'
+                                value="http://www.atmovies.com.tw/showtime/t07705/a07/">國賓義大世界影城</option>
+                            <option v-show='theater1=="a08"' id='t07707'
+                                value="http://www.atmovies.com.tw/showtime/t07707/a07/">高雄夢時代秀泰影城</option>
+                            <option v-show='theater1=="a08"' id='t07708'
+                                value="http://www.atmovies.com.tw/showtime/t07708/a07/">國賓大魯閣草衙道影城</option>\
+                            <option v-show='theater1=="a08"' id='t07712'
+                                value="http://www.atmovies.com.tw/showtime/t07712/a07/">台鋁影城</option>
+                            <option v-show='theater1=="a08"' id='t07729'
+                                value="http://www.atmovies.com.tw/showtime/t07729/a07/">高雄岡山秀泰</option>
+                            <option v-show='theater1=="a09"' id='t08701'
+                                value="http://www.atmovies.com.tw/showtime/t08701/a07/">中影屏東影城</option>
+                            <option v-show='theater1=="a09"' id='t08703'
+                                value="http://www.atmovies.com.tw/showtime/t08703/a07/">國賓屏東環球影城</option> -->
+                        </select>
+                    </form>
+                </div>
+                <div>
+                    <div class="SelectTitle" id="SelectMovieTitle">影片上映戲院查詢</div>
+                    <form method="post" name="showtime_select_film">
+                        <select name="film_id" size="1" style="font-size:11pt;width:100%;"
+                            onchange="window.location.href = this.value;">
+                            <option value="">請選擇影片</option>
+                            {% for movie in cinema_moviesList %}
+                            <option value="{{ movie.link }}" onclick="">{{ movie.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="theaterShowtimeBlock">
+        <!-- 影院 -->
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t05504/a05/'" >
+            <h2>嘉義秀泰影城</h2>
+            <li>地址: 嘉義市西區文化路299號            </li>
+            <li>電話: 05-228-3838</li>
+            <li>網站: <a href="https://www.showtimes.com.tw" target="_blank">www.showtimes.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t05502/a05/'" >
+            <h2>嘉年華戲院</h2>
+            <li>地址: 嘉義市西區中山路615號(火車站前)</li>
+            <li>電話: (05)225-0289~90</li>
+            <li>網站: <a href="http://www.3d-movies.tw/showmovie.aspx?getId=6102839F3F21BC4B&getId1=ABF03C8F2D450083" target="_blank">www.3d-movies.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t05505/a05/'" >
+            <h2>嘉義in89豪華影城</h2>
+            <li>地址: 嘉義市東區民族路328號</li>
+            <li>電話: 05-2293189</li>
+            <li>網站: <a href="https://www.in89cinemax.com" target="_blank">www.in89cinemax.com</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t06611/a06/'" >
+            <h2>台南FOCUS威秀影城</h2>
+            <li>地址: 台南市中西區中山路166號11、12、13樓</li>
+            <li>電話: 06-222-3566</li>
+            <li>網站: <a href="https://www.vscinemas.com.tw" target="_blank">www.vscinemas.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t06608/a06/'" >
+            <h2>台南國賓影城</h2>
+            <li>地址: 台南市東區中華東路一段88號</li>
+            <li>電話: (06)234-7166</li>
+            <li>網站: <a href="https://www.ambassador.com.tw" target="_blank">www.ambassador.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t06602/a06/'" >
+            <h2>南台電影城</h2>
+            <li>地址: 台南市中西區友愛街317號</li>
+            <li>電話: (06)223-2426~7</li>
+            <li>網站: <a href="https://www.nt-movie.com.tw" target="_blank">www.nt-movie.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t06623/a06/'" >
+            <h2>全美戲院</h2>
+            <li>地址: 台南市中西區永福路二段187號</li>
+            <li>電話: (06)222-4726</li>
+            <li>網站: <a href="https://www.cm-movie.com.tw" target="_blank">www.cm-movie.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t06625/a06/'" >
+            <h2>麻豆戲院</h2>
+            <li>地址: 台南市麻豆區興中路106號</li>
+            <li>電話: (06)572-2159</li>
+            <li>網站: <a href="https://www.facebook.com/people/%E9%BA%BB%E8%B1%86%E6%88%B2%E9%99%A2%E7%B2%89%E7%B5%B2%E5%9C%98/61564946135169/?mibextid=qi2Omg&rdid=Xx1L6zXE9os7by9i&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fa8itGQu6shoNeEqh%2F%3Fmibextid%3Dqi2Omg" target="_blank">URL</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07703/a07/'" >
+            <h2>高雄大遠百威秀影城</h2>
+            <li>地址: 高雄市苓雅區三多四路21號13樓</li>
+            <li>電話: (07)334-5566</li>
+            <li>網站: <a href="https://www.vscinemas.com.tw" target="_blank">www.vscinemas.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07702/a07/'" >
+            <h2>in89駁二電影院</h2>
+            <li>地址: 高雄市鹽埕區大勇路5-1號(駁二藝術特區C1,C2倉庫)</li>
+            <li>電話: 07-9766088</li>
+            <li>網站: <a href="https://www.in89.com.tw" target="_blank">www.in89.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07704/a07/'" >
+            <h2>高雄環球影城</h2>
+            <li>地址: 高雄市苓雅區大順三路108號(建國路口)</li>
+            <li>電話: (07)722-0066</li>
+            <li>網站: <a href="https://www.u-movie.com.tw" target="_blank">www.u-movie.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07705/a07/'" >
+            <h2>國賓義大世界影城</h2>
+            <li>地址: 高雄市大樹區學城路一段12號3樓</li>
+            <li>電話: (07)656-8368</li>
+            <li>網站: <a href="https://www.ambassador.com.tw" target="_blank">www.ambassador.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07707/a07/'" >
+            <h2>高雄夢時代秀泰影城</h2>
+            <li>地址: 高雄市前鎮區中華五路789號8F</li>
+            <li>電話: 07-8122998</li>
+            <li>網站: <a href="https://www.showtimes.com.tw" target="_blank">www.showtimes.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07708/a07/'" >
+            <h2>國賓大魯閣草衙道影城</h2>
+            <li>地址: 高雄市前鎮區中山四路100號3樓</li>
+            <li>電話: 07-793-3611</li>
+            <li>網站: <a href="https://www.ambassador.com.tw" target="_blank">www.ambassador.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07712/a07/'" >
+            <h2>台鋁影城</h2>
+            <li>地址: 高雄市前鎮區忠勤路8號</li>
+            <li>電話: (07)536-5388~2</li>
+            <li>網站: <a href="https://www.facebook.com" target="_blank">www.facebook.com</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t07729/a07/'" >
+            <h2>高雄岡山秀泰</h2>
+            <li>地址: 高雄市岡山區捷安路1巷2號4樓</li>
+            <li>電話: 07-6262808</li>
+            <li>網站: <a href="https://www.showtimes.com.tw" target="_blank">www.showtimes.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t08701/a07/'" >
+            <h2>中影屏東影城</h2>
+            <li>地址: 屏東縣屏東市民生路248號3、4樓</li>
+            <li>電話: (08)732-2043,(08)733-1865</li>
+            <li>網站: <a href="https://ptcinema.movie.com.tw" target="_blank">ptcinema.movie.com.tw</a></li>
+        </div>
+        <div v-show="theater2=='http://www.atmovies.com.tw/showtime/t08703/a07/'" >
+            <h2>國賓屏東環球影城</h2>
+            <li>地址: 屏東縣屏東市仁愛路90號6、7樓</li>
+            <li>電話: (08)766-2128</li>
+            <li>網站: <a href="https://www.ambassador.com.tw" target="_blank">www.ambassador.com.tw</a></li>
+        </div>
+        <div id="introduce0" style="display: none;">
+            <h2>台南新光影城</h2>
+            <li>地址: 台南市中西區西門路一段658號(新光三越)7-9樓
+            </li>
+            <li>電話: (06)303-1260 </li>
+            <li>網站: <a href="https://www.skcinemas.com/films" target="_blank">www.skcinemas.com</a></li>
+        </div>
+        <div id="introduce1" style="display: none;">
+            <h2>台南大遠百威秀影城</h2>
+            <li>地址: 台南市公園路60號8樓(大遠百娛樂城)
+            </li>
+            <li>電話: (06)600-5566 </li>
+            <li>網站: <a href="https://www.vscinemas.com.tw/vsweb/theater/detail.aspx?id=15"
+                    target="_blank">https://www.vscinemas.com.tw/vsweb/theater/detail.aspx?id=15</a></li>
+        </div>
+        <div id="introduce2" style="display: none;">
+            <h2>台南南紡威秀影城</h2>
+            <li>地址: 台南市中華東路一段366號6-7樓</li>
+            <li>電話: (06)237-2255 </li>
+            <li>網站: <a href="https://www.vscinemas.com.tw/vsweb/theater/detail.aspx?id=15"
+                    target="_blank">https://www.vscinemas.com.tw/vsweb/theater/detail.aspx?id=15</a></li>
+        </div>
+        
+            {% for movie in cinema_moviesList %}
+            <ul id="theaterShowtimeTable">
+                <li class="filmTitle">
+                    <a href="{{ movie.link }}" target="_blank" >{{ movie.title }}</a>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="{{ movie.link }}">
+                                <img src="{{ movie.image_link }}" width="140" height="200">
+                            </a>
+                        </li>
+                        <li> 片長：{{ movie.duration }}</li>
+                    </ul>
+                    <ul>
+                        {% for showtime in movie.showtimes %}
+                        <li>{{ showtime }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            {% endfor %}
+            <div class="oneLine"></div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        delimiters: ['${', '}}'],
+        data: {
+            search: '',
+            userInput: [],
+            selected: "",
+            selected1: "",
+            selected2: "",
+            selected3: "",
+            result: "",
+            theater1: '',
+            theater2: "",
+        },
+        watch: {
+            theater1: function (value) {
+                console.log(this.theater1, '1');
+            }
+        }
+    })
+    $(document).ready(function () {
+        // $('select[name="area"]').change(function(){
+        //     var area1 = $(this).val();
+        //     var t06607=document.getElementById("t06607");
+        //     var t06609=document.getElementById("t06609");
+        //     var t05502=document.getElementById("t05502");
+
+        //     if (area1=='a07'){
+        //         t06607.style.display='none'
+        //         t06609.style.display='none'
+        //         t05502.style.display='block'
+        //     }
+        //     if (area1=='a06'){
+        //         t06607.style.display='block'
+        //         t06609.style.display='block'
+        //         t05502.style.display='none'
+        //     }
+        //     console.log(area1,t05502,t06607.style.display);
+        // });
+        $('select[name="theater_id"]').change(function () {
+            var selectedCinema = $(this).val();
+            let introduce0 = document.getElementById("introduce0");
+            let introduce1 = document.getElementById("introduce1");
+            let introduce2 = document.getElementById("introduce2");
+            // if (selectedCinema === "https://www.skcinemas.com/films")
+            if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06607/a06/")
+                introduce0.style.display = 'block';
+            else
+                introduce0.style.display = 'none';
+
+            // if (selectedCinema === "https://www.ambassador.com.tw/home/MovieList?Type=1")
+            if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06609/a06/")
+                introduce1.style.display = 'block';
+            else
+                introduce1.style.display = 'none';
+
+            if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06610/a06/")
+                introduce2.style.display = 'block';
+            else
+                introduce2.style.display = 'none';
+
+            if (selectedCinema !== '') {
+                $.ajax({
+                    url: '/cinema_movies',
+                    type: 'POST',
+                    data: { theater_id: selectedCinema },
+                    success: function (response) {
+                        // 更新页面内容
+                        $('#theaterShowtimeBlock').html(response);
+                        // $('#SelectMovieTitle').html(response);
+                        app.theater2=selectedCinema;
+                        if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06607/a06/")
+                introduce0.style.display = 'block';
+            else
+                introduce0.style.display = 'none';
+
+            // if (selectedCinema === "https://www.ambassador.com.tw/home/MovieList?Type=1")
+            if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06609/a06/")
+                introduce1.style.display = 'block';
+            else
+                introduce1.style.display = 'none';
+
+            if (selectedCinema === "http://www.atmovies.com.tw/showtime/t06610/a06/")
+                introduce2.style.display = 'block';
+            else
+                introduce2.style.display = 'none';
+
+                    },
+                    error: function () {
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    
+</script>
+<!-- <script>
+    function ChooseDate(date) {
+        // 构建表单数据
+        const formData = new FormData();
+        formData.append('theater_id', 'http://www.atmovies.com.tw/showtime/t06610/a06/' + date);
+
+        // 发送POST请求
+        fetch('/cinema_movies', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error('Failed to POST form data');
+        }
+        })
+        .then(data => {
+            $('#theaterShowtimeBlock').html(data);
+        })
+        .catch(error => {
+            console.error('Error posting form data:', error);
+        });
+    }
+
+</script> -->
+
+</html>
